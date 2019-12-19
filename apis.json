@@ -1,0 +1,37 @@
+{
+    "name": "Apache Nutch",
+    "description": "<p>Nutch is a well matured, production ready Web crawler. Nutch 1.x enables fine grained configuration, relying on Apache Hadoop&trade; data structures, which are great for batch processing. - See more at: http:\/\/nutch.apache.org\/index.html#sthash.dehuG4St.dpuf<\/p>",
+    "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/logos\/apache-nutch.jpg",
+    "tags": [
+        "api tools",
+        "have api",
+        "scraping"
+    ],
+    "created": "2019-12-18",
+    "modified": "2019-12-18",
+    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/apache-nutch\/master\/apis.json",
+    "specificationVersion": "0.14",
+    "apis": [
+        {
+            "name": "Apache Nutch",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/logos\/apache-nutch.jpg",
+            "humanURL": "http:\/\/nutch.apache.org\/",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-postman-collecction",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/apache-nutch-postman-collection.json"
+                }
+            ]
+        }
+    ],
+    "include": [],
+    "x-common": [
+        {
+            "type": "Website",
+            "url": "http:\/\/nutch.apache.org\/"
+        }
+    ]
+}
