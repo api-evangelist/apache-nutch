@@ -1,0 +1,34 @@
+aid: apache-nutch
+name: Apache Nutch
+description: >-
+  Apache Nutch is an open-source web crawler software project that can be used to crawl and index web content at scale. It integrates with Apache Solr and Elasticsearch for search capabilities and provides a plugin architecture for customization.
+type: Index
+position: Consumer
+access: 3rd-Party
+image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Web Crawler
+  - Search
+  - Indexing
+  - Web Scraping
+created: '2026-03-16'
+modified: '2026-03-16'
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/apis.yml
+specificationVersion: '0.19'
+apis:
+  - aid: apache-nutch:apache-nutch
+    name: Apache Nutch
+    description: >-
+      Nutch provides a REST API for crawl management and monitoring, along with a Java plugin API for custom parsing, indexing, scoring, and URL filtering during web crawling operations.
+    humanURL: https://nutch.apache.org/documentation/
+    tags:
+      - REST
+      - Java
+      - Web Crawling
+    properties:
+      - type: Documentation
+        url: https://nutch.apache.org/documentation/
+maintainers:
+  - FN: Kin Lane
+    email: info@apievangelist.com
