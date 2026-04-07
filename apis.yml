@@ -7,9 +7,9 @@ position: Consumer
 access: 3rd-Party
 image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - Web Crawler
-  - Search
   - Indexing
+  - Search
+  - Web Crawler
   - Web Scraping
 created: '2026-03-16'
 modified: '2026-03-16'
@@ -23,8 +23,8 @@ apis:
       Nutch provides a REST API for crawl management and monitoring, along with a Java plugin API for custom parsing, indexing, scoring, and URL filtering during web crawling operations.
     humanURL: https://nutch.apache.org/documentation/
     tags:
-      - REST
       - Java
+      - REST
       - Web Crawling
     properties:
       - type: Documentation
