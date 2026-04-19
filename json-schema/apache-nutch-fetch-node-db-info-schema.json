@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-fetch-node-db-info-schema.json",
+  "title": "FetchNodeDbInfo",
+  "description": "Information about a fetched node in the FetchDB.",
+  "type": "object",
+  "properties": {
+    "url": {
+      "type": "string",
+      "description": "The URL of the fetched node."
+    },
+    "status": {
+      "type": "integer",
+      "format": "int32",
+      "minimum": 0,
+      "maximum": 2147483647,
+      "description": "The HTTP status code of the fetch."
+    },
+    "numOfOutlinks": {
+      "type": "integer",
+      "format": "int32",
+      "minimum": 0,
+      "maximum": 2147483647,
+      "description": "The number of outgoing links discovered."
+    },
+    "children": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "A child (outlink) of a fetched node.",
+        "properties": {
+          "childUrl": {
+            "type": "string",
+            "description": "The URL of the child node."
+          },
+          "anchorText": {
+            "type": "string",
+            "description": "The anchor text of the link."
+          }
+        }
+      },
+      "description": "The outgoing links from this node."
+    }
+  },
+  "required": [
+    "children"
+  ]
+}

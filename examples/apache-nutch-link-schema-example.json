@@ -1,0 +1,8 @@
+{
+  "key_url": "string",
+  "timestamp": "int",
+  "score": "float",
+  "anchor": "string",
+  "linktype": "string",
+  "url": "string"
+}

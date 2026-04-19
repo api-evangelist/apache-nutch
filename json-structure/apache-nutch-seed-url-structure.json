@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-structure/apache-nutch-seed-url-structure.json",
+  "name": "SeedUrl",
+  "description": "A single seed URL entry.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "int64",
+      "minimum": 0,
+      "maximum": 9007199254740991,
+      "description": "The seed URL identifier.",
+      "readOnly": true
+    },
+    "url": {
+      "type": "string",
+      "description": "The seed URL."
+    }
+  },
+  "example": {
+    "url": "https://example.com"
+  }
+}

@@ -1,0 +1,489 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: Apache Nutch REST API
+  description: Shared capability definition for the Apache Nutch REST API covering crawl job management, configuration, seed lists, database queries, and data readers.
+  tags:
+    - Apache Nutch
+    - Web Crawler
+    - Crawl Management
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+binds:
+  - namespace: env
+    keys:
+      NUTCH_USERNAME: NUTCH_USERNAME
+      NUTCH_PASSWORD: NUTCH_PASSWORD
+
+capability:
+  consumes:
+    - type: http
+      namespace: nutch
+      baseUri: http://localhost:8081
+      description: Apache Nutch REST API for managing crawl jobs, configurations, and data access.
+      authentication:
+        type: basic
+        username: "{{NUTCH_USERNAME}}"
+        password: "{{NUTCH_PASSWORD}}"
+      resources:
+        - name: admin
+          path: /admin
+          description: Server administration operations.
+          operations:
+            - name: get-server-status
+              method: GET
+              description: Get the current status of the Nutch server.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: stop-server
+              method: GET
+              description: Initiate a graceful shutdown of the Nutch server.
+              inputParameters:
+                - name: force
+                  in: query
+                  type: boolean
+                  required: false
+                  description: If true, kills any running jobs before stopping the server.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: configuration
+          path: /config
+          description: Manage Nutch configurations.
+          operations:
+            - name: get-configs
+              method: GET
+              description: List all known configuration identifiers.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: create-config
+              method: POST
+              description: Create a new Nutch configuration.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  configId: "{{tools.configId}}"
+                  params: {}
+            - name: get-config
+              method: GET
+              description: Get all properties for a specified configuration.
+              inputParameters:
+                - name: configId
+                  in: path
+                  type: string
+                  required: true
+                  description: The configuration identifier.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: delete-config
+              method: DELETE
+              description: Remove the specified configuration.
+              inputParameters:
+                - name: configId
+                  in: path
+                  type: string
+                  required: true
+                  description: The configuration identifier.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: get-property
+              method: GET
+              description: Get the value of a specific configuration property.
+              inputParameters:
+                - name: configId
+                  in: path
+                  type: string
+                  required: true
+                  description: The configuration identifier.
+                - name: propertyId
+                  in: path
+                  type: string
+                  required: true
+                  description: The property key.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: update-property
+              method: PUT
+              description: Add or update a configuration property value.
+              inputParameters:
+                - name: configId
+                  in: path
+                  type: string
+                  required: true
+                  description: The configuration identifier.
+                - name: propertyId
+                  in: path
+                  type: string
+                  required: true
+                  description: The property key.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: text
+                data: "{{tools.value}}"
+
+        - name: jobs
+          path: /job
+          description: Manage crawl jobs.
+          operations:
+            - name: get-jobs
+              method: GET
+              description: List all jobs or filter by crawl ID.
+              inputParameters:
+                - name: crawlId
+                  in: query
+                  type: string
+                  required: false
+                  description: Filter jobs by crawl identifier.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: create-job
+              method: POST
+              description: Create and start a new crawl job.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  crawlId: "{{tools.crawlId}}"
+                  type: "{{tools.jobType}}"
+                  confId: "{{tools.confId}}"
+                  args: {}
+            - name: get-job-info
+              method: GET
+              description: Get information about a specific job.
+              inputParameters:
+                - name: id
+                  in: path
+                  type: string
+                  required: true
+                  description: The job identifier.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: stop-job
+              method: GET
+              description: Stop a running crawl job.
+              inputParameters:
+                - name: id
+                  in: path
+                  type: string
+                  required: true
+                  description: The job identifier.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: abort-job
+              method: GET
+              description: Abort a crawl job immediately.
+              inputParameters:
+                - name: id
+                  in: path
+                  type: string
+                  required: true
+                  description: The job identifier.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: database
+          path: /db
+          description: Query the CrawlDB and FetchDB.
+          operations:
+            - name: read-crawl-db
+              method: POST
+              description: Query the CrawlDB for stats, dumps, or URL lookups.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  crawlId: "{{tools.crawlId}}"
+                  type: "{{tools.queryType}}"
+                  confId: "{{tools.confId}}"
+                  args: {}
+            - name: fetch-db
+              method: POST
+              description: Query the FetchDB for node information.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  crawlId: "{{tools.crawlId}}"
+                  confId: "{{tools.confId}}"
+
+        - name: seeds
+          path: /seed
+          description: Manage seed URL lists.
+          operations:
+            - name: get-seed-lists
+              method: GET
+              description: List all available seed URL lists.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: create-seed-file
+              method: POST
+              description: Create a new seed URL list file in HDFS.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  crawlId: "{{tools.crawlId}}"
+                  confId: "{{tools.confId}}"
+                  seedUrls: []
+
+        - name: readers
+          path: /reader
+          description: Read Hadoop sequence files and webgraph data.
+          operations:
+            - name: seq-read
+              method: POST
+              description: Read entries from a Hadoop sequence file.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  path: "{{tools.path}}"
+                  confId: "{{tools.confId}}"
+            - name: link-read
+              method: POST
+              description: Read link objects from the webgraph.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  path: "{{tools.path}}"
+                  confId: "{{tools.confId}}"
+            - name: node-read
+              method: POST
+              description: Read node objects from the webgraph.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  path: "{{tools.path}}"
+                  confId: "{{tools.confId}}"
+
+  exposes:
+    - type: rest
+      port: 8100
+      namespace: apache-nutch-api
+      resources:
+        - path: /v1/admin/status
+          name: admin-status
+          description: Server status and administration.
+          operations:
+            - method: GET
+              name: get-server-status
+              description: Get Apache Nutch server status.
+              call: "nutch.get-server-status"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/configs
+          name: configs
+          description: Configuration management.
+          operations:
+            - method: GET
+              name: list-configs
+              description: List all configuration IDs.
+              call: "nutch.get-configs"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-config
+              description: Create a new configuration.
+              call: "nutch.create-config"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/jobs
+          name: jobs
+          description: Crawl job management.
+          operations:
+            - method: GET
+              name: list-jobs
+              description: List all crawl jobs.
+              call: "nutch.get-jobs"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-job
+              description: Create a new crawl job.
+              call: "nutch.create-job"
+              with:
+                crawlId: "rest.crawlId"
+                jobType: "rest.type"
+                confId: "rest.confId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/seeds
+          name: seeds
+          description: Seed URL list management.
+          operations:
+            - method: GET
+              name: list-seeds
+              description: List all seed URL lists.
+              call: "nutch.get-seed-lists"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9100
+      namespace: apache-nutch-mcp
+      transport: http
+      tools:
+        - name: get-server-status
+          description: Get the current status of the Apache Nutch server.
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "nutch.get-server-status"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-configs
+          description: List all known Nutch configuration identifiers.
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "nutch.get-configs"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: create-job
+          description: Create and start a new Nutch crawl job (inject, generate, fetch, parse, updatedb, index).
+          hints:
+            readOnly: false
+            openWorld: false
+          call: "nutch.create-job"
+          with:
+            crawlId: "tools.crawlId"
+            jobType: "tools.type"
+            confId: "tools.confId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-job-info
+          description: Get the current state and info for a specific Nutch crawl job.
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "nutch.get-job-info"
+          with:
+            id: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: stop-job
+          description: Stop a running Nutch crawl job gracefully.
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "nutch.stop-job"
+          with:
+            id: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: query-crawldb
+          description: Query the Apache Nutch CrawlDB for stats, dumps, or URL lookups.
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "nutch.read-crawl-db"
+          with:
+            crawlId: "tools.crawlId"
+            queryType: "tools.type"
+            confId: "tools.confId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-seed-lists
+          description: List all available seed URL lists in the Nutch server.
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "nutch.get-seed-lists"
+          outputParameters:
+            - type: object
+              mapping: "$."

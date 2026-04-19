@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-structure/apache-nutch-seed-list-structure.json",
+  "name": "SeedList",
+  "description": "A named list of seed URLs.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "int64",
+      "minimum": 0,
+      "maximum": 9007199254740991,
+      "description": "The seed list identifier.",
+      "readOnly": true
+    },
+    "name": {
+      "type": "string",
+      "description": "A human-readable name for this seed list."
+    },
+    "seedFilePath": {
+      "type": "string",
+      "description": "The HDFS path where the seed file is stored. Populated after creation.",
+      "readOnly": true
+    },
+    "seedUrls": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "A single seed URL entry.",
+        "properties": {
+          "id": {
+            "type": "int64",
+            "minimum": 0,
+            "maximum": 9007199254740991,
+            "description": "The seed URL identifier.",
+            "readOnly": true
+          },
+          "url": {
+            "type": "string",
+            "description": "The seed URL."
+          }
+        },
+        "example": {
+          "url": "https://example.com"
+        }
+      },
+      "description": "The collection of seed URLs in this list."
+    }
+  },
+  "required": [
+    "seedUrls"
+  ],
+  "example": {
+    "name": "my-seeds",
+    "seedUrls": [
+      {
+        "url": "https://example.com"
+      },
+      {
+        "url": "https://nutch.apache.org"
+      }
+    ]
+  }
+}

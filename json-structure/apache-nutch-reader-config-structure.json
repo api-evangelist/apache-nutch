@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-structure/apache-nutch-reader-config-structure.json",
+  "name": "ReaderConfig",
+  "description": "Configuration specifying a file path for reader operations.",
+  "type": "object",
+  "properties": {
+    "path": {
+      "type": "string",
+      "description": "The path to the sequence file, link data, or node data to read."
+    }
+  },
+  "required": [
+    "path"
+  ],
+  "example": {
+    "path": "crawl-01/crawldb/current/part-00000/data"
+  }
+}

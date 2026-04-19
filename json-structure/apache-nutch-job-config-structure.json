@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-structure/apache-nutch-job-config-structure.json",
+  "name": "JobConfig",
+  "description": "Configuration for creating a new crawl job.",
+  "type": "object",
+  "properties": {
+    "crawlId": {
+      "type": "string",
+      "description": "The crawl identifier."
+    },
+    "type": {
+      "type": "string",
+      "description": "The type of Nutch crawl job.",
+      "enum": [
+        "INJECT",
+        "GENERATE",
+        "FETCH",
+        "PARSE",
+        "UPDATEDB",
+        "INDEX",
+        "READDB",
+        "CLASS",
+        "INVERTLINKS",
+        "DEDUP"
+      ]
+    },
+    "confId": {
+      "type": "string",
+      "description": "The configuration ID to use for this job. Defaults to \"default\" if not specified."
+    },
+    "jobClassName": {
+      "type": "string",
+      "description": "Fully qualified class name when type is CLASS."
+    },
+    "args": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "Additional arguments for the job."
+    }
+  },
+  "required": [
+    "type"
+  ],
+  "example": {
+    "crawlId": "crawl-01",
+    "type": "INJECT",
+    "confId": "default",
+    "args": {
+      "seedDir": "seedFiles/seed-1700000000000"
+    }
+  }
+}

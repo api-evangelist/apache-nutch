@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-structure/apache-nutch-child-node-structure.json",
+  "name": "ChildNode",
+  "description": "A child (outlink) of a fetched node.",
+  "type": "object",
+  "properties": {
+    "childUrl": {
+      "type": "string",
+      "description": "The URL of the child node."
+    },
+    "anchorText": {
+      "type": "string",
+      "description": "The anchor text of the link."
+    }
+  }
+}

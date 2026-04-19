@@ -1,0 +1,51 @@
+{
+  "startDate": "2025-03-15T14:30:00Z",
+  "configuration": [
+    "example-value",
+    "example-value"
+  ],
+  "jobs": [
+    {
+      "id": "default",
+      "type": "PARSE",
+      "confId": "default",
+      "args": {},
+      "result": {},
+      "state": "ANY",
+      "msg": "example-value",
+      "crawlId": "default"
+    },
+    {
+      "id": "default",
+      "type": "GENERATE",
+      "confId": "default",
+      "args": {},
+      "result": {},
+      "state": "IDLE",
+      "msg": "example-value",
+      "crawlId": "default"
+    }
+  ],
+  "runningJobs": [
+    {
+      "id": "default",
+      "type": "PARSE",
+      "confId": "default",
+      "args": {},
+      "result": {},
+      "state": "KILLED",
+      "msg": "example-value",
+      "crawlId": "default"
+    },
+    {
+      "id": "default",
+      "type": "GENERATE",
+      "confId": "default",
+      "args": {},
+      "result": {},
+      "state": "RUNNING",
+      "msg": "example-value",
+      "crawlId": "default"
+    }
+  ]
+}

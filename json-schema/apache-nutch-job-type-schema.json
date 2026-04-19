@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-job-type-schema.json",
+  "title": "JobType",
+  "description": "The type of Nutch crawl job.",
+  "type": "string",
+  "enum": [
+    "INJECT",
+    "GENERATE",
+    "FETCH",
+    "PARSE",
+    "UPDATEDB",
+    "INDEX",
+    "READDB",
+    "CLASS",
+    "INVERTLINKS",
+    "DEDUP"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-nutch-config-schema.json",
+  "title": "NutchConfig",
+  "description": "Configuration for creating a new Nutch configuration.",
+  "type": "object",
+  "properties": {
+    "configId": {
+      "type": "string",
+      "description": "The identifier for this configuration."
+    },
+    "force": {
+      "type": "boolean",
+      "description": "If true, overwrites an existing configuration with the same ID.",
+      "default": false
+    },
+    "params": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Key-value pairs of Nutch configuration properties."
+    }
+  },
+  "example": {
+    "configId": "my-config",
+    "force": false,
+    "params": {
+      "http.agent.name": "MyBot",
+      "http.robots.agents": "MyBot,*"
+    }
+  }
+}

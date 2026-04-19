@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-structure/apache-nutch-db-query-structure.json",
+  "name": "DbQuery",
+  "description": "Parameters for a CrawlDB query.",
+  "type": "object",
+  "properties": {
+    "confId": {
+      "type": "string",
+      "description": "Configuration ID. Falls back to \"default\" if not provided."
+    },
+    "type": {
+      "type": "string",
+      "description": "The type of CrawlDB query to execute.",
+      "enum": [
+        "stats",
+        "dump",
+        "topN",
+        "url"
+      ]
+    },
+    "args": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Additional arguments for the query."
+    },
+    "crawlId": {
+      "type": "string",
+      "description": "The crawl identifier."
+    }
+  },
+  "required": [
+    "crawlId",
+    "type"
+  ],
+  "example": {
+    "confId": "default",
+    "type": "stats",
+    "crawlId": "crawl-01",
+    "args": {}
+  }
+}

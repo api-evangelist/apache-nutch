@@ -1,0 +1,15 @@
+{
+  "url": "https://example.com",
+  "status": 13,
+  "numOfOutlinks": 917,
+  "children": [
+    {
+      "childUrl": "https://example.com",
+      "anchorText": "example-value"
+    },
+    {
+      "childUrl": "https://example.com",
+      "anchorText": "example-value"
+    }
+  ]
+}

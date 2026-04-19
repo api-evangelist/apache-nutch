@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-structure/apache-nutch-service-config-structure.json",
+  "name": "ServiceConfig",
+  "description": "Configuration for service operations such as CommonCrawl data dumps.",
+  "type": "object",
+  "properties": {
+    "crawlId": {
+      "type": "string",
+      "description": "The crawl identifier."
+    },
+    "confId": {
+      "type": "string",
+      "description": "The configuration ID."
+    },
+    "args": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "Additional arguments for the service operation."
+    }
+  },
+  "required": [
+    "crawlId"
+  ],
+  "example": {
+    "crawlId": "crawl-01",
+    "confId": "default",
+    "args": {}
+  }
+}

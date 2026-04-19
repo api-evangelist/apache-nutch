@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-structure/apache-nutch-nutch-server-info-structure.json",
+  "name": "NutchServerInfo",
+  "description": "Status information about the running Nutch server.",
+  "type": "object",
+  "properties": {
+    "startDate": {
+      "type": "datetime",
+      "description": "The date and time the server was started."
+    },
+    "configuration": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "description": "Set of known configuration IDs."
+    },
+    "jobs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "Information about a crawl job.",
+        "required": [
+          "type",
+          "state"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The unique job identifier."
+          },
+          "type": {
+            "type": "string",
+            "description": "The type of Nutch crawl job.",
+            "enum": [
+              "INJECT",
+              "GENERATE",
+              "FETCH",
+              "PARSE",
+              "UPDATEDB",
+              "INDEX",
+              "READDB",
+              "CLASS",
+              "INVERTLINKS",
+              "DEDUP"
+            ]
+          },
+          "confId": {
+            "type": "string",
+            "description": "The configuration ID used for this job."
+          },
+          "args": {
+            "type": "object",
+            "additionalProperties": true,
+            "description": "Arguments passed to the job."
+          },
+          "result": {
+            "type": "object",
+            "additionalProperties": true,
+            "description": "Result data returned after job completion."
+          },
+          "state": {
+            "type": "string",
+            "description": "The current state of a job.",
+            "enum": [
+              "IDLE",
+              "RUNNING",
+              "FINISHED",
+              "FAILED",
+              "KILLED",
+              "STOPPING",
+              "KILLING",
+              "ANY"
+            ]
+          },
+          "msg": {
+            "type": "string",
+            "description": "A human-readable status or error message."
+          },
+          "crawlId": {
+            "type": "string",
+            "description": "The crawl identifier associated with this job."
+          }
+        }
+      },
+      "description": "All jobs (any state)."
+    },
+    "runningJobs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "Information about a crawl job.",
+        "required": [
+          "type",
+          "state"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The unique job identifier."
+          },
+          "type": {
+            "type": "string",
+            "description": "The type of Nutch crawl job.",
+            "enum": [
+              "INJECT",
+              "GENERATE",
+              "FETCH",
+              "PARSE",
+              "UPDATEDB",
+              "INDEX",
+              "READDB",
+              "CLASS",
+              "INVERTLINKS",
+              "DEDUP"
+            ]
+          },
+          "confId": {
+            "type": "string",
+            "description": "The configuration ID used for this job."
+          },
+          "args": {
+            "type": "object",
+            "additionalProperties": true,
+            "description": "Arguments passed to the job."
+          },
+          "result": {
+            "type": "object",
+            "additionalProperties": true,
+            "description": "Result data returned after job completion."
+          },
+          "state": {
+            "type": "string",
+            "description": "The current state of a job.",
+            "enum": [
+              "IDLE",
+              "RUNNING",
+              "FINISHED",
+              "FAILED",
+              "KILLED",
+              "STOPPING",
+              "KILLING",
+              "ANY"
+            ]
+          },
+          "msg": {
+            "type": "string",
+            "description": "A human-readable status or error message."
+          },
+          "crawlId": {
+            "type": "string",
+            "description": "The crawl identifier associated with this job."
+          }
+        }
+      },
+      "description": "Currently running jobs."
+    }
+  },
+  "required": [
+    "configuration",
+    "jobs",
+    "runningJobs"
+  ]
+}

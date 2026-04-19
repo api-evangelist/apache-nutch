@@ -1,0 +1,336 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: Apache Nutch
+  description: Unified vocabulary mapping the operational (OpenAPI) and capability (Naftiko) dimensions of the Apache Nutch web crawler REST API.
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+operational:
+  apis:
+    - name: Apache Nutch REST API
+      namespace: nutch
+      version: "1.0.0"
+      baseUrl: http://localhost:8081
+      status: active
+      description: REST API for managing web crawl jobs, configurations, seed lists, and database queries.
+
+  resources:
+    - name: admin
+      description: Server administration and status monitoring.
+      apis:
+        - nutch
+      actions:
+        - get
+        - stop
+
+    - name: configurations
+      description: Named sets of Nutch configuration key-value pairs for controlling crawl behavior.
+      apis:
+        - nutch
+      actions:
+        - list
+        - get
+        - create
+        - delete
+        - update
+
+    - name: jobs
+      description: Crawl pipeline jobs representing individual stages (inject, generate, fetch, parse, updatedb, index).
+      apis:
+        - nutch
+      actions:
+        - list
+        - get
+        - create
+        - stop
+        - abort
+
+    - name: crawldb
+      description: CrawlDB queries for statistics, dumps, and URL-level status lookups.
+      apis:
+        - nutch
+      actions:
+        - query
+
+    - name: fetchdb
+      description: FetchDB node information for monitoring fetch history.
+      apis:
+        - nutch
+      actions:
+        - query
+
+    - name: seeds
+      description: Seed URL list files stored in HDFS for initializing crawl runs.
+      apis:
+        - nutch
+      actions:
+        - list
+        - create
+
+    - name: readers
+      description: Utilities for reading Hadoop sequence files and webgraph link/node data.
+      apis:
+        - nutch
+      actions:
+        - read
+
+  actions:
+    - name: list
+      description: Retrieve a collection of resources.
+      httpMethod: GET
+      pattern: read
+
+    - name: get
+      description: Retrieve a single resource by identifier.
+      httpMethod: GET
+      pattern: read
+
+    - name: create
+      description: Create a new resource instance.
+      httpMethod: POST
+      pattern: write
+
+    - name: update
+      description: Update an existing resource property.
+      httpMethod: PUT
+      pattern: write
+
+    - name: delete
+      description: Remove a resource.
+      httpMethod: DELETE
+      pattern: destructive
+
+    - name: stop
+      description: Gracefully halt a running job or server.
+      httpMethod: GET
+      pattern: write
+
+    - name: abort
+      description: Immediately terminate a job without cleanup.
+      httpMethod: GET
+      pattern: destructive
+
+    - name: query
+      description: Execute a parameterized query against a database.
+      httpMethod: POST
+      pattern: read
+
+    - name: read
+      description: Read binary data from a Hadoop sequence or webgraph file.
+      httpMethod: POST
+      pattern: read
+
+  schemas:
+    core:
+      - name: NutchServerInfo
+        description: Server status including start date, known configurations, and running jobs.
+      - name: JobInfo
+        description: Job state, type, crawl ID, configuration ID, and job arguments.
+      - name: JobConfig
+        description: Parameters for creating a crawl job including type, crawl ID, and arguments.
+      - name: NutchConfig
+        description: Configuration object with a map of key-value property pairs.
+
+    database:
+      - name: DbQuery
+        description: Parameters for a CrawlDB query including type (stats, dump, topN, url) and crawl ID.
+      - name: FetchNodeDbInfo
+        description: Node information from the FetchDB including child nodes.
+      - name: ChildNode
+        description: Child node entry with URL and associated metadata.
+
+    seeds:
+      - name: SeedList
+        description: A seed URL list with crawl ID and list of seed URLs.
+      - name: SeedUrl
+        description: Individual seed URL with optional metadata.
+
+    readers:
+      - name: ReaderConfig
+        description: Configuration for reading sequence files including path and count/offset parameters.
+      - name: LinkSchema
+        description: Schema description for webgraph link reader output.
+      - name: NodeSchema
+        description: Schema description for webgraph node reader output.
+
+    services:
+      - name: ServiceConfig
+        description: Configuration for auxiliary service operations such as CommonCrawl dumps.
+      - name: ServiceInfo
+        description: Information about available service operations.
+
+  parameters:
+    identifiers:
+      - name: crawlId
+        description: Unique identifier for a crawl run.
+        type: string
+      - name: confId
+        description: Configuration identifier referencing a named Nutch configuration.
+        type: string
+      - name: id
+        description: Job identifier.
+        type: string
+      - name: propertyId
+        description: Configuration property key.
+        type: string
+
+    pagination:
+      - name: count
+        description: Number of records to return.
+        type: integer
+      - name: offset
+        description: Starting offset for paginated reads.
+        type: integer
+
+    control:
+      - name: force
+        description: Force operation (e.g., stop server even with running jobs).
+        type: boolean
+
+  enums:
+    jobTypes:
+      - INJECT
+      - GENERATE
+      - FETCH
+      - PARSE
+      - UPDATEDB
+      - INDEX
+      - READDB
+      - CLASS
+      - INVERTLINKS
+      - DEDUP
+
+    jobStates:
+      - IDLE
+      - RUNNING
+      - FINISHED
+      - FAILED
+      - KILLED
+      - STOPPING
+      - KILLING
+      - ANY
+
+    queryTypes:
+      - stats
+      - dump
+      - topN
+      - url
+
+  authentication:
+    schemes:
+      - name: basicAuth
+        type: http
+        scheme: basic
+        description: HTTP Basic Authentication required for all API endpoints.
+
+capability:
+  workflows:
+    - name: Apache Nutch Crawl Management
+      file: capabilities/apache-nutch-crawl-management.yaml
+      description: End-to-end crawl pipeline management workflow covering job lifecycle, configuration, seeds, and database queries.
+      apisUsed:
+        - Apache Nutch REST API
+      toolCount: 14
+      personas:
+        - Crawl Engineer
+        - Data Engineer
+      domains:
+        - Web Crawling
+        - Data Collection
+
+  personas:
+    - id: crawl-engineer
+      name: Crawl Engineer
+      description: Engineers responsible for configuring and running web crawl pipelines using Nutch.
+      workflows:
+        - Apache Nutch Crawl Management
+
+    - id: data-engineer
+      name: Data Engineer
+      description: Data engineers who consume crawl outputs for search indexing or data analysis pipelines.
+      workflows:
+        - Apache Nutch Crawl Management
+
+  domains:
+    - name: Web Crawling
+      description: Systematic automated retrieval of web content at scale.
+      resources:
+        - jobs
+        - seeds
+        - configurations
+
+    - name: Data Collection
+      description: Structured collection and storage of web data for downstream processing.
+      resources:
+        - crawldb
+        - fetchdb
+        - readers
+
+  namespaces:
+    - type: consumed
+      name: nutch
+      baseUri: http://localhost:8081
+
+    - type: rest-exposed
+      name: nutch-crawl-api
+      port: 8080
+
+    - type: mcp-exposed
+      name: nutch-crawl-mcp
+      port: 9090
+
+  binds:
+    - name: NUTCH_USERNAME
+      description: HTTP Basic Auth username for Apache Nutch REST API.
+      workflows:
+        - Apache Nutch Crawl Management
+
+    - name: NUTCH_PASSWORD
+      description: HTTP Basic Auth password for Apache Nutch REST API.
+      workflows:
+        - Apache Nutch Crawl Management
+
+crossReference:
+  - resource: jobs
+    operations:
+      - list-jobs
+      - create-job
+      - get-job-info
+      - stop-job
+      - abort-job
+    workflows:
+      - Apache Nutch Crawl Management
+    personas:
+      - Crawl Engineer
+      - Data Engineer
+
+  - resource: configurations
+    operations:
+      - list-configs
+      - create-config
+      - get-config
+      - delete-config
+      - get-property
+      - update-property
+    workflows:
+      - Apache Nutch Crawl Management
+    personas:
+      - Crawl Engineer
+
+  - resource: crawldb
+    operations:
+      - query-crawldb
+    workflows:
+      - Apache Nutch Crawl Management
+    personas:
+      - Data Engineer
+
+  - resource: seeds
+    operations:
+      - list-seeds
+      - create-seed-list
+    workflows:
+      - Apache Nutch Crawl Management
+    personas:
+      - Crawl Engineer

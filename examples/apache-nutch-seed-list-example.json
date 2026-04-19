@@ -1,0 +1,13 @@
+{
+  "id": 402,
+  "name": "NutchBot",
+  "seedFilePath": "/crawl/segments",
+  "seedUrls": [
+    {
+      "url": "https://example.com"
+    },
+    {
+      "url": "https://example.com"
+    }
+  ]
+}

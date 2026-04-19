@@ -1,0 +1,8 @@
+{
+  "key_url": "string",
+  "num_inlinks": "int",
+  "num_outlinks": "int",
+  "inlink_score": "float",
+  "outlink_score": "float",
+  "metadata": "string"
+}

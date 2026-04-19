@@ -1,0 +1,171 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "nutch": "https://nutch.apache.org/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "ChildNode": "nutch:ChildNode",
+    "DbQuery": "nutch:DbQuery",
+    "FetchNodeDbInfo": "nutch:FetchNodeDbInfo",
+    "JobConfig": "nutch:JobConfig",
+    "JobInfo": "nutch:JobInfo",
+    "LinkSchema": "nutch:LinkSchema",
+    "NodeSchema": "nutch:NodeSchema",
+    "NutchConfig": "nutch:NutchConfig",
+    "NutchServerInfo": "nutch:NutchServerInfo",
+    "ReaderConfig": "nutch:ReaderConfig",
+    "SeedList": "nutch:SeedList",
+    "SeedUrl": "nutch:SeedUrl",
+    "ServiceConfig": "nutch:ServiceConfig",
+    "ServiceInfo": "nutch:ServiceInfo",
+    "anchor": {
+      "@id": "nutch:anchor",
+      "@type": "xsd:string"
+    },
+    "anchorText": {
+      "@id": "nutch:anchorText",
+      "@type": "xsd:string"
+    },
+    "args": {
+      "@id": "nutch:args",
+      "@type": "@id"
+    },
+    "childUrl": {
+      "@id": "nutch:childUrl",
+      "@type": "xsd:string"
+    },
+    "children": {
+      "@id": "nutch:children",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "confId": {
+      "@id": "nutch:confId",
+      "@type": "xsd:string"
+    },
+    "configId": {
+      "@id": "nutch:configId",
+      "@type": "xsd:string"
+    },
+    "configuration": {
+      "@id": "nutch:configuration",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "crawlId": {
+      "@id": "nutch:crawlId",
+      "@type": "xsd:string"
+    },
+    "dumpPaths": {
+      "@id": "nutch:dumpPaths",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "force": {
+      "@id": "nutch:force",
+      "@type": "xsd:boolean"
+    },
+    "id": {
+      "@id": "nutch:id",
+      "@type": "xsd:string"
+    },
+    "inlinkScore": {
+      "@id": "nutch:inlink_score",
+      "@type": "xsd:string"
+    },
+    "jobClassName": {
+      "@id": "nutch:jobClassName",
+      "@type": "xsd:string"
+    },
+    "jobs": {
+      "@id": "nutch:jobs",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "keyUrl": {
+      "@id": "nutch:key_url",
+      "@type": "xsd:string"
+    },
+    "linktype": {
+      "@id": "nutch:linktype",
+      "@type": "xsd:string"
+    },
+    "metadata": {
+      "@id": "nutch:metadata",
+      "@type": "xsd:string"
+    },
+    "msg": {
+      "@id": "nutch:msg",
+      "@type": "xsd:string"
+    },
+    "name": "schema:name",
+    "numOfOutlinks": {
+      "@id": "nutch:numOfOutlinks",
+      "@type": "xsd:integer"
+    },
+    "numInlinks": {
+      "@id": "nutch:num_inlinks",
+      "@type": "xsd:string"
+    },
+    "numOutlinks": {
+      "@id": "nutch:num_outlinks",
+      "@type": "xsd:string"
+    },
+    "outlinkScore": {
+      "@id": "nutch:outlink_score",
+      "@type": "xsd:string"
+    },
+    "params": {
+      "@id": "nutch:params",
+      "@type": "@id"
+    },
+    "path": {
+      "@id": "nutch:path",
+      "@type": "xsd:string"
+    },
+    "result": {
+      "@id": "nutch:result",
+      "@type": "@id"
+    },
+    "runningJobs": {
+      "@id": "nutch:runningJobs",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "score": {
+      "@id": "nutch:score",
+      "@type": "xsd:string"
+    },
+    "seedFilePath": {
+      "@id": "nutch:seedFilePath",
+      "@type": "xsd:string"
+    },
+    "seedUrls": {
+      "@id": "nutch:seedUrls",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "startDate": {
+      "@id": "nutch:startDate",
+      "@type": "xsd:dateTime"
+    },
+    "state": {
+      "@id": "nutch:state",
+      "@type": "xsd:string"
+    },
+    "status": {
+      "@id": "nutch:status",
+      "@type": "xsd:integer"
+    },
+    "timestamp": {
+      "@id": "nutch:timestamp",
+      "@type": "xsd:string"
+    },
+    "type": {
+      "@id": "nutch:type",
+      "@type": "xsd:string"
+    },
+    "url": "schema:url"
+  }
+}

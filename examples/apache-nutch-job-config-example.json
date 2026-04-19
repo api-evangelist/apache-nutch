@@ -1,0 +1,7 @@
+{
+  "crawlId": "default",
+  "type": "PARSE",
+  "confId": "default",
+  "jobClassName": "NutchBot",
+  "args": {}
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-child-node-schema.json",
+  "title": "ChildNode",
+  "description": "A child (outlink) of a fetched node.",
+  "type": "object",
+  "properties": {
+    "childUrl": {
+      "type": "string",
+      "description": "The URL of the child node."
+    },
+    "anchorText": {
+      "type": "string",
+      "description": "The anchor text of the link."
+    }
+  }
+}

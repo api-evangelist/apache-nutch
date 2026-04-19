@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-link-schema-schema.json",
+  "title": "LinkSchema",
+  "description": "Schema describing the fields in a link reader response.",
+  "type": "object",
+  "properties": {
+    "key_url": {
+      "type": "string",
+      "example": "string"
+    },
+    "timestamp": {
+      "type": "string",
+      "example": "int"
+    },
+    "score": {
+      "type": "string",
+      "example": "float"
+    },
+    "anchor": {
+      "type": "string",
+      "example": "string"
+    },
+    "linktype": {
+      "type": "string",
+      "example": "string"
+    },
+    "url": {
+      "type": "string",
+      "example": "string"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-structure/apache-nutch-service-info-structure.json",
+  "name": "ServiceInfo",
+  "description": "Information returned by service operations.",
+  "type": "object",
+  "properties": {
+    "dumpPaths": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of file paths for the dump output."
+    }
+  },
+  "required": [
+    "dumpPaths"
+  ]
+}

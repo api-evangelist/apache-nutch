@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-service-info-schema.json",
+  "title": "ServiceInfo",
+  "description": "Information returned by service operations.",
+  "type": "object",
+  "properties": {
+    "dumpPaths": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of file paths for the dump output."
+    }
+  },
+  "required": [
+    "dumpPaths"
+  ]
+}

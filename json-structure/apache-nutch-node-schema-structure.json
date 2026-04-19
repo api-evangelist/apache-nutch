@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-structure/apache-nutch-node-schema-structure.json",
+  "name": "NodeSchema",
+  "description": "Schema describing the fields in a node reader response.",
+  "type": "object",
+  "properties": {
+    "key_url": {
+      "type": "string",
+      "example": "string"
+    },
+    "num_inlinks": {
+      "type": "string",
+      "example": "int"
+    },
+    "num_outlinks": {
+      "type": "string",
+      "example": "int"
+    },
+    "inlink_score": {
+      "type": "string",
+      "example": "float"
+    },
+    "outlink_score": {
+      "type": "string",
+      "example": "float"
+    },
+    "metadata": {
+      "type": "string",
+      "example": "string"
+    }
+  }
+}

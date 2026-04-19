@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-structure/apache-nutch-state-structure.json",
+  "name": "State",
+  "description": "The current state of a job.",
+  "type": "string",
+  "enum": [
+    "IDLE",
+    "RUNNING",
+    "FINISHED",
+    "FAILED",
+    "KILLED",
+    "STOPPING",
+    "KILLING",
+    "ANY"
+  ]
+}

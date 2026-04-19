@@ -1,0 +1,10 @@
+{
+  "id": "default",
+  "type": "CLASS",
+  "confId": "default",
+  "args": {},
+  "result": {},
+  "state": "STOPPING",
+  "msg": "example-value",
+  "crawlId": "default"
+}
