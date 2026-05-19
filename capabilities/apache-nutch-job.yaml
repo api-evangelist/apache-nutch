@@ -1,0 +1,245 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Apache Nutch REST API — Job
+  description: 'Apache Nutch REST API — Job. 5 operations. Lead operation: Apache Nutch List All Jobs. Self-contained Naftiko
+    capability covering one Apache Nutch business surface.'
+  tags:
+  - Apache Nutch
+  - Job
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    APACHE_NUTCH_API_KEY: APACHE_NUTCH_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: apache-nutch-job
+    baseUri: ''
+    description: Apache Nutch REST API — Job business capability. Self-contained, no shared references.
+    resources:
+    - name: job
+      path: /job/
+      operations:
+      - name: getjobs
+        method: GET
+        description: Apache Nutch List All Jobs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: crawlId
+          in: query
+          type: string
+          description: Optional crawl ID to filter jobs by.
+    - name: job-create
+      path: /job/create
+      operations:
+      - name: createjob
+        method: POST
+        description: Apache Nutch Create a New Job
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: job-id
+      path: /job/{id}
+      operations:
+      - name: getjobinfo
+        method: GET
+        description: Apache Nutch Get Job Info
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: crawlId
+          in: query
+          type: string
+          description: The crawl ID associated with the job.
+    - name: job-id-abort
+      path: /job/{id}/abort
+      operations:
+      - name: abortjob
+        method: GET
+        description: Apache Nutch Abort a Job
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: crawlId
+          in: query
+          type: string
+          description: The crawl ID associated with the job.
+    - name: job-id-stop
+      path: /job/{id}/stop
+      operations:
+      - name: stopjob
+        method: GET
+        description: Apache Nutch Stop a Running Job
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: crawlId
+          in: query
+          type: string
+          description: The crawl ID associated with the job.
+    authentication:
+      type: basic
+      username: '{{env.APACHE_NUTCH_USER}}'
+      password: '{{env.APACHE_NUTCH_PASS}}'
+  exposes:
+  - type: rest
+    namespace: apache-nutch-job-rest
+    port: 8080
+    description: REST adapter for Apache Nutch REST API — Job. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/job
+      name: job
+      description: REST surface for job.
+      operations:
+      - method: GET
+        name: getjobs
+        description: Apache Nutch List All Jobs
+        call: apache-nutch-job.getjobs
+        with:
+          crawlId: rest.crawlId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/job/create
+      name: job-create
+      description: REST surface for job-create.
+      operations:
+      - method: POST
+        name: createjob
+        description: Apache Nutch Create a New Job
+        call: apache-nutch-job.createjob
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/job/{id}
+      name: job-id
+      description: REST surface for job-id.
+      operations:
+      - method: GET
+        name: getjobinfo
+        description: Apache Nutch Get Job Info
+        call: apache-nutch-job.getjobinfo
+        with:
+          crawlId: rest.crawlId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/job/{id}/abort
+      name: job-id-abort
+      description: REST surface for job-id-abort.
+      operations:
+      - method: GET
+        name: abortjob
+        description: Apache Nutch Abort a Job
+        call: apache-nutch-job.abortjob
+        with:
+          crawlId: rest.crawlId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/job/{id}/stop
+      name: job-id-stop
+      description: REST surface for job-id-stop.
+      operations:
+      - method: GET
+        name: stopjob
+        description: Apache Nutch Stop a Running Job
+        call: apache-nutch-job.stopjob
+        with:
+          crawlId: rest.crawlId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: apache-nutch-job-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Apache Nutch REST API — Job. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: apache-nutch-list-all-jobs
+      description: Apache Nutch List All Jobs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: apache-nutch-job.getjobs
+      with:
+        crawlId: tools.crawlId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: apache-nutch-create-new-job
+      description: Apache Nutch Create a New Job
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: apache-nutch-job.createjob
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: apache-nutch-get-job-info
+      description: Apache Nutch Get Job Info
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: apache-nutch-job.getjobinfo
+      with:
+        crawlId: tools.crawlId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: apache-nutch-abort-job
+      description: Apache Nutch Abort a Job
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: apache-nutch-job.abortjob
+      with:
+        crawlId: tools.crawlId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: apache-nutch-stop-running-job
+      description: Apache Nutch Stop a Running Job
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: apache-nutch-job.stopjob
+      with:
+        crawlId: tools.crawlId
+      outputParameters:
+      - type: object
+        mapping: $.

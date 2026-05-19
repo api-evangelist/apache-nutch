@@ -1,0 +1,229 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Apache Nutch REST API — Reader
+  description: 'Apache Nutch REST API — Reader. 5 operations. Lead operation: Apache Nutch Get Link Reader Schema. Self-contained
+    Naftiko capability covering one Apache Nutch business surface.'
+  tags:
+  - Apache Nutch
+  - Reader
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    APACHE_NUTCH_API_KEY: APACHE_NUTCH_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: apache-nutch-reader
+    baseUri: ''
+    description: Apache Nutch REST API — Reader business capability. Self-contained, no shared references.
+    resources:
+    - name: reader-link
+      path: /reader/link
+      operations:
+      - name: getlinkschema
+        method: GET
+        description: Apache Nutch Get Link Reader Schema
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: reader-link-read
+      path: /reader/link/read
+      operations:
+      - name: linkread
+        method: POST
+        description: Apache Nutch Read Link Objects
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: reader-node
+      path: /reader/node
+      operations:
+      - name: getnodeschema
+        method: GET
+        description: Apache Nutch Get Node Reader Schema
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: reader-node-read
+      path: /reader/node/read
+      operations:
+      - name: noderead
+        method: POST
+        description: Apache Nutch Read Node Objects
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: reader-sequence-read
+      path: /reader/sequence/read
+      operations:
+      - name: seqread
+        method: POST
+        description: Apache Nutch Read a Sequence File
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: basic
+      username: '{{env.APACHE_NUTCH_USER}}'
+      password: '{{env.APACHE_NUTCH_PASS}}'
+  exposes:
+  - type: rest
+    namespace: apache-nutch-reader-rest
+    port: 8080
+    description: REST adapter for Apache Nutch REST API — Reader. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/reader/link
+      name: reader-link
+      description: REST surface for reader-link.
+      operations:
+      - method: GET
+        name: getlinkschema
+        description: Apache Nutch Get Link Reader Schema
+        call: apache-nutch-reader.getlinkschema
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/reader/link/read
+      name: reader-link-read
+      description: REST surface for reader-link-read.
+      operations:
+      - method: POST
+        name: linkread
+        description: Apache Nutch Read Link Objects
+        call: apache-nutch-reader.linkread
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/reader/node
+      name: reader-node
+      description: REST surface for reader-node.
+      operations:
+      - method: GET
+        name: getnodeschema
+        description: Apache Nutch Get Node Reader Schema
+        call: apache-nutch-reader.getnodeschema
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/reader/node/read
+      name: reader-node-read
+      description: REST surface for reader-node-read.
+      operations:
+      - method: POST
+        name: noderead
+        description: Apache Nutch Read Node Objects
+        call: apache-nutch-reader.noderead
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/reader/sequence/read
+      name: reader-sequence-read
+      description: REST surface for reader-sequence-read.
+      operations:
+      - method: POST
+        name: seqread
+        description: Apache Nutch Read a Sequence File
+        call: apache-nutch-reader.seqread
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: apache-nutch-reader-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Apache Nutch REST API — Reader. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: apache-nutch-get-link-reader
+      description: Apache Nutch Get Link Reader Schema
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: apache-nutch-reader.getlinkschema
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: apache-nutch-read-link-objects
+      description: Apache Nutch Read Link Objects
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: apache-nutch-reader.linkread
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: apache-nutch-get-node-reader
+      description: Apache Nutch Get Node Reader Schema
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: apache-nutch-reader.getnodeschema
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: apache-nutch-read-node-objects
+      description: Apache Nutch Read Node Objects
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: apache-nutch-reader.noderead
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: apache-nutch-read-sequence-file
+      description: Apache Nutch Read a Sequence File
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: apache-nutch-reader.seqread
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,237 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Apache Nutch REST API — Configuration
+  description: 'Apache Nutch REST API — Configuration. 6 operations. Lead operation: Apache Nutch List All Configuration IDs.
+    Self-contained Naftiko capability covering one Apache Nutch business surface.'
+  tags:
+  - Apache Nutch
+  - Configuration
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    APACHE_NUTCH_API_KEY: APACHE_NUTCH_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: apache-nutch-configuration
+    baseUri: ''
+    description: Apache Nutch REST API — Configuration business capability. Self-contained, no shared references.
+    resources:
+    - name: config
+      path: /config/
+      operations:
+      - name: getconfigs
+        method: GET
+        description: Apache Nutch List All Configuration IDs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: config-create
+      path: /config/create
+      operations:
+      - name: createconfig
+        method: POST
+        description: Apache Nutch Create a New Configuration
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: config-configId
+      path: /config/{configId}
+      operations:
+      - name: getconfig
+        method: GET
+        description: Apache Nutch Get Configuration Properties
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteconfig
+        method: DELETE
+        description: Apache Nutch Delete a Configuration
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: config-configId-propertyId
+      path: /config/{configId}/{propertyId}
+      operations:
+      - name: getproperty
+        method: GET
+        description: Apache Nutch Get a Single Configuration Property
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateproperty
+        method: PUT
+        description: Apache Nutch Update a Configuration Property
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: basic
+      username: '{{env.APACHE_NUTCH_USER}}'
+      password: '{{env.APACHE_NUTCH_PASS}}'
+  exposes:
+  - type: rest
+    namespace: apache-nutch-configuration-rest
+    port: 8080
+    description: REST adapter for Apache Nutch REST API — Configuration. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/config
+      name: config
+      description: REST surface for config.
+      operations:
+      - method: GET
+        name: getconfigs
+        description: Apache Nutch List All Configuration IDs
+        call: apache-nutch-configuration.getconfigs
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/config/create
+      name: config-create
+      description: REST surface for config-create.
+      operations:
+      - method: POST
+        name: createconfig
+        description: Apache Nutch Create a New Configuration
+        call: apache-nutch-configuration.createconfig
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/config/{configid}
+      name: config-configid
+      description: REST surface for config-configId.
+      operations:
+      - method: GET
+        name: getconfig
+        description: Apache Nutch Get Configuration Properties
+        call: apache-nutch-configuration.getconfig
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteconfig
+        description: Apache Nutch Delete a Configuration
+        call: apache-nutch-configuration.deleteconfig
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/config/{configid}/{propertyid}
+      name: config-configid-propertyid
+      description: REST surface for config-configId-propertyId.
+      operations:
+      - method: GET
+        name: getproperty
+        description: Apache Nutch Get a Single Configuration Property
+        call: apache-nutch-configuration.getproperty
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateproperty
+        description: Apache Nutch Update a Configuration Property
+        call: apache-nutch-configuration.updateproperty
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: apache-nutch-configuration-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Apache Nutch REST API — Configuration. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: apache-nutch-list-all-configuration
+      description: Apache Nutch List All Configuration IDs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: apache-nutch-configuration.getconfigs
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: apache-nutch-create-new-configuration
+      description: Apache Nutch Create a New Configuration
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: apache-nutch-configuration.createconfig
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: apache-nutch-get-configuration-properties
+      description: Apache Nutch Get Configuration Properties
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: apache-nutch-configuration.getconfig
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: apache-nutch-delete-configuration
+      description: Apache Nutch Delete a Configuration
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: apache-nutch-configuration.deleteconfig
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: apache-nutch-get-single-configuration
+      description: Apache Nutch Get a Single Configuration Property
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: apache-nutch-configuration.getproperty
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: apache-nutch-update-configuration-property
+      description: Apache Nutch Update a Configuration Property
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: apache-nutch-configuration.updateproperty
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,128 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Apache Nutch REST API — Database
+  description: 'Apache Nutch REST API — Database. 2 operations. Lead operation: Apache Nutch Query the CrawlDB. Self-contained
+    Naftiko capability covering one Apache Nutch business surface.'
+  tags:
+  - Apache Nutch
+  - Database
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    APACHE_NUTCH_API_KEY: APACHE_NUTCH_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: apache-nutch-database
+    baseUri: ''
+    description: Apache Nutch REST API — Database business capability. Self-contained, no shared references.
+    resources:
+    - name: db-crawldb
+      path: /db/crawldb
+      operations:
+      - name: readcrawldb
+        method: POST
+        description: Apache Nutch Query the CrawlDB
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: db-fetchdb
+      path: /db/fetchdb
+      operations:
+      - name: fetchdb
+        method: GET
+        description: Apache Nutch Get FetchDB Node Information
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: from
+          in: query
+          type: integer
+          description: Starting index (inclusive). Defaults to 0.
+        - name: to
+          in: query
+          type: integer
+          description: Ending index (inclusive). Defaults to 0 (returns all).
+    authentication:
+      type: basic
+      username: '{{env.APACHE_NUTCH_USER}}'
+      password: '{{env.APACHE_NUTCH_PASS}}'
+  exposes:
+  - type: rest
+    namespace: apache-nutch-database-rest
+    port: 8080
+    description: REST adapter for Apache Nutch REST API — Database. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/db/crawldb
+      name: db-crawldb
+      description: REST surface for db-crawldb.
+      operations:
+      - method: POST
+        name: readcrawldb
+        description: Apache Nutch Query the CrawlDB
+        call: apache-nutch-database.readcrawldb
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/db/fetchdb
+      name: db-fetchdb
+      description: REST surface for db-fetchdb.
+      operations:
+      - method: GET
+        name: fetchdb
+        description: Apache Nutch Get FetchDB Node Information
+        call: apache-nutch-database.fetchdb
+        with:
+          from: rest.from
+          to: rest.to
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: apache-nutch-database-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Apache Nutch REST API — Database. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: apache-nutch-query-crawldb
+      description: Apache Nutch Query the CrawlDB
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: apache-nutch-database.readcrawldb
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: apache-nutch-get-fetchdb-node
+      description: Apache Nutch Get FetchDB Node Information
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: apache-nutch-database.fetchdb
+      with:
+        from: tools.from
+        to: tools.to
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,123 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Apache Nutch REST API — Services
+  description: 'Apache Nutch REST API — Services. 2 operations. Lead operation: Apache Nutch Create a CommonCrawl Data Dump.
+    Self-contained Naftiko capability covering one Apache Nutch business surface.'
+  tags:
+  - Apache Nutch
+  - Services
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    APACHE_NUTCH_API_KEY: APACHE_NUTCH_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: apache-nutch-services
+    baseUri: ''
+    description: Apache Nutch REST API — Services business capability. Self-contained, no shared references.
+    resources:
+    - name: services-commoncrawldump
+      path: /services/commoncrawldump
+      operations:
+      - name: commoncrawldump
+        method: POST
+        description: Apache Nutch Create a CommonCrawl Data Dump
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: services-commoncrawldump-crawlId
+      path: /services/commoncrawldump/{crawlId}
+      operations:
+      - name: listdumppaths
+        method: GET
+        description: Apache Nutch List CommonCrawl Dump Paths
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: crawlId
+          in: path
+          type: string
+          description: The crawl ID whose dump paths to list.
+          required: true
+    authentication:
+      type: basic
+      username: '{{env.APACHE_NUTCH_USER}}'
+      password: '{{env.APACHE_NUTCH_PASS}}'
+  exposes:
+  - type: rest
+    namespace: apache-nutch-services-rest
+    port: 8080
+    description: REST adapter for Apache Nutch REST API — Services. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/services/commoncrawldump
+      name: services-commoncrawldump
+      description: REST surface for services-commoncrawldump.
+      operations:
+      - method: POST
+        name: commoncrawldump
+        description: Apache Nutch Create a CommonCrawl Data Dump
+        call: apache-nutch-services.commoncrawldump
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/services/commoncrawldump/{crawlid}
+      name: services-commoncrawldump-crawlid
+      description: REST surface for services-commoncrawldump-crawlId.
+      operations:
+      - method: GET
+        name: listdumppaths
+        description: Apache Nutch List CommonCrawl Dump Paths
+        call: apache-nutch-services.listdumppaths
+        with:
+          crawlId: rest.crawlId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: apache-nutch-services-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Apache Nutch REST API — Services. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: apache-nutch-create-commoncrawl-data
+      description: Apache Nutch Create a CommonCrawl Data Dump
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: apache-nutch-services.commoncrawldump
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: apache-nutch-list-commoncrawl-dump
+      description: Apache Nutch List CommonCrawl Dump Paths
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: apache-nutch-services.listdumppaths
+      with:
+        crawlId: tools.crawlId
+      outputParameters:
+      - type: object
+        mapping: $.
