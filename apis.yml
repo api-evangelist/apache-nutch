@@ -57,19 +57,19 @@ apis:
   - type: JSONSchema
     url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-db-query-schema.json
     title: DB Query Schema
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/apache-nutch-admin.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/apache-nutch-configuration.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/apache-nutch-database.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/apache-nutch-job.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/apache-nutch-reader.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/apache-nutch-seed.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/apache-nutch-services.yaml
 common:
 - type: GitHubRepository
