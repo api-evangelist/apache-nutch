@@ -72,6 +72,12 @@ apis:
   - type: X-NaftikoCapability
     url: capabilities/apache-nutch-services.yaml
 common:
+- type: VulnerabilityDisclosure
+  url: security/apache-nutch-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/apache-nutch-domain-security.yml
+- type: Authentication
+  url: authentication/apache-nutch-authentication.yml
 - type: GitHubRepository
   url: https://github.com/apache/nutch
   title: Apache Nutch GitHub Repository
@@ -163,6 +169,8 @@ common:
     description: Used for content detection and extraction from a wide range of document formats during parsing.
   - name: SolrCloud
     description: Support for SolrCloud distributed search clusters for scalable indexing.
+- url: https://nutch.apache.org/index.xml
+  type: Blog
 maintainers:
 - FN: Kin Lane
   email: info@apievangelist.com

@@ -1,0 +1,13 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/apache-nutch-openapi.yaml
+summary:
+  types:
+  - http
+schemes:
+- name: basicAuth
+  type: http
+  scheme: basic
+  description: HTTP Basic Authentication.
+  sources:
+  - openapi/apache-nutch-openapi.yaml
