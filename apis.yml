@@ -72,6 +72,8 @@ apis:
   - type: X-NaftikoCapability
     url: capabilities/apache-nutch-services.yaml
 common:
+- type: AgenticAccess
+  url: agentic-access/apache-nutch-agentic-access.yml
 - type: VulnerabilityDisclosure
   url: security/apache-nutch-vulnerability-disclosure.yml
 - type: DomainSecurity
