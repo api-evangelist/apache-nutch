@@ -1,0 +1,196 @@
+openapi: 3.1.2
+info:
+  title: Apache Nutch REST Admin API
+  description: REST API for managing Apache Nutch crawl jobs, configurations, seed lists, database queries, and data readers.
+  version: 1.0.0
+  license:
+    name: Apache 2.0
+    identifier: Apache-2.0
+  contact:
+    name: Apache Nutch
+    url: https://nutch.apache.org
+servers:
+- url: '{protocol}://localhost:{port}'
+  description: Nutch REST server
+  variables:
+    protocol:
+      default: http
+      enum:
+      - http
+      - https
+      description: The protocol used to access the Nutch server.
+    port:
+      default: '8081'
+      description: The port the Nutch server listens on. Configurable via the --port command-line argument.
+security:
+- basicAuth: []
+tags:
+- name: Admin
+  description: Server administration operations
+paths:
+  /admin/:
+    get:
+      tags:
+      - Admin
+      summary: Apache Nutch Get Server Status
+      description: Returns the current status of the Nutch server including start date, known configurations, all jobs, and currently running jobs.
+      operationId: getServerStatus
+      responses:
+        '200':
+          description: Server status retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NutchServerInfo'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /admin/stop:
+    get:
+      tags:
+      - Admin
+      summary: Apache Nutch Stop the Nutch Server
+      description: Initiates a graceful shutdown of the Nutch server. If jobs are still running and force is not set, the server will refuse to stop.
+      operationId: stopServer
+      parameters:
+      - name: force
+        in: query
+        required: false
+        description: If true, kills any running jobs before stopping the server.
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: Shutdown status message.
+          content:
+            application/json:
+              schema:
+                type: string
+              examples:
+                stopping:
+                  value: Stopping in server on port 8081
+                busy:
+                  value: Jobs still running -- Cannot stop server now
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    State:
+      type: string
+      description: The current state of a job.
+      enum:
+      - IDLE
+      - RUNNING
+      - FINISHED
+      - FAILED
+      - KILLED
+      - STOPPING
+      - KILLING
+      - ANY
+    NutchServerInfo:
+      type: object
+      description: Status information about the running Nutch server.
+      required:
+      - configuration
+      - jobs
+      - runningJobs
+      properties:
+        startDate:
+          type: string
+          format: date-time
+          description: The date and time the server was started.
+        configuration:
+          type: array
+          items:
+            type: string
+          uniqueItems: true
+          description: Set of known configuration IDs.
+        jobs:
+          type: array
+          items:
+            $ref: '#/components/schemas/JobInfo'
+          description: All jobs (any state).
+        runningJobs:
+          type: array
+          items:
+            $ref: '#/components/schemas/JobInfo'
+          description: Currently running jobs.
+    JobInfo:
+      type: object
+      description: Information about a crawl job.
+      required:
+      - type
+      - state
+      properties:
+        id:
+          type: string
+          description: The unique job identifier.
+        type:
+          $ref: '#/components/schemas/JobType'
+        confId:
+          type: string
+          description: The configuration ID used for this job.
+        args:
+          type: object
+          additionalProperties: true
+          description: Arguments passed to the job.
+        result:
+          type: object
+          additionalProperties: true
+          description: Result data returned after job completion.
+        state:
+          $ref: '#/components/schemas/State'
+        msg:
+          type: string
+          description: A human-readable status or error message.
+        crawlId:
+          type: string
+          description: The crawl identifier associated with this job.
+    JobType:
+      type: string
+      description: The type of Nutch crawl job.
+      enum:
+      - INJECT
+      - GENERATE
+      - FETCH
+      - PARSE
+      - UPDATEDB
+      - INDEX
+      - READDB
+      - CLASS
+      - INVERTLINKS
+      - DEDUP
+  responses:
+    Unauthorized:
+      description: Unauthorized. Basic authentication credentials are missing or invalid.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+            example:
+              message: Authentication required.
+    InternalServerError:
+      description: An unexpected server error occurred.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: Internal server error.
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication.

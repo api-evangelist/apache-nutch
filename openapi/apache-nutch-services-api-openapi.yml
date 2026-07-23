@@ -1,0 +1,144 @@
+openapi: 3.1.2
+info:
+  title: Apache Nutch REST Admin Services API
+  description: REST API for managing Apache Nutch crawl jobs, configurations, seed lists, database queries, and data readers.
+  version: 1.0.0
+  license:
+    name: Apache 2.0
+    identifier: Apache-2.0
+  contact:
+    name: Apache Nutch
+    url: https://nutch.apache.org
+servers:
+- url: '{protocol}://localhost:{port}'
+  description: Nutch REST server
+  variables:
+    protocol:
+      default: http
+      enum:
+      - http
+      - https
+      description: The protocol used to access the Nutch server.
+    port:
+      default: '8081'
+      description: The port the Nutch server listens on. Configurable via the --port command-line argument.
+security:
+- basicAuth: []
+tags:
+- name: Services
+  description: Auxiliary service operations such as CommonCrawl data dumps
+paths:
+  /services/commoncrawldump/{crawlId}:
+    get:
+      tags:
+      - Services
+      summary: Apache Nutch List CommonCrawl Dump Paths
+      description: Lists the dump file paths for a given crawl ID.
+      operationId: listDumpPaths
+      parameters:
+      - name: crawlId
+        in: path
+        required: true
+        description: The crawl ID whose dump paths to list.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Service information containing the list of dump paths.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceInfo'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /services/commoncrawldump:
+    post:
+      tags:
+      - Services
+      summary: Apache Nutch Create a CommonCrawl Data Dump
+      description: Executes a CommonCrawl data dump job for the specified crawl and returns the output directory path.
+      operationId: commoncrawlDump
+      requestBody:
+        required: true
+        description: Service configuration specifying crawl ID and arguments.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ServiceConfig'
+      responses:
+        '200':
+          description: The output directory path for the dump.
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: myCrawl/dump/commoncrawl-20260213120000
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  responses:
+    InternalServerError:
+      description: An unexpected server error occurred.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: Internal server error.
+    Unauthorized:
+      description: Unauthorized. Basic authentication credentials are missing or invalid.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+            example:
+              message: Authentication required.
+  schemas:
+    ServiceInfo:
+      type: object
+      description: Information returned by service operations.
+      required:
+      - dumpPaths
+      properties:
+        dumpPaths:
+          type: array
+          items:
+            type: string
+          description: List of file paths for the dump output.
+    ServiceConfig:
+      type: object
+      description: Configuration for service operations such as CommonCrawl data dumps.
+      required:
+      - crawlId
+      properties:
+        crawlId:
+          type: string
+          description: The crawl identifier.
+        confId:
+          type: string
+          description: The configuration ID.
+        args:
+          type: object
+          additionalProperties: true
+          description: Additional arguments for the service operation.
+      example:
+        crawlId: crawl-01
+        confId: default
+        args: {}
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication.

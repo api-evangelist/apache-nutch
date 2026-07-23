@@ -1,0 +1,275 @@
+openapi: 3.1.2
+info:
+  title: Apache Nutch REST Admin Configuration API
+  description: REST API for managing Apache Nutch crawl jobs, configurations, seed lists, database queries, and data readers.
+  version: 1.0.0
+  license:
+    name: Apache 2.0
+    identifier: Apache-2.0
+  contact:
+    name: Apache Nutch
+    url: https://nutch.apache.org
+servers:
+- url: '{protocol}://localhost:{port}'
+  description: Nutch REST server
+  variables:
+    protocol:
+      default: http
+      enum:
+      - http
+      - https
+      description: The protocol used to access the Nutch server.
+    port:
+      default: '8081'
+      description: The port the Nutch server listens on. Configurable via the --port command-line argument.
+security:
+- basicAuth: []
+tags:
+- name: Configuration
+  description: Manage Nutch configurations
+paths:
+  /config/:
+    get:
+      tags:
+      - Configuration
+      summary: Apache Nutch List All Configuration IDs
+      description: Returns the set of all known configuration identifiers.
+      operationId: getConfigs
+      responses:
+        '200':
+          description: A JSON array of configuration ID strings.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                uniqueItems: true
+              example:
+              - default
+              - my-custom-config
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /config/{configId}:
+    get:
+      tags:
+      - Configuration
+      summary: Apache Nutch Get Configuration Properties
+      description: Returns all key-value properties for the specified configuration.
+      operationId: getConfig
+      parameters:
+      - $ref: '#/components/parameters/configId'
+      responses:
+        '200':
+          description: A JSON object of configuration property key-value pairs.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+              example:
+                http.agent.name: NutchBot
+                http.robots.agents: NutchBot,*
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      tags:
+      - Configuration
+      summary: Apache Nutch Delete a Configuration
+      description: Removes the specified configuration from the list of known configurations.
+      operationId: deleteConfig
+      parameters:
+      - $ref: '#/components/parameters/configId'
+      responses:
+        '204':
+          description: Configuration deleted successfully.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /config/{configId}/{propertyId}:
+    get:
+      tags:
+      - Configuration
+      summary: Apache Nutch Get a Single Configuration Property
+      description: Returns the value of a specific property within the given configuration.
+      operationId: getProperty
+      parameters:
+      - $ref: '#/components/parameters/configId'
+      - $ref: '#/components/parameters/propertyId'
+      responses:
+        '200':
+          description: The property value as plain text.
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: NutchBot
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    put:
+      tags:
+      - Configuration
+      summary: Apache Nutch Update a Configuration Property
+      description: Adds or updates the value of a property in the specified configuration.
+      operationId: updateProperty
+      parameters:
+      - $ref: '#/components/parameters/configId'
+      - $ref: '#/components/parameters/propertyId'
+      requestBody:
+        required: true
+        description: The new property value as plain text.
+        content:
+          text/plain:
+            schema:
+              type: string
+            example: MyNewBot
+      responses:
+        '200':
+          description: Property updated successfully.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /config/create:
+    post:
+      tags:
+      - Configuration
+      summary: Apache Nutch Create a New Configuration
+      description: Creates a new Nutch configuration with the specified parameters. Returns the configuration ID on success.
+      operationId: createConfig
+      requestBody:
+        required: true
+        description: The configuration to create.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NutchConfig'
+      responses:
+        '200':
+          description: Configuration created. Returns the configuration ID.
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: my-custom-config
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  responses:
+    Unauthorized:
+      description: Unauthorized. Basic authentication credentials are missing or invalid.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+            example:
+              message: Authentication required.
+    BadRequest:
+      description: Bad request. The request body is missing, malformed, or contains invalid parameters.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: Nutch configuration cannot be empty!
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+            example:
+              message: Resource not found.
+    InternalServerError:
+      description: An unexpected server error occurred.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: Internal server error.
+  parameters:
+    propertyId:
+      name: propertyId
+      in: path
+      required: true
+      description: The name (key) of the configuration property.
+      schema:
+        type: string
+    configId:
+      name: configId
+      in: path
+      required: true
+      description: The unique identifier for the configuration.
+      schema:
+        type: string
+  schemas:
+    NutchConfig:
+      type: object
+      description: Configuration for creating a new Nutch configuration.
+      properties:
+        configId:
+          type: string
+          description: The identifier for this configuration.
+        force:
+          type: boolean
+          description: If true, overwrites an existing configuration with the same ID.
+          default: false
+        params:
+          type: object
+          additionalProperties:
+            type: string
+          description: Key-value pairs of Nutch configuration properties.
+      example:
+        configId: my-config
+        force: false
+        params:
+          http.agent.name: MyBot
+          http.robots.agents: MyBot,*
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication.

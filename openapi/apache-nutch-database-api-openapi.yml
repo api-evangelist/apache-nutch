@@ -1,0 +1,210 @@
+openapi: 3.1.2
+info:
+  title: Apache Nutch REST Admin Database API
+  description: REST API for managing Apache Nutch crawl jobs, configurations, seed lists, database queries, and data readers.
+  version: 1.0.0
+  license:
+    name: Apache 2.0
+    identifier: Apache-2.0
+  contact:
+    name: Apache Nutch
+    url: https://nutch.apache.org
+servers:
+- url: '{protocol}://localhost:{port}'
+  description: Nutch REST server
+  variables:
+    protocol:
+      default: http
+      enum:
+      - http
+      - https
+      description: The protocol used to access the Nutch server.
+    port:
+      default: '8081'
+      description: The port the Nutch server listens on. Configurable via the --port command-line argument.
+security:
+- basicAuth: []
+tags:
+- name: Database
+  description: Query the CrawlDB and FetchDB
+paths:
+  /db/crawldb:
+    post:
+      tags:
+      - Database
+      summary: Apache Nutch Query the CrawlDB
+      description: 'Executes a query against the Nutch CrawlDB. The type field in the request body determines the operation: stats, dump, topN, or url. The stats and url types return JSON; dump and topN return binary octet-stream data.'
+      operationId: readCrawlDb
+      requestBody:
+        required: true
+        description: The database query parameters.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DbQuery'
+      responses:
+        '200':
+          description: 'Query results. Content type varies by query type: application/json for stats and url queries; application/octet-stream for dump and topN queries.'
+          content:
+            application/json:
+              schema:
+                type: object
+                description: CrawlDB query result (returned for stats and url query types).
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+                description: Binary data stream (returned for dump and topN query types).
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /db/fetchdb:
+    get:
+      tags:
+      - Database
+      summary: Apache Nutch Get FetchDB Node Information
+      description: Returns fetch node database entries for the specified index range. Both from and to default to 0; if to is 0 or exceeds the total number of entries, all entries from the starting index are returned.
+      operationId: fetchDb
+      parameters:
+      - name: from
+        in: query
+        required: false
+        description: Starting index (inclusive). Defaults to 0.
+        schema:
+          type: integer
+          format: int32
+          minimum: 0
+          maximum: 2147483647
+          default: 0
+      - name: to
+        in: query
+        required: false
+        description: Ending index (inclusive). Defaults to 0 (returns all).
+        schema:
+          type: integer
+          format: int32
+          minimum: 0
+          maximum: 2147483647
+          default: 0
+      responses:
+        '200':
+          description: A JSON array of fetch node information objects.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FetchNodeDbInfo'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ChildNode:
+      type: object
+      description: A child (outlink) of a fetched node.
+      properties:
+        childUrl:
+          type: string
+          description: The URL of the child node.
+        anchorText:
+          type: string
+          description: The anchor text of the link.
+    FetchNodeDbInfo:
+      type: object
+      description: Information about a fetched node in the FetchDB.
+      required:
+      - children
+      properties:
+        url:
+          type: string
+          description: The URL of the fetched node.
+        status:
+          type: integer
+          format: int32
+          minimum: 0
+          maximum: 2147483647
+          description: The HTTP status code of the fetch.
+        numOfOutlinks:
+          type: integer
+          format: int32
+          minimum: 0
+          maximum: 2147483647
+          description: The number of outgoing links discovered.
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChildNode'
+          description: The outgoing links from this node.
+    DbQuery:
+      type: object
+      description: Parameters for a CrawlDB query.
+      required:
+      - crawlId
+      - type
+      properties:
+        confId:
+          type: string
+          description: Configuration ID. Falls back to "default" if not provided.
+        type:
+          type: string
+          description: The type of CrawlDB query to execute.
+          enum:
+          - stats
+          - dump
+          - topN
+          - url
+        args:
+          type: object
+          additionalProperties:
+            type: string
+          description: Additional arguments for the query.
+        crawlId:
+          type: string
+          description: The crawl identifier.
+      example:
+        confId: default
+        type: stats
+        crawlId: crawl-01
+        args: {}
+  responses:
+    Unauthorized:
+      description: Unauthorized. Basic authentication credentials are missing or invalid.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+            example:
+              message: Authentication required.
+    BadRequest:
+      description: Bad request. The request body is missing, malformed, or contains invalid parameters.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: Nutch configuration cannot be empty!
+    InternalServerError:
+      description: An unexpected server error occurred.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: Internal server error.
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication.

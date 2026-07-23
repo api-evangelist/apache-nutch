@@ -1,0 +1,333 @@
+openapi: 3.1.2
+info:
+  title: Apache Nutch REST Admin Reader API
+  description: REST API for managing Apache Nutch crawl jobs, configurations, seed lists, database queries, and data readers.
+  version: 1.0.0
+  license:
+    name: Apache 2.0
+    identifier: Apache-2.0
+  contact:
+    name: Apache Nutch
+    url: https://nutch.apache.org
+servers:
+- url: '{protocol}://localhost:{port}'
+  description: Nutch REST server
+  variables:
+    protocol:
+      default: http
+      enum:
+      - http
+      - https
+      description: The protocol used to access the Nutch server.
+    port:
+      default: '8081'
+      description: The port the Nutch server listens on. Configurable via the --port command-line argument.
+security:
+- basicAuth: []
+tags:
+- name: Reader
+  description: Read sequence files and webgraph data
+paths:
+  /reader/sequence/read:
+    post:
+      tags:
+      - Reader
+      summary: Apache Nutch Read a Sequence File
+      description: Reads key-value pairs from a Hadoop sequence file. Supports reading all rows, a limited number of rows, a row range, or counting the total number of rows.
+      operationId: seqRead
+      parameters:
+      - $ref: '#/components/parameters/nrows'
+      - $ref: '#/components/parameters/start'
+      - $ref: '#/components/parameters/end'
+      - $ref: '#/components/parameters/count'
+      requestBody:
+        required: true
+        description: Reader configuration specifying the file path.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReaderConfig'
+      responses:
+        '200':
+          description: Sequence file data. Returns application/json when reading rows, or text/plain when count=true.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+            text/plain:
+              schema:
+                type: integer
+                format: int32
+                minimum: 0
+                maximum: 2147483647
+                description: Number of rows in the sequence file.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /reader/link:
+    get:
+      tags:
+      - Reader
+      summary: Apache Nutch Get Link Reader Schema
+      description: Returns the schema describing the fields in link reader responses.
+      operationId: getLinkSchema
+      responses:
+        '200':
+          description: Link reader response schema.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LinkSchema'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /reader/link/read:
+    post:
+      tags:
+      - Reader
+      summary: Apache Nutch Read Link Objects
+      description: Reads link data (LinkDatum) from the Nutch webgraph. Supports reading all rows, a limited number of rows, a row range, or counting the total number of rows.
+      operationId: linkRead
+      parameters:
+      - $ref: '#/components/parameters/nrows'
+      - $ref: '#/components/parameters/start'
+      - $ref: '#/components/parameters/end'
+      - $ref: '#/components/parameters/count'
+      requestBody:
+        required: true
+        description: Reader configuration specifying the file path.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReaderConfig'
+      responses:
+        '200':
+          description: Link data. Returns application/json when reading rows, or text/plain when count=true.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+            text/plain:
+              schema:
+                type: integer
+                format: int32
+                minimum: 0
+                maximum: 2147483647
+                description: Number of link entries.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /reader/node:
+    get:
+      tags:
+      - Reader
+      summary: Apache Nutch Get Node Reader Schema
+      description: Returns the schema describing the fields in node reader responses.
+      operationId: getNodeSchema
+      responses:
+        '200':
+          description: Node reader response schema.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NodeSchema'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /reader/node/read:
+    post:
+      tags:
+      - Reader
+      summary: Apache Nutch Read Node Objects
+      description: Reads Node objects from the Nutch webgraph. Supports reading all rows, a limited number of rows, a row range, or counting the total number of rows.
+      operationId: nodeRead
+      parameters:
+      - $ref: '#/components/parameters/nrows'
+      - $ref: '#/components/parameters/start'
+      - $ref: '#/components/parameters/end'
+      - $ref: '#/components/parameters/count'
+      requestBody:
+        required: true
+        description: Reader configuration specifying the file path.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReaderConfig'
+      responses:
+        '200':
+          description: Node data. Returns application/json when reading rows, or text/plain when count=true.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+            text/plain:
+              schema:
+                type: integer
+                format: int32
+                minimum: 0
+                maximum: 2147483647
+                description: Number of node entries.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  responses:
+    Unauthorized:
+      description: Unauthorized. Basic authentication credentials are missing or invalid.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+            example:
+              message: Authentication required.
+    BadRequest:
+      description: Bad request. The request body is missing, malformed, or contains invalid parameters.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: Nutch configuration cannot be empty!
+    InternalServerError:
+      description: An unexpected server error occurred.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: Internal server error.
+  parameters:
+    start:
+      name: start
+      in: query
+      required: false
+      description: Starting line number for a range read.
+      schema:
+        type: integer
+        format: int32
+        minimum: -1
+        maximum: 2147483647
+        default: -1
+    nrows:
+      name: nrows
+      in: query
+      required: false
+      description: Number of rows to read. If not specified (or -1), all rows are returned.
+      schema:
+        type: integer
+        format: int32
+        minimum: -1
+        maximum: 2147483647
+        default: -1
+    count:
+      name: count
+      in: query
+      required: false
+      description: If true, returns the number of lines instead of the data itself. When set, the response content type is text/plain.
+      schema:
+        type: boolean
+        default: false
+    end:
+      name: end
+      in: query
+      required: false
+      description: Ending line number for a range read.
+      schema:
+        type: integer
+        format: int32
+        minimum: 0
+        maximum: 2147483647
+  schemas:
+    LinkSchema:
+      type: object
+      description: Schema describing the fields in a link reader response.
+      properties:
+        key_url:
+          type: string
+          example: string
+        timestamp:
+          type: string
+          example: int
+        score:
+          type: string
+          example: float
+        anchor:
+          type: string
+          example: string
+        linktype:
+          type: string
+          example: string
+        url:
+          type: string
+          example: string
+    NodeSchema:
+      type: object
+      description: Schema describing the fields in a node reader response.
+      properties:
+        key_url:
+          type: string
+          example: string
+        num_inlinks:
+          type: string
+          example: int
+        num_outlinks:
+          type: string
+          example: int
+        inlink_score:
+          type: string
+          example: float
+        outlink_score:
+          type: string
+          example: float
+        metadata:
+          type: string
+          example: string
+    ReaderConfig:
+      type: object
+      description: Configuration specifying a file path for reader operations.
+      required:
+      - path
+      properties:
+        path:
+          type: string
+          description: The path to the sequence file, link data, or node data to read.
+      example:
+        path: crawl-01/crawldb/current/part-00000/data
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication.

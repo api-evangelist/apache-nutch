@@ -1,0 +1,321 @@
+openapi: 3.1.2
+info:
+  title: Apache Nutch REST Admin Job API
+  description: REST API for managing Apache Nutch crawl jobs, configurations, seed lists, database queries, and data readers.
+  version: 1.0.0
+  license:
+    name: Apache 2.0
+    identifier: Apache-2.0
+  contact:
+    name: Apache Nutch
+    url: https://nutch.apache.org
+servers:
+- url: '{protocol}://localhost:{port}'
+  description: Nutch REST server
+  variables:
+    protocol:
+      default: http
+      enum:
+      - http
+      - https
+      description: The protocol used to access the Nutch server.
+    port:
+      default: '8081'
+      description: The port the Nutch server listens on. Configurable via the --port command-line argument.
+security:
+- basicAuth: []
+tags:
+- name: Job
+  description: Manage crawl jobs
+paths:
+  /job/:
+    get:
+      tags:
+      - Job
+      summary: Apache Nutch List All Jobs
+      description: Returns job history for all jobs or filtered by crawl ID, regardless of job state.
+      operationId: getJobs
+      parameters:
+      - name: crawlId
+        in: query
+        required: false
+        description: Optional crawl ID to filter jobs by.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A JSON array of job information objects.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/JobInfo'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /job/{id}:
+    get:
+      tags:
+      - Job
+      summary: Apache Nutch Get Job Info
+      description: Returns detailed information for a specific job.
+      operationId: getJobInfo
+      parameters:
+      - $ref: '#/components/parameters/jobId'
+      - name: crawlId
+        in: query
+        required: false
+        description: The crawl ID associated with the job.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Job details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobInfo'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /job/{id}/stop:
+    get:
+      tags:
+      - Job
+      summary: Apache Nutch Stop a Running Job
+      description: Attempts to gracefully stop a running job.
+      operationId: stopJob
+      parameters:
+      - $ref: '#/components/parameters/jobId'
+      - name: crawlId
+        in: query
+        required: false
+        description: The crawl ID associated with the job.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Whether the job was successfully stopped.
+          content:
+            application/json:
+              schema:
+                type: boolean
+              example: true
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /job/{id}/abort:
+    get:
+      tags:
+      - Job
+      summary: Apache Nutch Abort a Job
+      description: Forcefully aborts a job. Unlike stop, this kills the job immediately.
+      operationId: abortJob
+      parameters:
+      - $ref: '#/components/parameters/jobId'
+      - name: crawlId
+        in: query
+        required: false
+        description: The crawl ID associated with the job.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Whether the job was successfully aborted.
+          content:
+            application/json:
+              schema:
+                type: boolean
+              example: true
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /job/create:
+    post:
+      tags:
+      - Job
+      summary: Apache Nutch Create a New Job
+      description: Creates and enqueues a new Nutch job (e.g., inject, generate, fetch, parse, updatedb, index).
+      operationId: createJob
+      requestBody:
+        required: true
+        description: The job configuration specifying type, crawl ID, and arguments.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobConfig'
+      responses:
+        '200':
+          description: Job created. Returns the job information.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobInfo'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    State:
+      type: string
+      description: The current state of a job.
+      enum:
+      - IDLE
+      - RUNNING
+      - FINISHED
+      - FAILED
+      - KILLED
+      - STOPPING
+      - KILLING
+      - ANY
+    JobInfo:
+      type: object
+      description: Information about a crawl job.
+      required:
+      - type
+      - state
+      properties:
+        id:
+          type: string
+          description: The unique job identifier.
+        type:
+          $ref: '#/components/schemas/JobType'
+        confId:
+          type: string
+          description: The configuration ID used for this job.
+        args:
+          type: object
+          additionalProperties: true
+          description: Arguments passed to the job.
+        result:
+          type: object
+          additionalProperties: true
+          description: Result data returned after job completion.
+        state:
+          $ref: '#/components/schemas/State'
+        msg:
+          type: string
+          description: A human-readable status or error message.
+        crawlId:
+          type: string
+          description: The crawl identifier associated with this job.
+    JobType:
+      type: string
+      description: The type of Nutch crawl job.
+      enum:
+      - INJECT
+      - GENERATE
+      - FETCH
+      - PARSE
+      - UPDATEDB
+      - INDEX
+      - READDB
+      - CLASS
+      - INVERTLINKS
+      - DEDUP
+    JobConfig:
+      type: object
+      description: Configuration for creating a new crawl job.
+      required:
+      - type
+      properties:
+        crawlId:
+          type: string
+          description: The crawl identifier.
+        type:
+          $ref: '#/components/schemas/JobType'
+        confId:
+          type: string
+          description: The configuration ID to use for this job. Defaults to "default" if not specified.
+        jobClassName:
+          type: string
+          description: Fully qualified class name when type is CLASS.
+        args:
+          type: object
+          additionalProperties: true
+          description: Additional arguments for the job.
+      example:
+        crawlId: crawl-01
+        type: INJECT
+        confId: default
+        args:
+          seedDir: seedFiles/seed-1700000000000
+  responses:
+    Unauthorized:
+      description: Unauthorized. Basic authentication credentials are missing or invalid.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+            example:
+              message: Authentication required.
+    BadRequest:
+      description: Bad request. The request body is missing, malformed, or contains invalid parameters.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: Nutch configuration cannot be empty!
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+            example:
+              message: Resource not found.
+    InternalServerError:
+      description: An unexpected server error occurred.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: Internal server error.
+  parameters:
+    jobId:
+      name: id
+      in: path
+      required: true
+      description: The unique identifier for the job.
+      schema:
+        type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication.
