@@ -6,9 +6,22 @@ description: Apache Nutch is a highly extensible and scalable open-source web cr
   exposes a REST API for managing crawl jobs, configurations, seed lists, and database queries. Governed by the Apache Software
   Foundation under the Apache License 2.0.
 type: Index
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 position: Consumer
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/apache-nutch.png
 tags:
 - Web Crawler
 - Indexing
@@ -22,41 +35,300 @@ modified: '2026-05-19'
 url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
-- aid: apache-nutch:apache-nutch-rest-api
-  name: Apache Nutch REST API
-  description: REST API for managing Apache Nutch crawl jobs, configurations, seed URL lists, database queries (CrawlDB and
-    FetchDB), and data readers. Supports full crawl lifecycle management including inject, generate, fetch, parse, updatedb,
-    and index operations. Secured via HTTP Basic Authentication.
+- aid: apache-nutch:apache-nutch-admin-api
+  name: Apache Nutch Admin API
+  description: Server administration operations
   humanURL: https://cwiki.apache.org/confluence/display/NUTCH/Nutch+1.X+REST+API
   baseURL: http://localhost:8081
   tags:
-  - REST
-  - Crawl Management
-  - Job Management
-  - Configuration
+  - Admin
   properties:
+  - type: OpenAPI
+    url: openapi/apache-nutch-admin-api-openapi.yml
   - type: Documentation
     url: https://cwiki.apache.org/confluence/display/NUTCH/Nutch+1.X+REST+API
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-nutch-config-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-job-config-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-job-info-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-nutch-server-info-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-seed-list-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-db-query-schema.json
+  - type: X-NaftikoCapability
+    url: capabilities/apache-nutch-admin.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/apache-nutch-configuration.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/apache-nutch-database.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/apache-nutch-job.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/apache-nutch-reader.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/apache-nutch-seed.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/apache-nutch-services.yaml
+- aid: apache-nutch:apache-nutch-configuration-api
+  name: Apache Nutch Configuration API
+  description: Manage Nutch configurations
+  humanURL: https://cwiki.apache.org/confluence/display/NUTCH/Nutch+1.X+REST+API
+  baseURL: http://localhost:8081
+  tags:
+  - Configuration
+  properties:
   - type: OpenAPI
-    url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/openapi/apache-nutch-openapi.yaml
+    url: openapi/apache-nutch-configuration-api-openapi.yml
+  - type: Documentation
+    url: https://cwiki.apache.org/confluence/display/NUTCH/Nutch+1.X+REST+API
   - type: JSONSchema
-    url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-nutch-config-schema.json
-    title: Nutch Config Schema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-nutch-config-schema.json
   - type: JSONSchema
-    url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-job-config-schema.json
-    title: Job Config Schema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-job-config-schema.json
   - type: JSONSchema
-    url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-job-info-schema.json
-    title: Job Info Schema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-job-info-schema.json
   - type: JSONSchema
-    url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-nutch-server-info-schema.json
-    title: Server Info Schema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-nutch-server-info-schema.json
   - type: JSONSchema
-    url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-seed-list-schema.json
-    title: Seed List Schema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-seed-list-schema.json
   - type: JSONSchema
-    url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-db-query-schema.json
-    title: DB Query Schema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-db-query-schema.json
+  - type: X-NaftikoCapability
+    url: capabilities/apache-nutch-admin.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/apache-nutch-configuration.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/apache-nutch-database.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/apache-nutch-job.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/apache-nutch-reader.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/apache-nutch-seed.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/apache-nutch-services.yaml
+- aid: apache-nutch:apache-nutch-database-api
+  name: Apache Nutch Database API
+  description: Query the CrawlDB and FetchDB
+  humanURL: https://cwiki.apache.org/confluence/display/NUTCH/Nutch+1.X+REST+API
+  baseURL: http://localhost:8081
+  tags:
+  - Database
+  properties:
+  - type: OpenAPI
+    url: openapi/apache-nutch-database-api-openapi.yml
+  - type: Documentation
+    url: https://cwiki.apache.org/confluence/display/NUTCH/Nutch+1.X+REST+API
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-nutch-config-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-job-config-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-job-info-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-nutch-server-info-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-seed-list-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-db-query-schema.json
+  - type: X-NaftikoCapability
+    url: capabilities/apache-nutch-admin.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/apache-nutch-configuration.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/apache-nutch-database.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/apache-nutch-job.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/apache-nutch-reader.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/apache-nutch-seed.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/apache-nutch-services.yaml
+- aid: apache-nutch:apache-nutch-job-api
+  name: Apache Nutch Job API
+  description: Manage crawl jobs
+  humanURL: https://cwiki.apache.org/confluence/display/NUTCH/Nutch+1.X+REST+API
+  baseURL: http://localhost:8081
+  tags:
+  - Job
+  properties:
+  - type: OpenAPI
+    url: openapi/apache-nutch-job-api-openapi.yml
+  - type: Documentation
+    url: https://cwiki.apache.org/confluence/display/NUTCH/Nutch+1.X+REST+API
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-nutch-config-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-job-config-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-job-info-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-nutch-server-info-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-seed-list-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-db-query-schema.json
+  - type: X-NaftikoCapability
+    url: capabilities/apache-nutch-admin.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/apache-nutch-configuration.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/apache-nutch-database.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/apache-nutch-job.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/apache-nutch-reader.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/apache-nutch-seed.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/apache-nutch-services.yaml
+- aid: apache-nutch:apache-nutch-reader-api
+  name: Apache Nutch Reader API
+  description: Read sequence files and webgraph data
+  humanURL: https://cwiki.apache.org/confluence/display/NUTCH/Nutch+1.X+REST+API
+  baseURL: http://localhost:8081
+  tags:
+  - Reader
+  properties:
+  - type: OpenAPI
+    url: openapi/apache-nutch-reader-api-openapi.yml
+  - type: Documentation
+    url: https://cwiki.apache.org/confluence/display/NUTCH/Nutch+1.X+REST+API
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-nutch-config-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-job-config-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-job-info-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-nutch-server-info-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-seed-list-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-db-query-schema.json
+  - type: X-NaftikoCapability
+    url: capabilities/apache-nutch-admin.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/apache-nutch-configuration.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/apache-nutch-database.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/apache-nutch-job.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/apache-nutch-reader.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/apache-nutch-seed.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/apache-nutch-services.yaml
+- aid: apache-nutch:apache-nutch-seed-api
+  name: Apache Nutch Seed API
+  description: Manage seed URL lists
+  humanURL: https://cwiki.apache.org/confluence/display/NUTCH/Nutch+1.X+REST+API
+  baseURL: http://localhost:8081
+  tags:
+  - Seed
+  properties:
+  - type: OpenAPI
+    url: openapi/apache-nutch-seed-api-openapi.yml
+  - type: Documentation
+    url: https://cwiki.apache.org/confluence/display/NUTCH/Nutch+1.X+REST+API
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-nutch-config-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-job-config-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-job-info-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-nutch-server-info-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-seed-list-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-db-query-schema.json
+  - type: X-NaftikoCapability
+    url: capabilities/apache-nutch-admin.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/apache-nutch-configuration.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/apache-nutch-database.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/apache-nutch-job.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/apache-nutch-reader.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/apache-nutch-seed.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/apache-nutch-services.yaml
+- aid: apache-nutch:apache-nutch-services-api
+  name: Apache Nutch Services API
+  description: Auxiliary service operations such as CommonCrawl data dumps
+  humanURL: https://cwiki.apache.org/confluence/display/NUTCH/Nutch+1.X+REST+API
+  baseURL: http://localhost:8081
+  tags:
+  - Services
+  properties:
+  - type: OpenAPI
+    url: openapi/apache-nutch-services-api-openapi.yml
+  - type: Documentation
+    url: https://cwiki.apache.org/confluence/display/NUTCH/Nutch+1.X+REST+API
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-nutch-config-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-job-config-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-job-info-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-nutch-server-info-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-seed-list-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-db-query-schema.json
   - type: X-NaftikoCapability
     url: capabilities/apache-nutch-admin.yaml
   - type: X-NaftikoCapability
@@ -72,6 +344,8 @@ apis:
   - type: X-NaftikoCapability
     url: capabilities/apache-nutch-services.yaml
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/apache-nutch/overview
 - type: AgenticAccess
   url: agentic-access/apache-nutch-agentic-access.yml
 - type: VulnerabilityDisclosure
