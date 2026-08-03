@@ -1,0 +1,553 @@
+{
+  "info": {
+    "_postman_id": "ca3a05ba-1b87-4640-aa0b-8058ea5c9fc3",
+    "name": "Apache Nutch REST Admin Database API",
+    "description": "REST API for managing Apache Nutch crawl jobs, configurations, seed lists, database queries, and data readers.\n\nContact Support:\n Name: Apache Nutch",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:01:45.000Z",
+    "updatedAt": "2026-07-28T01:01:45.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ca3a05ba-1b87-4640-aa0b-8058ea5c9fc3"
+  },
+  "item": [
+    {
+      "name": "db",
+      "item": [
+        {
+          "name": "crawldb",
+          "item": [
+            {
+              "name": "Apache Nutch Query the CrawlDB",
+              "id": "1643386c-c0fb-41d0-806a-592151b2f962",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"crawlId\": \"<string>\",\n  \"type\": \"dump\",\n  \"confId\": \"<string>\",\n  \"args\": {\n    \"cupidatat_1\": \"<string>\",\n    \"deserunt_21\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/db/crawldb",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "db",
+                    "crawldb"
+                  ]
+                },
+                "description": "Executes a query against the Nutch CrawlDB. The type field in the request body determines the operation: stats, dump, topN, or url. The stats and url types return JSON; dump and topN return binary octet-stream data."
+              },
+              "response": [
+                {
+                  "id": "7520299d-2b29-42cf-a52f-5efb9a0918ef",
+                  "name": "Query results. Content type varies by query type: application/json for stats and url queries; application/octet-stream for dump and topN queries.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"crawlId\": \"<string>\",\n  \"type\": \"dump\",\n  \"confId\": \"<string>\",\n  \"args\": {\n    \"cupidatat_1\": \"<string>\",\n    \"deserunt_21\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/db/crawldb",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "db",
+                        "crawldb"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T01:01:45.000Z",
+                  "updatedAt": "2026-07-28T01:01:45.000Z",
+                  "uid": "35240-7520299d-2b29-42cf-a52f-5efb9a0918ef"
+                },
+                {
+                  "id": "04d7f934-e8ca-4619-8307-36404e7ea1fe",
+                  "name": "Bad request. The request body is missing, malformed, or contains invalid parameters.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"crawlId\": \"<string>\",\n  \"type\": \"dump\",\n  \"confId\": \"<string>\",\n  \"args\": {\n    \"cupidatat_1\": \"<string>\",\n    \"deserunt_21\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/db/crawldb",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "db",
+                        "crawldb"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<string>",
+                  "createdAt": "2026-07-28T01:01:45.000Z",
+                  "updatedAt": "2026-07-28T01:01:45.000Z",
+                  "uid": "35240-04d7f934-e8ca-4619-8307-36404e7ea1fe"
+                },
+                {
+                  "id": "acc142b9-d66b-40c3-b093-0ab5395de5d7",
+                  "name": "Unauthorized. Basic authentication credentials are missing or invalid.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"crawlId\": \"<string>\",\n  \"type\": \"dump\",\n  \"confId\": \"<string>\",\n  \"args\": {\n    \"cupidatat_1\": \"<string>\",\n    \"deserunt_21\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/db/crawldb",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "db",
+                        "crawldb"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:01:45.000Z",
+                  "updatedAt": "2026-07-28T01:01:45.000Z",
+                  "uid": "35240-acc142b9-d66b-40c3-b093-0ab5395de5d7"
+                },
+                {
+                  "id": "b4059305-35e2-4d2e-8a2f-d6d481b672c2",
+                  "name": "An unexpected server error occurred.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"crawlId\": \"<string>\",\n  \"type\": \"dump\",\n  \"confId\": \"<string>\",\n  \"args\": {\n    \"cupidatat_1\": \"<string>\",\n    \"deserunt_21\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/db/crawldb",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "db",
+                        "crawldb"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<string>",
+                  "createdAt": "2026-07-28T01:01:45.000Z",
+                  "updatedAt": "2026-07-28T01:01:45.000Z",
+                  "uid": "35240-b4059305-35e2-4d2e-8a2f-d6d481b672c2"
+                }
+              ],
+              "createdAt": "2026-07-28T01:01:45.000Z",
+              "updatedAt": "2026-07-28T01:01:45.000Z",
+              "uid": "35240-1643386c-c0fb-41d0-806a-592151b2f962"
+            }
+          ],
+          "id": "99b268e9-3b09-4a10-a698-e51f44414b89",
+          "createdAt": "2026-07-28T01:01:45.000Z",
+          "updatedAt": "2026-07-28T01:01:45.000Z",
+          "uid": "35240-99b268e9-3b09-4a10-a698-e51f44414b89"
+        },
+        {
+          "name": "fetchdb",
+          "item": [
+            {
+              "name": "Apache Nutch Get FetchDB Node Information",
+              "id": "f30fe302-5dd2-4edd-9016-7d78ab29b327",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/db/fetchdb?from=0&to=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "db",
+                    "fetchdb"
+                  ],
+                  "query": [
+                    {
+                      "description": "Starting index (inclusive). Defaults to 0.",
+                      "key": "from",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Ending index (inclusive). Defaults to 0 (returns all).",
+                      "key": "to",
+                      "value": "0"
+                    }
+                  ]
+                },
+                "description": "Returns fetch node database entries for the specified index range. Both from and to default to 0; if to is 0 or exceeds the total number of entries, all entries from the starting index are returned."
+              },
+              "response": [
+                {
+                  "id": "66bcbdd7-6584-4b10-bd97-5253d67a8a3c",
+                  "name": "A JSON array of fetch node information objects.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/db/fetchdb?from=0&to=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "db",
+                        "fetchdb"
+                      ],
+                      "query": [
+                        {
+                          "description": "Starting index (inclusive). Defaults to 0.",
+                          "key": "from",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Ending index (inclusive). Defaults to 0 (returns all).",
+                          "key": "to",
+                          "value": "0"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"children\": [\n      {\n        \"childUrl\": \"<string>\",\n        \"anchorText\": \"<string>\"\n      },\n      {\n        \"childUrl\": \"<string>\",\n        \"anchorText\": \"<string>\"\n      }\n    ],\n    \"url\": \"<string>\",\n    \"status\": \"<integer>\",\n    \"numOfOutlinks\": \"<integer>\"\n  },\n  {\n    \"children\": [\n      {\n        \"childUrl\": \"<string>\",\n        \"anchorText\": \"<string>\"\n      },\n      {\n        \"childUrl\": \"<string>\",\n        \"anchorText\": \"<string>\"\n      }\n    ],\n    \"url\": \"<string>\",\n    \"status\": \"<integer>\",\n    \"numOfOutlinks\": \"<integer>\"\n  }\n]",
+                  "createdAt": "2026-07-28T01:01:45.000Z",
+                  "updatedAt": "2026-07-28T01:01:45.000Z",
+                  "uid": "35240-66bcbdd7-6584-4b10-bd97-5253d67a8a3c"
+                },
+                {
+                  "id": "30082f73-2aaf-41c8-8910-636ffd2e7056",
+                  "name": "Unauthorized. Basic authentication credentials are missing or invalid.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/db/fetchdb?from=0&to=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "db",
+                        "fetchdb"
+                      ],
+                      "query": [
+                        {
+                          "description": "Starting index (inclusive). Defaults to 0.",
+                          "key": "from",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Ending index (inclusive). Defaults to 0 (returns all).",
+                          "key": "to",
+                          "value": "0"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:01:45.000Z",
+                  "updatedAt": "2026-07-28T01:01:45.000Z",
+                  "uid": "35240-30082f73-2aaf-41c8-8910-636ffd2e7056"
+                },
+                {
+                  "id": "f8dd258e-1583-4a21-87b7-fb35dbc57e67",
+                  "name": "An unexpected server error occurred.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/db/fetchdb?from=0&to=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "db",
+                        "fetchdb"
+                      ],
+                      "query": [
+                        {
+                          "description": "Starting index (inclusive). Defaults to 0.",
+                          "key": "from",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Ending index (inclusive). Defaults to 0 (returns all).",
+                          "key": "to",
+                          "value": "0"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<string>",
+                  "createdAt": "2026-07-28T01:01:45.000Z",
+                  "updatedAt": "2026-07-28T01:01:45.000Z",
+                  "uid": "35240-f8dd258e-1583-4a21-87b7-fb35dbc57e67"
+                }
+              ],
+              "createdAt": "2026-07-28T01:01:45.000Z",
+              "updatedAt": "2026-07-28T01:01:45.000Z",
+              "uid": "35240-f30fe302-5dd2-4edd-9016-7d78ab29b327"
+            }
+          ],
+          "id": "f26cbbbf-a391-4e47-84fe-03c3fd81bb9f",
+          "createdAt": "2026-07-28T01:01:45.000Z",
+          "updatedAt": "2026-07-28T01:01:45.000Z",
+          "uid": "35240-f26cbbbf-a391-4e47-84fe-03c3fd81bb9f"
+        }
+      ],
+      "id": "4fdb1e9f-9f62-4d97-ad41-0c701ceb5b2a",
+      "createdAt": "2026-07-28T01:01:45.000Z",
+      "updatedAt": "2026-07-28T01:01:45.000Z",
+      "uid": "35240-4fdb1e9f-9f62-4d97-ad41-0c701ceb5b2a"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "protocol",
+      "value": "http"
+    },
+    {
+      "key": "port",
+      "value": "8081"
+    },
+    {
+      "key": "baseUrl",
+      "value": "{{protocol}}://localhost:{{port}}"
+    }
+  ]
+}

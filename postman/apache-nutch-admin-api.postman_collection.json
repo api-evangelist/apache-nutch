@@ -1,0 +1,411 @@
+{
+  "info": {
+    "_postman_id": "e08706f7-354e-4304-9516-4f088a950204",
+    "name": "Apache Nutch REST Admin API",
+    "description": "REST API for managing Apache Nutch crawl jobs, configurations, seed lists, database queries, and data readers.\n\nContact Support:\n Name: Apache Nutch",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:01:43.000Z",
+    "updatedAt": "2026-07-28T01:01:43.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e08706f7-354e-4304-9516-4f088a950204"
+  },
+  "item": [
+    {
+      "name": "admin",
+      "item": [
+        {
+          "name": "stop",
+          "item": [
+            {
+              "name": "Apache Nutch Stop the Nutch Server",
+              "id": "97d8fbe3-f2b5-4056-a6f0-f7bec7f7f4c0",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/admin/stop?force=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "stop"
+                  ],
+                  "query": [
+                    {
+                      "description": "If true, kills any running jobs before stopping the server.",
+                      "key": "force",
+                      "value": "false"
+                    }
+                  ]
+                },
+                "description": "Initiates a graceful shutdown of the Nutch server. If jobs are still running and force is not set, the server will refuse to stop."
+              },
+              "response": [
+                {
+                  "id": "f873e748-4e39-4d69-b83e-4ffb35d00fe3",
+                  "name": "Shutdown status message.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/admin/stop?force=false",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "admin",
+                        "stop"
+                      ],
+                      "query": [
+                        {
+                          "description": "If true, kills any running jobs before stopping the server.",
+                          "key": "force",
+                          "value": "false"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<string>",
+                  "createdAt": "2026-07-28T01:01:43.000Z",
+                  "updatedAt": "2026-07-28T01:01:43.000Z",
+                  "uid": "35240-f873e748-4e39-4d69-b83e-4ffb35d00fe3"
+                },
+                {
+                  "id": "6620fe9a-1679-4f73-8172-57c3fcc7a1bd",
+                  "name": "Unauthorized. Basic authentication credentials are missing or invalid.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/admin/stop?force=false",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "admin",
+                        "stop"
+                      ],
+                      "query": [
+                        {
+                          "description": "If true, kills any running jobs before stopping the server.",
+                          "key": "force",
+                          "value": "false"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:01:43.000Z",
+                  "updatedAt": "2026-07-28T01:01:43.000Z",
+                  "uid": "35240-6620fe9a-1679-4f73-8172-57c3fcc7a1bd"
+                },
+                {
+                  "id": "df5485e8-d207-4f70-8504-03f0532a02ea",
+                  "name": "An unexpected server error occurred.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/admin/stop?force=false",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "admin",
+                        "stop"
+                      ],
+                      "query": [
+                        {
+                          "description": "If true, kills any running jobs before stopping the server.",
+                          "key": "force",
+                          "value": "false"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<string>",
+                  "createdAt": "2026-07-28T01:01:43.000Z",
+                  "updatedAt": "2026-07-28T01:01:43.000Z",
+                  "uid": "35240-df5485e8-d207-4f70-8504-03f0532a02ea"
+                }
+              ],
+              "createdAt": "2026-07-28T01:01:43.000Z",
+              "updatedAt": "2026-07-28T01:01:43.000Z",
+              "uid": "35240-97d8fbe3-f2b5-4056-a6f0-f7bec7f7f4c0"
+            }
+          ],
+          "id": "76d47168-4d37-45c9-b374-8b7b2bb3a439",
+          "createdAt": "2026-07-28T01:01:43.000Z",
+          "updatedAt": "2026-07-28T01:01:43.000Z",
+          "uid": "35240-76d47168-4d37-45c9-b374-8b7b2bb3a439"
+        },
+        {
+          "name": "Apache Nutch Get Server Status",
+          "id": "78f2e7c0-5863-4b09-bcc0-7e141957aeef",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/admin/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "admin",
+                ""
+              ]
+            },
+            "description": "Returns the current status of the Nutch server including start date, known configurations, all jobs, and currently running jobs."
+          },
+          "response": [
+            {
+              "id": "98c07e9c-9872-4dd8-8434-27fbe512d833",
+              "name": "Server status retrieved successfully.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/admin/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "admin",
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"configuration\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"jobs\": [\n    {\n      \"type\": \"INVERTLINKS\",\n      \"state\": \"STOPPING\",\n      \"id\": \"<string>\",\n      \"confId\": \"<string>\",\n      \"args\": {\n        \"pariatur_3\": \"dolore \",\n        \"dolore_e\": -5422536.724598497,\n        \"deseruntdf\": true,\n        \"est_02\": 74263439.94466293\n      },\n      \"result\": {\n        \"enim_5c7\": 36963328.17226228,\n        \"non112\": 25853736\n      },\n      \"msg\": \"<string>\",\n      \"crawlId\": \"<string>\"\n    },\n    {\n      \"type\": \"PARSE\",\n      \"state\": \"FAILED\",\n      \"id\": \"<string>\",\n      \"confId\": \"<string>\",\n      \"args\": {\n        \"elit_c5b\": 55839111,\n        \"fugiat_73\": \"id\"\n      },\n      \"result\": {\n        \"irure_f8\": true,\n        \"magna_a05\": -29235478.79507278,\n        \"eiusmod_\": \"non eiusmod in dolore\"\n      },\n      \"msg\": \"<string>\",\n      \"crawlId\": \"<string>\"\n    }\n  ],\n  \"runningJobs\": [\n    {\n      \"type\": \"PARSE\",\n      \"state\": \"KILLED\",\n      \"id\": \"<string>\",\n      \"confId\": \"<string>\",\n      \"args\": {\n        \"sintb\": 19550341.833843186,\n        \"et_8a1\": -26467159.975515604\n      },\n      \"result\": {\n        \"dolor06_\": true,\n        \"sint_5c\": true,\n        \"eu88e\": -46360968\n      },\n      \"msg\": \"<string>\",\n      \"crawlId\": \"<string>\"\n    },\n    {\n      \"type\": \"INJECT\",\n      \"state\": \"FINISHED\",\n      \"id\": \"<string>\",\n      \"confId\": \"<string>\",\n      \"args\": {\n        \"utc\": true,\n        \"et_36\": -90094079.42991188\n      },\n      \"result\": {\n        \"dolore41\": -97782127.04736911,\n        \"esse_60d\": \"exercitation ut sunt\",\n        \"pariatur_7\": -81942622\n      },\n      \"msg\": \"<string>\",\n      \"crawlId\": \"<string>\"\n    }\n  ],\n  \"startDate\": \"<dateTime>\"\n}",
+              "createdAt": "2026-07-28T01:01:43.000Z",
+              "updatedAt": "2026-07-28T01:01:43.000Z",
+              "uid": "35240-98c07e9c-9872-4dd8-8434-27fbe512d833"
+            },
+            {
+              "id": "0182de0f-2b4e-4eb1-a60e-39dc6ae3c49f",
+              "name": "Unauthorized. Basic authentication credentials are missing or invalid.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/admin/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "admin",
+                    ""
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:01:43.000Z",
+              "updatedAt": "2026-07-28T01:01:43.000Z",
+              "uid": "35240-0182de0f-2b4e-4eb1-a60e-39dc6ae3c49f"
+            },
+            {
+              "id": "a619c176-6fb6-401d-bcb7-2e7a5bfb0d4f",
+              "name": "An unexpected server error occurred.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/admin/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "admin",
+                    ""
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<string>",
+              "createdAt": "2026-07-28T01:01:43.000Z",
+              "updatedAt": "2026-07-28T01:01:43.000Z",
+              "uid": "35240-a619c176-6fb6-401d-bcb7-2e7a5bfb0d4f"
+            }
+          ],
+          "createdAt": "2026-07-28T01:01:43.000Z",
+          "updatedAt": "2026-07-28T01:01:43.000Z",
+          "uid": "35240-78f2e7c0-5863-4b09-bcc0-7e141957aeef"
+        }
+      ],
+      "id": "b0dbd864-2627-4a6b-aa27-94465fa343eb",
+      "createdAt": "2026-07-28T01:01:43.000Z",
+      "updatedAt": "2026-07-28T01:01:43.000Z",
+      "uid": "35240-b0dbd864-2627-4a6b-aa27-94465fa343eb"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "protocol",
+      "value": "http"
+    },
+    {
+      "key": "port",
+      "value": "8081"
+    },
+    {
+      "key": "baseUrl",
+      "value": "{{protocol}}://localhost:{{port}}"
+    }
+  ]
+}

@@ -1,0 +1,1595 @@
+{
+  "info": {
+    "_postman_id": "271c849b-fccb-4ea9-9395-1515076e8e86",
+    "name": "Apache Nutch REST Admin Reader API",
+    "description": "REST API for managing Apache Nutch crawl jobs, configurations, seed lists, database queries, and data readers.\n\nContact Support:\n Name: Apache Nutch",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:01:46.000Z",
+    "updatedAt": "2026-07-28T01:01:47.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-271c849b-fccb-4ea9-9395-1515076e8e86"
+  },
+  "item": [
+    {
+      "name": "reader",
+      "item": [
+        {
+          "name": "sequence",
+          "item": [
+            {
+              "name": "read",
+              "item": [
+                {
+                  "name": "Apache Nutch Read a Sequence File",
+                  "id": "f27a9094-649e-472d-8402-c27bf975f631",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"path\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/reader/sequence/read?nrows=-1&start=-1&end=<integer>&count=false",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reader",
+                        "sequence",
+                        "read"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of rows to read. If not specified (or -1), all rows are returned.",
+                          "key": "nrows",
+                          "value": "-1"
+                        },
+                        {
+                          "description": "Starting line number for a range read.",
+                          "key": "start",
+                          "value": "-1"
+                        },
+                        {
+                          "description": "Ending line number for a range read.",
+                          "key": "end",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "If true, returns the number of lines instead of the data itself. When set, the response content type is text/plain.",
+                          "key": "count",
+                          "value": "false"
+                        }
+                      ]
+                    },
+                    "description": "Reads key-value pairs from a Hadoop sequence file. Supports reading all rows, a limited number of rows, a row range, or counting the total number of rows."
+                  },
+                  "response": [
+                    {
+                      "id": "78fb172c-1060-409c-8059-cdc70816f758",
+                      "name": "Sequence file data. Returns application/json when reading rows, or text/plain when count=true.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"path\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/reader/sequence/read?nrows=-1&start=-1&end=<integer>&count=false",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "reader",
+                            "sequence",
+                            "read"
+                          ],
+                          "query": [
+                            {
+                              "description": "Number of rows to read. If not specified (or -1), all rows are returned.",
+                              "key": "nrows",
+                              "value": "-1"
+                            },
+                            {
+                              "description": "Starting line number for a range read.",
+                              "key": "start",
+                              "value": "-1"
+                            },
+                            {
+                              "description": "Ending line number for a range read.",
+                              "key": "end",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "If true, returns the number of lines instead of the data itself. When set, the response content type is text/plain.",
+                              "key": "count",
+                              "value": "false"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[]",
+                      "createdAt": "2026-07-28T01:01:47.000Z",
+                      "updatedAt": "2026-07-28T01:01:47.000Z",
+                      "uid": "35240-78fb172c-1060-409c-8059-cdc70816f758"
+                    },
+                    {
+                      "id": "96000dde-8bf5-4314-a3ee-8e3cb5f9b3e2",
+                      "name": "Bad request. The request body is missing, malformed, or contains invalid parameters.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "text/plain"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"path\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/reader/sequence/read?nrows=-1&start=-1&end=<integer>&count=false",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "reader",
+                            "sequence",
+                            "read"
+                          ],
+                          "query": [
+                            {
+                              "description": "Number of rows to read. If not specified (or -1), all rows are returned.",
+                              "key": "nrows",
+                              "value": "-1"
+                            },
+                            {
+                              "description": "Starting line number for a range read.",
+                              "key": "start",
+                              "value": "-1"
+                            },
+                            {
+                              "description": "Ending line number for a range read.",
+                              "key": "end",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "If true, returns the number of lines instead of the data itself. When set, the response content type is text/plain.",
+                              "key": "count",
+                              "value": "false"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "text/plain"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<string>",
+                      "createdAt": "2026-07-28T01:01:47.000Z",
+                      "updatedAt": "2026-07-28T01:01:47.000Z",
+                      "uid": "35240-96000dde-8bf5-4314-a3ee-8e3cb5f9b3e2"
+                    },
+                    {
+                      "id": "99688f8c-a9ee-4d93-8179-32eb13693d99",
+                      "name": "Unauthorized. Basic authentication credentials are missing or invalid.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"path\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/reader/sequence/read?nrows=-1&start=-1&end=<integer>&count=false",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "reader",
+                            "sequence",
+                            "read"
+                          ],
+                          "query": [
+                            {
+                              "description": "Number of rows to read. If not specified (or -1), all rows are returned.",
+                              "key": "nrows",
+                              "value": "-1"
+                            },
+                            {
+                              "description": "Starting line number for a range read.",
+                              "key": "start",
+                              "value": "-1"
+                            },
+                            {
+                              "description": "Ending line number for a range read.",
+                              "key": "end",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "If true, returns the number of lines instead of the data itself. When set, the response content type is text/plain.",
+                              "key": "count",
+                              "value": "false"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:01:47.000Z",
+                      "updatedAt": "2026-07-28T01:01:47.000Z",
+                      "uid": "35240-99688f8c-a9ee-4d93-8179-32eb13693d99"
+                    },
+                    {
+                      "id": "bc331871-d720-4e12-9c0f-0d6918b61fce",
+                      "name": "An unexpected server error occurred.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "text/plain"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"path\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/reader/sequence/read?nrows=-1&start=-1&end=<integer>&count=false",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "reader",
+                            "sequence",
+                            "read"
+                          ],
+                          "query": [
+                            {
+                              "description": "Number of rows to read. If not specified (or -1), all rows are returned.",
+                              "key": "nrows",
+                              "value": "-1"
+                            },
+                            {
+                              "description": "Starting line number for a range read.",
+                              "key": "start",
+                              "value": "-1"
+                            },
+                            {
+                              "description": "Ending line number for a range read.",
+                              "key": "end",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "If true, returns the number of lines instead of the data itself. When set, the response content type is text/plain.",
+                              "key": "count",
+                              "value": "false"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "text/plain"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<string>",
+                      "createdAt": "2026-07-28T01:01:47.000Z",
+                      "updatedAt": "2026-07-28T01:01:47.000Z",
+                      "uid": "35240-bc331871-d720-4e12-9c0f-0d6918b61fce"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:01:47.000Z",
+                  "updatedAt": "2026-07-28T01:01:47.000Z",
+                  "uid": "35240-f27a9094-649e-472d-8402-c27bf975f631"
+                }
+              ],
+              "id": "d80ccf22-7f95-4061-8066-1bdfb3aacd67",
+              "createdAt": "2026-07-28T01:01:47.000Z",
+              "updatedAt": "2026-07-28T01:01:47.000Z",
+              "uid": "35240-d80ccf22-7f95-4061-8066-1bdfb3aacd67"
+            }
+          ],
+          "id": "cfab7d98-dd35-40f1-a79a-3208b84a30e4",
+          "createdAt": "2026-07-28T01:01:47.000Z",
+          "updatedAt": "2026-07-28T01:01:47.000Z",
+          "uid": "35240-cfab7d98-dd35-40f1-a79a-3208b84a30e4"
+        },
+        {
+          "name": "link",
+          "item": [
+            {
+              "name": "read",
+              "item": [
+                {
+                  "name": "Apache Nutch Read Link Objects",
+                  "id": "d0091461-ea54-458f-b94e-e6cb3283c4a4",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"path\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/reader/link/read?nrows=-1&start=-1&end=<integer>&count=false",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reader",
+                        "link",
+                        "read"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of rows to read. If not specified (or -1), all rows are returned.",
+                          "key": "nrows",
+                          "value": "-1"
+                        },
+                        {
+                          "description": "Starting line number for a range read.",
+                          "key": "start",
+                          "value": "-1"
+                        },
+                        {
+                          "description": "Ending line number for a range read.",
+                          "key": "end",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "If true, returns the number of lines instead of the data itself. When set, the response content type is text/plain.",
+                          "key": "count",
+                          "value": "false"
+                        }
+                      ]
+                    },
+                    "description": "Reads link data (LinkDatum) from the Nutch webgraph. Supports reading all rows, a limited number of rows, a row range, or counting the total number of rows."
+                  },
+                  "response": [
+                    {
+                      "id": "38e0f16f-d550-4169-8827-8215d2ba1d0b",
+                      "name": "Link data. Returns application/json when reading rows, or text/plain when count=true.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"path\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/reader/link/read?nrows=-1&start=-1&end=<integer>&count=false",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "reader",
+                            "link",
+                            "read"
+                          ],
+                          "query": [
+                            {
+                              "description": "Number of rows to read. If not specified (or -1), all rows are returned.",
+                              "key": "nrows",
+                              "value": "-1"
+                            },
+                            {
+                              "description": "Starting line number for a range read.",
+                              "key": "start",
+                              "value": "-1"
+                            },
+                            {
+                              "description": "Ending line number for a range read.",
+                              "key": "end",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "If true, returns the number of lines instead of the data itself. When set, the response content type is text/plain.",
+                              "key": "count",
+                              "value": "false"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[]",
+                      "createdAt": "2026-07-28T01:01:47.000Z",
+                      "updatedAt": "2026-07-28T01:01:47.000Z",
+                      "uid": "35240-38e0f16f-d550-4169-8827-8215d2ba1d0b"
+                    },
+                    {
+                      "id": "2c7675e9-fdfa-4f0c-902c-ec2b30fe035f",
+                      "name": "Bad request. The request body is missing, malformed, or contains invalid parameters.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "text/plain"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"path\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/reader/link/read?nrows=-1&start=-1&end=<integer>&count=false",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "reader",
+                            "link",
+                            "read"
+                          ],
+                          "query": [
+                            {
+                              "description": "Number of rows to read. If not specified (or -1), all rows are returned.",
+                              "key": "nrows",
+                              "value": "-1"
+                            },
+                            {
+                              "description": "Starting line number for a range read.",
+                              "key": "start",
+                              "value": "-1"
+                            },
+                            {
+                              "description": "Ending line number for a range read.",
+                              "key": "end",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "If true, returns the number of lines instead of the data itself. When set, the response content type is text/plain.",
+                              "key": "count",
+                              "value": "false"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "text/plain"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<string>",
+                      "createdAt": "2026-07-28T01:01:47.000Z",
+                      "updatedAt": "2026-07-28T01:01:47.000Z",
+                      "uid": "35240-2c7675e9-fdfa-4f0c-902c-ec2b30fe035f"
+                    },
+                    {
+                      "id": "80d2e128-a6e5-49e9-8056-93109eef33bb",
+                      "name": "Unauthorized. Basic authentication credentials are missing or invalid.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"path\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/reader/link/read?nrows=-1&start=-1&end=<integer>&count=false",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "reader",
+                            "link",
+                            "read"
+                          ],
+                          "query": [
+                            {
+                              "description": "Number of rows to read. If not specified (or -1), all rows are returned.",
+                              "key": "nrows",
+                              "value": "-1"
+                            },
+                            {
+                              "description": "Starting line number for a range read.",
+                              "key": "start",
+                              "value": "-1"
+                            },
+                            {
+                              "description": "Ending line number for a range read.",
+                              "key": "end",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "If true, returns the number of lines instead of the data itself. When set, the response content type is text/plain.",
+                              "key": "count",
+                              "value": "false"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:01:47.000Z",
+                      "updatedAt": "2026-07-28T01:01:47.000Z",
+                      "uid": "35240-80d2e128-a6e5-49e9-8056-93109eef33bb"
+                    },
+                    {
+                      "id": "c1975e77-cbd6-4e83-a3d5-5f5c8872ac86",
+                      "name": "An unexpected server error occurred.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "text/plain"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"path\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/reader/link/read?nrows=-1&start=-1&end=<integer>&count=false",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "reader",
+                            "link",
+                            "read"
+                          ],
+                          "query": [
+                            {
+                              "description": "Number of rows to read. If not specified (or -1), all rows are returned.",
+                              "key": "nrows",
+                              "value": "-1"
+                            },
+                            {
+                              "description": "Starting line number for a range read.",
+                              "key": "start",
+                              "value": "-1"
+                            },
+                            {
+                              "description": "Ending line number for a range read.",
+                              "key": "end",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "If true, returns the number of lines instead of the data itself. When set, the response content type is text/plain.",
+                              "key": "count",
+                              "value": "false"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "text/plain"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<string>",
+                      "createdAt": "2026-07-28T01:01:47.000Z",
+                      "updatedAt": "2026-07-28T01:01:47.000Z",
+                      "uid": "35240-c1975e77-cbd6-4e83-a3d5-5f5c8872ac86"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:01:47.000Z",
+                  "updatedAt": "2026-07-28T01:01:47.000Z",
+                  "uid": "35240-d0091461-ea54-458f-b94e-e6cb3283c4a4"
+                }
+              ],
+              "id": "55d950d0-884f-4979-b4c9-fb30c02cf2ef",
+              "createdAt": "2026-07-28T01:01:47.000Z",
+              "updatedAt": "2026-07-28T01:01:47.000Z",
+              "uid": "35240-55d950d0-884f-4979-b4c9-fb30c02cf2ef"
+            },
+            {
+              "name": "Apache Nutch Get Link Reader Schema",
+              "id": "69fee6ef-c133-44eb-87c2-68b4432b4b09",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/reader/link",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "reader",
+                    "link"
+                  ]
+                },
+                "description": "Returns the schema describing the fields in link reader responses."
+              },
+              "response": [
+                {
+                  "id": "3bc44c2e-0821-4897-b5bc-ae35474d8024",
+                  "name": "Link reader response schema.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/reader/link",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reader",
+                        "link"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"key_url\": \"<string>\",\n  \"timestamp\": \"<string>\",\n  \"score\": \"<string>\",\n  \"anchor\": \"<string>\",\n  \"linktype\": \"<string>\",\n  \"url\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:01:47.000Z",
+                  "updatedAt": "2026-07-28T01:01:47.000Z",
+                  "uid": "35240-3bc44c2e-0821-4897-b5bc-ae35474d8024"
+                },
+                {
+                  "id": "6fbe4345-fe7c-4ed1-9554-e3d47f2aa661",
+                  "name": "Unauthorized. Basic authentication credentials are missing or invalid.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/reader/link",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reader",
+                        "link"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:01:47.000Z",
+                  "updatedAt": "2026-07-28T01:01:47.000Z",
+                  "uid": "35240-6fbe4345-fe7c-4ed1-9554-e3d47f2aa661"
+                },
+                {
+                  "id": "38173efa-f47c-4fc5-964f-d283cdfe102e",
+                  "name": "An unexpected server error occurred.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/reader/link",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reader",
+                        "link"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<string>",
+                  "createdAt": "2026-07-28T01:01:47.000Z",
+                  "updatedAt": "2026-07-28T01:01:47.000Z",
+                  "uid": "35240-38173efa-f47c-4fc5-964f-d283cdfe102e"
+                }
+              ],
+              "createdAt": "2026-07-28T01:01:47.000Z",
+              "updatedAt": "2026-07-28T01:01:47.000Z",
+              "uid": "35240-69fee6ef-c133-44eb-87c2-68b4432b4b09"
+            }
+          ],
+          "id": "9dafe7c5-5ddc-4ad2-8482-7b7a14e78235",
+          "createdAt": "2026-07-28T01:01:47.000Z",
+          "updatedAt": "2026-07-28T01:01:47.000Z",
+          "uid": "35240-9dafe7c5-5ddc-4ad2-8482-7b7a14e78235"
+        },
+        {
+          "name": "node",
+          "item": [
+            {
+              "name": "read",
+              "item": [
+                {
+                  "name": "Apache Nutch Read Node Objects",
+                  "id": "a1bae97a-4751-4263-bc8d-bf8bb7914bdb",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"path\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/reader/node/read?nrows=-1&start=-1&end=<integer>&count=false",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reader",
+                        "node",
+                        "read"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of rows to read. If not specified (or -1), all rows are returned.",
+                          "key": "nrows",
+                          "value": "-1"
+                        },
+                        {
+                          "description": "Starting line number for a range read.",
+                          "key": "start",
+                          "value": "-1"
+                        },
+                        {
+                          "description": "Ending line number for a range read.",
+                          "key": "end",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "If true, returns the number of lines instead of the data itself. When set, the response content type is text/plain.",
+                          "key": "count",
+                          "value": "false"
+                        }
+                      ]
+                    },
+                    "description": "Reads Node objects from the Nutch webgraph. Supports reading all rows, a limited number of rows, a row range, or counting the total number of rows."
+                  },
+                  "response": [
+                    {
+                      "id": "7ac63a9b-c573-4a2f-bff7-0e9e084ca034",
+                      "name": "Node data. Returns application/json when reading rows, or text/plain when count=true.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"path\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/reader/node/read?nrows=-1&start=-1&end=<integer>&count=false",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "reader",
+                            "node",
+                            "read"
+                          ],
+                          "query": [
+                            {
+                              "description": "Number of rows to read. If not specified (or -1), all rows are returned.",
+                              "key": "nrows",
+                              "value": "-1"
+                            },
+                            {
+                              "description": "Starting line number for a range read.",
+                              "key": "start",
+                              "value": "-1"
+                            },
+                            {
+                              "description": "Ending line number for a range read.",
+                              "key": "end",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "If true, returns the number of lines instead of the data itself. When set, the response content type is text/plain.",
+                              "key": "count",
+                              "value": "false"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[]",
+                      "createdAt": "2026-07-28T01:01:47.000Z",
+                      "updatedAt": "2026-07-28T01:01:47.000Z",
+                      "uid": "35240-7ac63a9b-c573-4a2f-bff7-0e9e084ca034"
+                    },
+                    {
+                      "id": "f4a8cb33-c62d-4fdc-92dd-735b1750cf0b",
+                      "name": "Bad request. The request body is missing, malformed, or contains invalid parameters.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "text/plain"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"path\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/reader/node/read?nrows=-1&start=-1&end=<integer>&count=false",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "reader",
+                            "node",
+                            "read"
+                          ],
+                          "query": [
+                            {
+                              "description": "Number of rows to read. If not specified (or -1), all rows are returned.",
+                              "key": "nrows",
+                              "value": "-1"
+                            },
+                            {
+                              "description": "Starting line number for a range read.",
+                              "key": "start",
+                              "value": "-1"
+                            },
+                            {
+                              "description": "Ending line number for a range read.",
+                              "key": "end",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "If true, returns the number of lines instead of the data itself. When set, the response content type is text/plain.",
+                              "key": "count",
+                              "value": "false"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "text/plain"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<string>",
+                      "createdAt": "2026-07-28T01:01:47.000Z",
+                      "updatedAt": "2026-07-28T01:01:47.000Z",
+                      "uid": "35240-f4a8cb33-c62d-4fdc-92dd-735b1750cf0b"
+                    },
+                    {
+                      "id": "ae99d853-7801-4549-8d4f-2ef27711aefc",
+                      "name": "Unauthorized. Basic authentication credentials are missing or invalid.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"path\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/reader/node/read?nrows=-1&start=-1&end=<integer>&count=false",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "reader",
+                            "node",
+                            "read"
+                          ],
+                          "query": [
+                            {
+                              "description": "Number of rows to read. If not specified (or -1), all rows are returned.",
+                              "key": "nrows",
+                              "value": "-1"
+                            },
+                            {
+                              "description": "Starting line number for a range read.",
+                              "key": "start",
+                              "value": "-1"
+                            },
+                            {
+                              "description": "Ending line number for a range read.",
+                              "key": "end",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "If true, returns the number of lines instead of the data itself. When set, the response content type is text/plain.",
+                              "key": "count",
+                              "value": "false"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:01:47.000Z",
+                      "updatedAt": "2026-07-28T01:01:47.000Z",
+                      "uid": "35240-ae99d853-7801-4549-8d4f-2ef27711aefc"
+                    },
+                    {
+                      "id": "5b92ea75-112b-4832-a17d-e691690de14d",
+                      "name": "An unexpected server error occurred.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "text/plain"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"path\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/reader/node/read?nrows=-1&start=-1&end=<integer>&count=false",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "reader",
+                            "node",
+                            "read"
+                          ],
+                          "query": [
+                            {
+                              "description": "Number of rows to read. If not specified (or -1), all rows are returned.",
+                              "key": "nrows",
+                              "value": "-1"
+                            },
+                            {
+                              "description": "Starting line number for a range read.",
+                              "key": "start",
+                              "value": "-1"
+                            },
+                            {
+                              "description": "Ending line number for a range read.",
+                              "key": "end",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "If true, returns the number of lines instead of the data itself. When set, the response content type is text/plain.",
+                              "key": "count",
+                              "value": "false"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "text/plain"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<string>",
+                      "createdAt": "2026-07-28T01:01:47.000Z",
+                      "updatedAt": "2026-07-28T01:01:47.000Z",
+                      "uid": "35240-5b92ea75-112b-4832-a17d-e691690de14d"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:01:47.000Z",
+                  "updatedAt": "2026-07-28T01:01:47.000Z",
+                  "uid": "35240-a1bae97a-4751-4263-bc8d-bf8bb7914bdb"
+                }
+              ],
+              "id": "99a9be31-e7ed-45ee-b8cb-ca8efe7e2fcf",
+              "createdAt": "2026-07-28T01:01:47.000Z",
+              "updatedAt": "2026-07-28T01:01:47.000Z",
+              "uid": "35240-99a9be31-e7ed-45ee-b8cb-ca8efe7e2fcf"
+            },
+            {
+              "name": "Apache Nutch Get Node Reader Schema",
+              "id": "f2534e54-a26e-4544-a307-0ec82fbfc6c5",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/reader/node",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "reader",
+                    "node"
+                  ]
+                },
+                "description": "Returns the schema describing the fields in node reader responses."
+              },
+              "response": [
+                {
+                  "id": "85b4798e-59dd-49b9-88c3-8022d33caac8",
+                  "name": "Node reader response schema.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/reader/node",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reader",
+                        "node"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"key_url\": \"<string>\",\n  \"num_inlinks\": \"<string>\",\n  \"num_outlinks\": \"<string>\",\n  \"inlink_score\": \"<string>\",\n  \"outlink_score\": \"<string>\",\n  \"metadata\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:01:47.000Z",
+                  "updatedAt": "2026-07-28T01:01:47.000Z",
+                  "uid": "35240-85b4798e-59dd-49b9-88c3-8022d33caac8"
+                },
+                {
+                  "id": "9348da77-a4c4-4085-94a1-7091a11d79ab",
+                  "name": "Unauthorized. Basic authentication credentials are missing or invalid.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/reader/node",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reader",
+                        "node"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:01:47.000Z",
+                  "updatedAt": "2026-07-28T01:01:47.000Z",
+                  "uid": "35240-9348da77-a4c4-4085-94a1-7091a11d79ab"
+                },
+                {
+                  "id": "c7c83fa3-8738-41b2-946e-08bf4f4e381b",
+                  "name": "An unexpected server error occurred.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/reader/node",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reader",
+                        "node"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<string>",
+                  "createdAt": "2026-07-28T01:01:47.000Z",
+                  "updatedAt": "2026-07-28T01:01:47.000Z",
+                  "uid": "35240-c7c83fa3-8738-41b2-946e-08bf4f4e381b"
+                }
+              ],
+              "createdAt": "2026-07-28T01:01:47.000Z",
+              "updatedAt": "2026-07-28T01:01:47.000Z",
+              "uid": "35240-f2534e54-a26e-4544-a307-0ec82fbfc6c5"
+            }
+          ],
+          "id": "77bbfc58-c6b5-4edc-ae1d-a9155314ef18",
+          "createdAt": "2026-07-28T01:01:47.000Z",
+          "updatedAt": "2026-07-28T01:01:47.000Z",
+          "uid": "35240-77bbfc58-c6b5-4edc-ae1d-a9155314ef18"
+        }
+      ],
+      "id": "b2c40a3c-73f0-4b9e-b7b2-7f8880c99ae2",
+      "createdAt": "2026-07-28T01:01:47.000Z",
+      "updatedAt": "2026-07-28T01:01:47.000Z",
+      "uid": "35240-b2c40a3c-73f0-4b9e-b7b2-7f8880c99ae2"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "protocol",
+      "value": "http"
+    },
+    {
+      "key": "port",
+      "value": "8081"
+    },
+    {
+      "key": "baseUrl",
+      "value": "{{protocol}}://localhost:{{port}}"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "provider": "apache-nutch",
+  "sources": [
+    "apache-nutch-admin-api-openapi.yml",
+    "apache-nutch-configuration-api-openapi.yml",
+    "apache-nutch-database-api-openapi.yml",
+    "apache-nutch-job-api-openapi.yml",
+    "apache-nutch-reader-api-openapi.yml",
+    "apache-nutch-seed-api-openapi.yml",
+    "apache-nutch-services-api-openapi.yml"
+  ],
+  "outputs": [
+    "apache-nutch-admin-api-openapi.yml",
+    "apache-nutch-configuration-api-openapi.yml",
+    "apache-nutch-database-api-openapi.yml",
+    "apache-nutch-job-api-openapi.yml",
+    "apache-nutch-reader-api-openapi.yml",
+    "apache-nutch-seed-api-openapi.yml",
+    "apache-nutch-services-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

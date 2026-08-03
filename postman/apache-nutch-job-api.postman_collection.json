@@ -1,0 +1,1362 @@
+{
+  "info": {
+    "_postman_id": "0b2d1594-4bcc-43d7-9421-0c3b5ec4af66",
+    "name": "Apache Nutch REST Admin Job API",
+    "description": "REST API for managing Apache Nutch crawl jobs, configurations, seed lists, database queries, and data readers.\n\nContact Support:\n Name: Apache Nutch",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:01:45.000Z",
+    "updatedAt": "2026-07-28T01:01:46.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0b2d1594-4bcc-43d7-9421-0c3b5ec4af66"
+  },
+  "item": [
+    {
+      "name": "job",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "stop",
+              "item": [
+                {
+                  "name": "Apache Nutch Stop a Running Job",
+                  "id": "5acf083d-da9a-455e-a8a2-97bc0097dc13",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/job/:id/stop?crawlId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "job",
+                        ":id",
+                        "stop"
+                      ],
+                      "query": [
+                        {
+                          "description": "The crawl ID associated with the job.",
+                          "key": "crawlId",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "8bede1a7-3692-4857-86c6-8a87b57b17fd",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier for the job."
+                        }
+                      ]
+                    },
+                    "description": "Attempts to gracefully stop a running job."
+                  },
+                  "response": [
+                    {
+                      "id": "a1d4d746-0b90-4db2-889d-e478f5885c46",
+                      "name": "Whether the job was successfully stopped.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/job/:id/stop?crawlId=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "job",
+                            ":id",
+                            "stop"
+                          ],
+                          "query": [
+                            {
+                              "description": "The crawl ID associated with the job.",
+                              "key": "crawlId",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<boolean>",
+                      "createdAt": "2026-07-28T01:01:46.000Z",
+                      "updatedAt": "2026-07-28T01:01:46.000Z",
+                      "uid": "35240-a1d4d746-0b90-4db2-889d-e478f5885c46"
+                    },
+                    {
+                      "id": "cad0fb40-3850-4ae9-81e7-e8eec5f28994",
+                      "name": "Unauthorized. Basic authentication credentials are missing or invalid.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/job/:id/stop?crawlId=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "job",
+                            ":id",
+                            "stop"
+                          ],
+                          "query": [
+                            {
+                              "description": "The crawl ID associated with the job.",
+                              "key": "crawlId",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:01:46.000Z",
+                      "updatedAt": "2026-07-28T01:01:46.000Z",
+                      "uid": "35240-cad0fb40-3850-4ae9-81e7-e8eec5f28994"
+                    },
+                    {
+                      "id": "86ef1153-de3b-4e08-b8ad-f87f3d2fa199",
+                      "name": "The requested resource was not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/job/:id/stop?crawlId=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "job",
+                            ":id",
+                            "stop"
+                          ],
+                          "query": [
+                            {
+                              "description": "The crawl ID associated with the job.",
+                              "key": "crawlId",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:01:46.000Z",
+                      "updatedAt": "2026-07-28T01:01:46.000Z",
+                      "uid": "35240-86ef1153-de3b-4e08-b8ad-f87f3d2fa199"
+                    },
+                    {
+                      "id": "a8b00747-de0a-4806-b7b2-8e3d58ba7180",
+                      "name": "An unexpected server error occurred.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "text/plain"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/job/:id/stop?crawlId=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "job",
+                            ":id",
+                            "stop"
+                          ],
+                          "query": [
+                            {
+                              "description": "The crawl ID associated with the job.",
+                              "key": "crawlId",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "text/plain"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<string>",
+                      "createdAt": "2026-07-28T01:01:46.000Z",
+                      "updatedAt": "2026-07-28T01:01:46.000Z",
+                      "uid": "35240-a8b00747-de0a-4806-b7b2-8e3d58ba7180"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:01:46.000Z",
+                  "updatedAt": "2026-07-28T01:01:46.000Z",
+                  "uid": "35240-5acf083d-da9a-455e-a8a2-97bc0097dc13"
+                }
+              ],
+              "id": "5efb0e55-9804-42ee-a988-881848ddfdda",
+              "createdAt": "2026-07-28T01:01:46.000Z",
+              "updatedAt": "2026-07-28T01:01:46.000Z",
+              "uid": "35240-5efb0e55-9804-42ee-a988-881848ddfdda"
+            },
+            {
+              "name": "abort",
+              "item": [
+                {
+                  "name": "Apache Nutch Abort a Job",
+                  "id": "c2635f3b-234f-4336-94e3-162a986db3e2",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/job/:id/abort?crawlId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "job",
+                        ":id",
+                        "abort"
+                      ],
+                      "query": [
+                        {
+                          "description": "The crawl ID associated with the job.",
+                          "key": "crawlId",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "1e76edc8-bab5-4581-918e-88867c8fa948",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier for the job."
+                        }
+                      ]
+                    },
+                    "description": "Forcefully aborts a job. Unlike stop, this kills the job immediately."
+                  },
+                  "response": [
+                    {
+                      "id": "1e974516-e57f-406c-a4a7-df4e575585db",
+                      "name": "Whether the job was successfully aborted.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/job/:id/abort?crawlId=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "job",
+                            ":id",
+                            "abort"
+                          ],
+                          "query": [
+                            {
+                              "description": "The crawl ID associated with the job.",
+                              "key": "crawlId",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<boolean>",
+                      "createdAt": "2026-07-28T01:01:46.000Z",
+                      "updatedAt": "2026-07-28T01:01:46.000Z",
+                      "uid": "35240-1e974516-e57f-406c-a4a7-df4e575585db"
+                    },
+                    {
+                      "id": "ce569ee1-6fbd-4773-bccd-ffd8c8bb14e6",
+                      "name": "Unauthorized. Basic authentication credentials are missing or invalid.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/job/:id/abort?crawlId=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "job",
+                            ":id",
+                            "abort"
+                          ],
+                          "query": [
+                            {
+                              "description": "The crawl ID associated with the job.",
+                              "key": "crawlId",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:01:46.000Z",
+                      "updatedAt": "2026-07-28T01:01:46.000Z",
+                      "uid": "35240-ce569ee1-6fbd-4773-bccd-ffd8c8bb14e6"
+                    },
+                    {
+                      "id": "8ef9b14a-cab7-4f34-84d1-079979ad5467",
+                      "name": "The requested resource was not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/job/:id/abort?crawlId=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "job",
+                            ":id",
+                            "abort"
+                          ],
+                          "query": [
+                            {
+                              "description": "The crawl ID associated with the job.",
+                              "key": "crawlId",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:01:46.000Z",
+                      "updatedAt": "2026-07-28T01:01:46.000Z",
+                      "uid": "35240-8ef9b14a-cab7-4f34-84d1-079979ad5467"
+                    },
+                    {
+                      "id": "452bb16a-44fb-4bce-bca2-7712060bbf1b",
+                      "name": "An unexpected server error occurred.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "text/plain"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/job/:id/abort?crawlId=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "job",
+                            ":id",
+                            "abort"
+                          ],
+                          "query": [
+                            {
+                              "description": "The crawl ID associated with the job.",
+                              "key": "crawlId",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "text/plain"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<string>",
+                      "createdAt": "2026-07-28T01:01:46.000Z",
+                      "updatedAt": "2026-07-28T01:01:46.000Z",
+                      "uid": "35240-452bb16a-44fb-4bce-bca2-7712060bbf1b"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:01:46.000Z",
+                  "updatedAt": "2026-07-28T01:01:46.000Z",
+                  "uid": "35240-c2635f3b-234f-4336-94e3-162a986db3e2"
+                }
+              ],
+              "id": "a15ae19e-9792-48f8-8e8b-a53a6f2d9c61",
+              "createdAt": "2026-07-28T01:01:46.000Z",
+              "updatedAt": "2026-07-28T01:01:46.000Z",
+              "uid": "35240-a15ae19e-9792-48f8-8e8b-a53a6f2d9c61"
+            },
+            {
+              "name": "Apache Nutch Get Job Info",
+              "id": "d8bd9298-6e36-4eb9-b402-2cdc795dc0ff",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/job/:id?crawlId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "job",
+                    ":id"
+                  ],
+                  "query": [
+                    {
+                      "description": "The crawl ID associated with the job.",
+                      "key": "crawlId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "b24f5a35-eea8-4457-81d6-55f1b74a9627",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) The unique identifier for the job."
+                    }
+                  ]
+                },
+                "description": "Returns detailed information for a specific job."
+              },
+              "response": [
+                {
+                  "id": "5a66e3fe-72c2-48dd-9191-dfb1ab2dfe3a",
+                  "name": "Job details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/job/:id?crawlId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "job",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "description": "The crawl ID associated with the job.",
+                          "key": "crawlId",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"INDEX\",\n  \"state\": \"IDLE\",\n  \"id\": \"<string>\",\n  \"confId\": \"<string>\",\n  \"args\": {\n    \"deserunt_55\": -80493569.49066037\n  },\n  \"result\": {\n    \"mollit7\": -11668507\n  },\n  \"msg\": \"<string>\",\n  \"crawlId\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:01:46.000Z",
+                  "updatedAt": "2026-07-28T01:01:46.000Z",
+                  "uid": "35240-5a66e3fe-72c2-48dd-9191-dfb1ab2dfe3a"
+                },
+                {
+                  "id": "e3912a8b-87a1-4564-93d4-94a36216f4f6",
+                  "name": "Unauthorized. Basic authentication credentials are missing or invalid.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/job/:id?crawlId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "job",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "description": "The crawl ID associated with the job.",
+                          "key": "crawlId",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:01:46.000Z",
+                  "updatedAt": "2026-07-28T01:01:46.000Z",
+                  "uid": "35240-e3912a8b-87a1-4564-93d4-94a36216f4f6"
+                },
+                {
+                  "id": "397767eb-a5c6-4c7d-aac3-9f6fec353837",
+                  "name": "The requested resource was not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/job/:id?crawlId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "job",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "description": "The crawl ID associated with the job.",
+                          "key": "crawlId",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:01:46.000Z",
+                  "updatedAt": "2026-07-28T01:01:46.000Z",
+                  "uid": "35240-397767eb-a5c6-4c7d-aac3-9f6fec353837"
+                },
+                {
+                  "id": "b582733c-b7a1-4209-9372-0ab53dd51ba5",
+                  "name": "An unexpected server error occurred.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/job/:id?crawlId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "job",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "description": "The crawl ID associated with the job.",
+                          "key": "crawlId",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<string>",
+                  "createdAt": "2026-07-28T01:01:46.000Z",
+                  "updatedAt": "2026-07-28T01:01:46.000Z",
+                  "uid": "35240-b582733c-b7a1-4209-9372-0ab53dd51ba5"
+                }
+              ],
+              "createdAt": "2026-07-28T01:01:46.000Z",
+              "updatedAt": "2026-07-28T01:01:46.000Z",
+              "uid": "35240-d8bd9298-6e36-4eb9-b402-2cdc795dc0ff"
+            }
+          ],
+          "id": "959708c7-f90b-4cfe-aca7-73ea078be7d5",
+          "createdAt": "2026-07-28T01:01:46.000Z",
+          "updatedAt": "2026-07-28T01:01:46.000Z",
+          "uid": "35240-959708c7-f90b-4cfe-aca7-73ea078be7d5"
+        },
+        {
+          "name": "create",
+          "item": [
+            {
+              "name": "Apache Nutch Create a New Job",
+              "id": "ce364454-c329-4e76-a30c-1251af2e0c06",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"UPDATEDB\",\n  \"crawlId\": \"<string>\",\n  \"confId\": \"<string>\",\n  \"jobClassName\": \"<string>\",\n  \"args\": {\n    \"cillum_e\": 53259062.97176558,\n    \"occaecat_2e3\": false\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/job/create",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "job",
+                    "create"
+                  ]
+                },
+                "description": "Creates and enqueues a new Nutch job (e.g., inject, generate, fetch, parse, updatedb, index)."
+              },
+              "response": [
+                {
+                  "id": "c1fa8e4e-ddb0-40d1-89ad-aff4383657ec",
+                  "name": "Job created. Returns the job information.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"type\": \"UPDATEDB\",\n  \"crawlId\": \"<string>\",\n  \"confId\": \"<string>\",\n  \"jobClassName\": \"<string>\",\n  \"args\": {\n    \"cillum_e\": 53259062.97176558,\n    \"occaecat_2e3\": false\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/job/create",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "job",
+                        "create"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"INDEX\",\n  \"state\": \"IDLE\",\n  \"id\": \"<string>\",\n  \"confId\": \"<string>\",\n  \"args\": {\n    \"deserunt_55\": -80493569.49066037\n  },\n  \"result\": {\n    \"mollit7\": -11668507\n  },\n  \"msg\": \"<string>\",\n  \"crawlId\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:01:46.000Z",
+                  "updatedAt": "2026-07-28T01:01:46.000Z",
+                  "uid": "35240-c1fa8e4e-ddb0-40d1-89ad-aff4383657ec"
+                },
+                {
+                  "id": "c8b29df7-1c6d-4b32-8803-ab6acc1c30e9",
+                  "name": "Bad request. The request body is missing, malformed, or contains invalid parameters.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"type\": \"UPDATEDB\",\n  \"crawlId\": \"<string>\",\n  \"confId\": \"<string>\",\n  \"jobClassName\": \"<string>\",\n  \"args\": {\n    \"cillum_e\": 53259062.97176558,\n    \"occaecat_2e3\": false\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/job/create",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "job",
+                        "create"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<string>",
+                  "createdAt": "2026-07-28T01:01:46.000Z",
+                  "updatedAt": "2026-07-28T01:01:46.000Z",
+                  "uid": "35240-c8b29df7-1c6d-4b32-8803-ab6acc1c30e9"
+                },
+                {
+                  "id": "a237e4b2-1e6e-441c-8292-a3e9989db01b",
+                  "name": "Unauthorized. Basic authentication credentials are missing or invalid.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"type\": \"UPDATEDB\",\n  \"crawlId\": \"<string>\",\n  \"confId\": \"<string>\",\n  \"jobClassName\": \"<string>\",\n  \"args\": {\n    \"cillum_e\": 53259062.97176558,\n    \"occaecat_2e3\": false\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/job/create",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "job",
+                        "create"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:01:46.000Z",
+                  "updatedAt": "2026-07-28T01:01:46.000Z",
+                  "uid": "35240-a237e4b2-1e6e-441c-8292-a3e9989db01b"
+                },
+                {
+                  "id": "72c011cb-69a5-474d-8990-d8c83d394570",
+                  "name": "An unexpected server error occurred.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"type\": \"UPDATEDB\",\n  \"crawlId\": \"<string>\",\n  \"confId\": \"<string>\",\n  \"jobClassName\": \"<string>\",\n  \"args\": {\n    \"cillum_e\": 53259062.97176558,\n    \"occaecat_2e3\": false\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/job/create",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "job",
+                        "create"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<string>",
+                  "createdAt": "2026-07-28T01:01:46.000Z",
+                  "updatedAt": "2026-07-28T01:01:46.000Z",
+                  "uid": "35240-72c011cb-69a5-474d-8990-d8c83d394570"
+                }
+              ],
+              "createdAt": "2026-07-28T01:01:46.000Z",
+              "updatedAt": "2026-07-28T01:01:46.000Z",
+              "uid": "35240-ce364454-c329-4e76-a30c-1251af2e0c06"
+            }
+          ],
+          "id": "b447ce50-c5cf-4ac9-94ed-db4d008554ce",
+          "createdAt": "2026-07-28T01:01:46.000Z",
+          "updatedAt": "2026-07-28T01:01:46.000Z",
+          "uid": "35240-b447ce50-c5cf-4ac9-94ed-db4d008554ce"
+        },
+        {
+          "name": "Apache Nutch List All Jobs",
+          "id": "b5481c07-2a1d-4b82-bc72-6cc6cadb40d3",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/job/?crawlId=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "job",
+                ""
+              ],
+              "query": [
+                {
+                  "description": "Optional crawl ID to filter jobs by.",
+                  "key": "crawlId",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns job history for all jobs or filtered by crawl ID, regardless of job state."
+          },
+          "response": [
+            {
+              "id": "5e832803-cb1b-4cec-a624-46069b995655",
+              "name": "A JSON array of job information objects.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/job/?crawlId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "job",
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "Optional crawl ID to filter jobs by.",
+                      "key": "crawlId",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"type\": \"READDB\",\n    \"state\": \"RUNNING\",\n    \"id\": \"<string>\",\n    \"confId\": \"<string>\",\n    \"args\": {\n      \"in923\": -9447837.901095644,\n      \"proident_3\": 17856366\n    },\n    \"result\": {\n      \"dof\": \"incididunt dolore ex\",\n      \"velit_737\": \"magna ipsum aute\"\n    },\n    \"msg\": \"<string>\",\n    \"crawlId\": \"<string>\"\n  },\n  {\n    \"type\": \"INJECT\",\n    \"state\": \"IDLE\",\n    \"id\": \"<string>\",\n    \"confId\": \"<string>\",\n    \"args\": {\n      \"eaa\": 40712371\n    },\n    \"result\": {\n      \"irure9\": 27884663,\n      \"irurec52\": false,\n      \"nostrud8\": 85461129\n    },\n    \"msg\": \"<string>\",\n    \"crawlId\": \"<string>\"\n  }\n]",
+              "createdAt": "2026-07-28T01:01:46.000Z",
+              "updatedAt": "2026-07-28T01:01:46.000Z",
+              "uid": "35240-5e832803-cb1b-4cec-a624-46069b995655"
+            },
+            {
+              "id": "bca3eb1c-4346-4120-9093-08145a588f8a",
+              "name": "Unauthorized. Basic authentication credentials are missing or invalid.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/job/?crawlId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "job",
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "Optional crawl ID to filter jobs by.",
+                      "key": "crawlId",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:01:46.000Z",
+              "updatedAt": "2026-07-28T01:01:46.000Z",
+              "uid": "35240-bca3eb1c-4346-4120-9093-08145a588f8a"
+            },
+            {
+              "id": "46d44abb-3bde-4b97-8678-6e276a709411",
+              "name": "An unexpected server error occurred.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/job/?crawlId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "job",
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "Optional crawl ID to filter jobs by.",
+                      "key": "crawlId",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<string>",
+              "createdAt": "2026-07-28T01:01:46.000Z",
+              "updatedAt": "2026-07-28T01:01:46.000Z",
+              "uid": "35240-46d44abb-3bde-4b97-8678-6e276a709411"
+            }
+          ],
+          "createdAt": "2026-07-28T01:01:46.000Z",
+          "updatedAt": "2026-07-28T01:01:46.000Z",
+          "uid": "35240-b5481c07-2a1d-4b82-bc72-6cc6cadb40d3"
+        }
+      ],
+      "id": "ed71dae6-f1aa-4fdd-883b-d1b495bc7e03",
+      "createdAt": "2026-07-28T01:01:46.000Z",
+      "updatedAt": "2026-07-28T01:01:46.000Z",
+      "uid": "35240-ed71dae6-f1aa-4fdd-883b-d1b495bc7e03"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "protocol",
+      "value": "http"
+    },
+    {
+      "key": "port",
+      "value": "8081"
+    },
+    {
+      "key": "baseUrl",
+      "value": "{{protocol}}://localhost:{{port}}"
+    }
+  ]
+}

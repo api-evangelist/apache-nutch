@@ -1,0 +1,496 @@
+{
+  "info": {
+    "_postman_id": "197be171-9d7d-4b63-963e-76226de1fd2f",
+    "name": "Apache Nutch REST Admin Seed API",
+    "description": "REST API for managing Apache Nutch crawl jobs, configurations, seed lists, database queries, and data readers.\n\nContact Support:\n Name: Apache Nutch",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:01:47.000Z",
+    "updatedAt": "2026-07-28T01:01:48.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-197be171-9d7d-4b63-963e-76226de1fd2f"
+  },
+  "item": [
+    {
+      "name": "seed",
+      "item": [
+        {
+          "name": "create",
+          "item": [
+            {
+              "name": "Apache Nutch Create a Seed List File",
+              "id": "4eb6331a-2c0f-46fd-9421-5f0a396da81c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"seedUrls\": [\n    {\n      \"id\": \"<long>\",\n      \"url\": \"<string>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"url\": \"<string>\"\n    }\n  ],\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"seedFilePath\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/seed/create",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "seed",
+                    "create"
+                  ]
+                },
+                "description": "Creates a seed list file from the provided URLs and writes it to HDFS. Returns the path to the created seed file directory."
+              },
+              "response": [
+                {
+                  "id": "a12f9627-dbf6-49d2-81b6-830b96e83638",
+                  "name": "Path to the created seed file directory.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"seedUrls\": [\n    {\n      \"id\": \"<long>\",\n      \"url\": \"<string>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"url\": \"<string>\"\n    }\n  ],\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"seedFilePath\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/seed/create",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "seed",
+                        "create"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<string>",
+                  "createdAt": "2026-07-28T01:01:48.000Z",
+                  "updatedAt": "2026-07-28T01:01:48.000Z",
+                  "uid": "35240-a12f9627-dbf6-49d2-81b6-830b96e83638"
+                },
+                {
+                  "id": "bae5c6b1-0009-4caa-b381-e4847b6c32d1",
+                  "name": "Bad request. The request body is missing, malformed, or contains invalid parameters.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"seedUrls\": [\n    {\n      \"id\": \"<long>\",\n      \"url\": \"<string>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"url\": \"<string>\"\n    }\n  ],\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"seedFilePath\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/seed/create",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "seed",
+                        "create"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<string>",
+                  "createdAt": "2026-07-28T01:01:48.000Z",
+                  "updatedAt": "2026-07-28T01:01:48.000Z",
+                  "uid": "35240-bae5c6b1-0009-4caa-b381-e4847b6c32d1"
+                },
+                {
+                  "id": "dd41b79f-ccf8-43f7-9e48-35a7e4f4c712",
+                  "name": "Unauthorized. Basic authentication credentials are missing or invalid.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"seedUrls\": [\n    {\n      \"id\": \"<long>\",\n      \"url\": \"<string>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"url\": \"<string>\"\n    }\n  ],\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"seedFilePath\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/seed/create",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "seed",
+                        "create"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:01:48.000Z",
+                  "updatedAt": "2026-07-28T01:01:48.000Z",
+                  "uid": "35240-dd41b79f-ccf8-43f7-9e48-35a7e4f4c712"
+                },
+                {
+                  "id": "7fd36489-7156-4650-9d42-5579d87dca2e",
+                  "name": "An unexpected server error occurred.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"seedUrls\": [\n    {\n      \"id\": \"<long>\",\n      \"url\": \"<string>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"url\": \"<string>\"\n    }\n  ],\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"seedFilePath\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/seed/create",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "seed",
+                        "create"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<string>",
+                  "createdAt": "2026-07-28T01:01:48.000Z",
+                  "updatedAt": "2026-07-28T01:01:48.000Z",
+                  "uid": "35240-7fd36489-7156-4650-9d42-5579d87dca2e"
+                }
+              ],
+              "createdAt": "2026-07-28T01:01:48.000Z",
+              "updatedAt": "2026-07-28T01:01:48.000Z",
+              "uid": "35240-4eb6331a-2c0f-46fd-9421-5f0a396da81c"
+            }
+          ],
+          "id": "fb4f4493-512e-4bd1-8a7b-8cf4bb911478",
+          "createdAt": "2026-07-28T01:01:48.000Z",
+          "updatedAt": "2026-07-28T01:01:48.000Z",
+          "uid": "35240-fb4f4493-512e-4bd1-8a7b-8cf4bb911478"
+        },
+        {
+          "name": "Apache Nutch List All Seed Lists",
+          "id": "2a7f34f8-56ae-4aa1-a624-6512b5a3687c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/seed/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "seed",
+                ""
+              ]
+            },
+            "description": "Returns a map of all created seed files keyed by name."
+          },
+          "response": [
+            {
+              "id": "f4f3ffbe-1dd6-4456-9abd-1d126a118976",
+              "name": "A JSON object mapping seed list names to SeedList objects.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/seed/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "seed",
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"eu_cb\": {\n    \"seedUrls\": [\n      {\n        \"id\": \"<long>\",\n        \"url\": \"<string>\"\n      },\n      {\n        \"id\": \"<long>\",\n        \"url\": \"<string>\"\n      }\n    ],\n    \"id\": \"<long>\",\n    \"name\": \"<string>\",\n    \"seedFilePath\": \"<string>\"\n  },\n  \"deserunta\": {\n    \"seedUrls\": [\n      {\n        \"id\": \"<long>\",\n        \"url\": \"<string>\"\n      },\n      {\n        \"id\": \"<long>\",\n        \"url\": \"<string>\"\n      }\n    ],\n    \"id\": \"<long>\",\n    \"name\": \"<string>\",\n    \"seedFilePath\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:01:48.000Z",
+              "updatedAt": "2026-07-28T01:01:48.000Z",
+              "uid": "35240-f4f3ffbe-1dd6-4456-9abd-1d126a118976"
+            },
+            {
+              "id": "66bb1ba5-62a0-4c3e-87f0-672113d83c2d",
+              "name": "Unauthorized. Basic authentication credentials are missing or invalid.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/seed/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "seed",
+                    ""
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:01:48.000Z",
+              "updatedAt": "2026-07-28T01:01:48.000Z",
+              "uid": "35240-66bb1ba5-62a0-4c3e-87f0-672113d83c2d"
+            },
+            {
+              "id": "6f13daf2-c4fe-46aa-9d7f-b6ac7c3e6f44",
+              "name": "An unexpected server error occurred.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/seed/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "seed",
+                    ""
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<string>",
+              "createdAt": "2026-07-28T01:01:48.000Z",
+              "updatedAt": "2026-07-28T01:01:48.000Z",
+              "uid": "35240-6f13daf2-c4fe-46aa-9d7f-b6ac7c3e6f44"
+            }
+          ],
+          "createdAt": "2026-07-28T01:01:48.000Z",
+          "updatedAt": "2026-07-28T01:01:48.000Z",
+          "uid": "35240-2a7f34f8-56ae-4aa1-a624-6512b5a3687c"
+        }
+      ],
+      "id": "b0401f7f-ec0e-4075-9e0a-3db45f023bd5",
+      "createdAt": "2026-07-28T01:01:48.000Z",
+      "updatedAt": "2026-07-28T01:01:48.000Z",
+      "uid": "35240-b0401f7f-ec0e-4075-9e0a-3db45f023bd5"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "protocol",
+      "value": "http"
+    },
+    {
+      "key": "port",
+      "value": "8081"
+    },
+    {
+      "key": "baseUrl",
+      "value": "{{protocol}}://localhost:{{port}}"
+    }
+  ]
+}

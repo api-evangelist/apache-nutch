@@ -1,0 +1,1510 @@
+{
+  "info": {
+    "_postman_id": "1a4a154e-8e81-4f31-ac9c-d6cfb6ef2abb",
+    "name": "Apache Nutch REST Admin Configuration API",
+    "description": "REST API for managing Apache Nutch crawl jobs, configurations, seed lists, database queries, and data readers.\n\nContact Support:\n Name: Apache Nutch",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:01:44.000Z",
+    "updatedAt": "2026-07-28T01:01:44.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-1a4a154e-8e81-4f31-ac9c-d6cfb6ef2abb"
+  },
+  "item": [
+    {
+      "name": "config",
+      "item": [
+        {
+          "name": "{configId}",
+          "item": [
+            {
+              "name": "{propertyId}",
+              "item": [
+                {
+                  "name": "Apache Nutch Get a Single Configuration Property",
+                  "id": "60999b15-9a0b-460e-a0f9-1fdbc6109fa9",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/config/:configId/:propertyId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "config",
+                        ":configId",
+                        ":propertyId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "4e1fbe57-4a84-47fd-8764-a82c037b5adc",
+                          "key": "configId",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier for the configuration."
+                        },
+                        {
+                          "id": "1f58d666-2b1a-41b7-baf2-c90534069219",
+                          "key": "propertyId",
+                          "value": "<string>",
+                          "description": "(Required) The name (key) of the configuration property."
+                        }
+                      ]
+                    },
+                    "description": "Returns the value of a specific property within the given configuration."
+                  },
+                  "response": [
+                    {
+                      "id": "0948ba44-715a-4c69-b3bf-b39fdb6052f5",
+                      "name": "The property value as plain text.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "text/plain"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/config/:configId/:propertyId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "config",
+                            ":configId",
+                            ":propertyId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "configId"
+                            },
+                            {
+                              "key": "propertyId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "text/plain"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<string>",
+                      "createdAt": "2026-07-28T01:01:44.000Z",
+                      "updatedAt": "2026-07-28T01:01:44.000Z",
+                      "uid": "35240-0948ba44-715a-4c69-b3bf-b39fdb6052f5"
+                    },
+                    {
+                      "id": "32ca6f70-fea5-4a48-b9cd-617e7ed2bb47",
+                      "name": "Unauthorized. Basic authentication credentials are missing or invalid.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/config/:configId/:propertyId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "config",
+                            ":configId",
+                            ":propertyId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "configId"
+                            },
+                            {
+                              "key": "propertyId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:01:44.000Z",
+                      "updatedAt": "2026-07-28T01:01:44.000Z",
+                      "uid": "35240-32ca6f70-fea5-4a48-b9cd-617e7ed2bb47"
+                    },
+                    {
+                      "id": "497aa9af-abcb-4414-8670-16fcb51c8c5b",
+                      "name": "The requested resource was not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/config/:configId/:propertyId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "config",
+                            ":configId",
+                            ":propertyId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "configId"
+                            },
+                            {
+                              "key": "propertyId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:01:44.000Z",
+                      "updatedAt": "2026-07-28T01:01:44.000Z",
+                      "uid": "35240-497aa9af-abcb-4414-8670-16fcb51c8c5b"
+                    },
+                    {
+                      "id": "a721be78-ff51-4c1f-8053-ae764d3f45df",
+                      "name": "An unexpected server error occurred.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "text/plain"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/config/:configId/:propertyId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "config",
+                            ":configId",
+                            ":propertyId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "configId"
+                            },
+                            {
+                              "key": "propertyId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "text/plain"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<string>",
+                      "createdAt": "2026-07-28T01:01:44.000Z",
+                      "updatedAt": "2026-07-28T01:01:44.000Z",
+                      "uid": "35240-a721be78-ff51-4c1f-8053-ae764d3f45df"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:01:44.000Z",
+                  "updatedAt": "2026-07-28T01:01:44.000Z",
+                  "uid": "35240-60999b15-9a0b-460e-a0f9-1fdbc6109fa9"
+                },
+                {
+                  "name": "Apache Nutch Update a Configuration Property",
+                  "id": "40f6566e-ab4e-45d9-9018-97b89aae54c6",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "text/plain"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<string>"
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/config/:configId/:propertyId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "config",
+                        ":configId",
+                        ":propertyId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "e1654bde-031e-4710-9053-68301ccf12e1",
+                          "key": "configId",
+                          "value": "<string>",
+                          "description": "(Required) The unique identifier for the configuration."
+                        },
+                        {
+                          "id": "b369a74d-7d65-4f86-94b5-884f2c29f7c9",
+                          "key": "propertyId",
+                          "value": "<string>",
+                          "description": "(Required) The name (key) of the configuration property."
+                        }
+                      ]
+                    },
+                    "description": "Adds or updates the value of a property in the specified configuration."
+                  },
+                  "response": [
+                    {
+                      "id": "38d8011b-ade9-4e1d-84dc-87c943f98fac",
+                      "name": "Property updated successfully.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "text/plain"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "<string>"
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/config/:configId/:propertyId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "config",
+                            ":configId",
+                            ":propertyId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "configId"
+                            },
+                            {
+                              "key": "propertyId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:01:44.000Z",
+                      "updatedAt": "2026-07-28T01:01:44.000Z",
+                      "uid": "35240-38d8011b-ade9-4e1d-84dc-87c943f98fac"
+                    },
+                    {
+                      "id": "e016cee9-b124-4765-b21c-afe80846cef1",
+                      "name": "Bad request. The request body is missing, malformed, or contains invalid parameters.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "text/plain"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "text/plain"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "<string>"
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/config/:configId/:propertyId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "config",
+                            ":configId",
+                            ":propertyId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "configId"
+                            },
+                            {
+                              "key": "propertyId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "text/plain"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<string>",
+                      "createdAt": "2026-07-28T01:01:44.000Z",
+                      "updatedAt": "2026-07-28T01:01:44.000Z",
+                      "uid": "35240-e016cee9-b124-4765-b21c-afe80846cef1"
+                    },
+                    {
+                      "id": "01f4b03a-ff4d-4bc6-ac87-4bf5f34d3cb4",
+                      "name": "Unauthorized. Basic authentication credentials are missing or invalid.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "text/plain"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "<string>"
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/config/:configId/:propertyId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "config",
+                            ":configId",
+                            ":propertyId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "configId"
+                            },
+                            {
+                              "key": "propertyId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:01:44.000Z",
+                      "updatedAt": "2026-07-28T01:01:44.000Z",
+                      "uid": "35240-01f4b03a-ff4d-4bc6-ac87-4bf5f34d3cb4"
+                    },
+                    {
+                      "id": "7814ee9c-463e-40b4-971b-1883275c2378",
+                      "name": "An unexpected server error occurred.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "text/plain"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "text/plain"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "<string>"
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/config/:configId/:propertyId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "config",
+                            ":configId",
+                            ":propertyId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "configId"
+                            },
+                            {
+                              "key": "propertyId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "text/plain"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<string>",
+                      "createdAt": "2026-07-28T01:01:44.000Z",
+                      "updatedAt": "2026-07-28T01:01:44.000Z",
+                      "uid": "35240-7814ee9c-463e-40b4-971b-1883275c2378"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:01:44.000Z",
+                  "updatedAt": "2026-07-28T01:01:44.000Z",
+                  "uid": "35240-40f6566e-ab4e-45d9-9018-97b89aae54c6"
+                }
+              ],
+              "id": "975434fe-d25a-46ee-8547-c2d58e769c02",
+              "createdAt": "2026-07-28T01:01:44.000Z",
+              "updatedAt": "2026-07-28T01:01:44.000Z",
+              "uid": "35240-975434fe-d25a-46ee-8547-c2d58e769c02"
+            },
+            {
+              "name": "Apache Nutch Get Configuration Properties",
+              "id": "8c96615a-18e6-4d5c-a5c8-ed3d89edd436",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/config/:configId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "config",
+                    ":configId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "b0b910a8-96d4-47d2-b404-9425bfd1623a",
+                      "key": "configId",
+                      "value": "<string>",
+                      "description": "(Required) The unique identifier for the configuration."
+                    }
+                  ]
+                },
+                "description": "Returns all key-value properties for the specified configuration."
+              },
+              "response": [
+                {
+                  "id": "4ea8e1f6-b364-4087-9a7f-38a8c93fa608",
+                  "name": "A JSON object of configuration property key-value pairs.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/config/:configId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "config",
+                        ":configId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "configId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"commodo_2\": \"<string>\",\n  \"velit_a6\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:01:44.000Z",
+                  "updatedAt": "2026-07-28T01:01:44.000Z",
+                  "uid": "35240-4ea8e1f6-b364-4087-9a7f-38a8c93fa608"
+                },
+                {
+                  "id": "81ea6cb2-2d66-4697-b607-9e21879732fd",
+                  "name": "Unauthorized. Basic authentication credentials are missing or invalid.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/config/:configId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "config",
+                        ":configId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "configId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:01:44.000Z",
+                  "updatedAt": "2026-07-28T01:01:44.000Z",
+                  "uid": "35240-81ea6cb2-2d66-4697-b607-9e21879732fd"
+                },
+                {
+                  "id": "6bdd5c57-e3b7-43b6-b90b-e44c5097d012",
+                  "name": "The requested resource was not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/config/:configId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "config",
+                        ":configId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "configId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:01:44.000Z",
+                  "updatedAt": "2026-07-28T01:01:44.000Z",
+                  "uid": "35240-6bdd5c57-e3b7-43b6-b90b-e44c5097d012"
+                },
+                {
+                  "id": "b7d35242-8f11-467c-a828-0fa1701b583d",
+                  "name": "An unexpected server error occurred.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/config/:configId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "config",
+                        ":configId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "configId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<string>",
+                  "createdAt": "2026-07-28T01:01:44.000Z",
+                  "updatedAt": "2026-07-28T01:01:44.000Z",
+                  "uid": "35240-b7d35242-8f11-467c-a828-0fa1701b583d"
+                }
+              ],
+              "createdAt": "2026-07-28T01:01:44.000Z",
+              "updatedAt": "2026-07-28T01:01:44.000Z",
+              "uid": "35240-8c96615a-18e6-4d5c-a5c8-ed3d89edd436"
+            },
+            {
+              "name": "Apache Nutch Delete a Configuration",
+              "id": "d4df136e-66dd-47df-8b53-9648221f518c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/config/:configId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "config",
+                    ":configId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "c03459d1-e7b5-45c3-a1a0-87d2e3e752d4",
+                      "key": "configId",
+                      "value": "<string>",
+                      "description": "(Required) The unique identifier for the configuration."
+                    }
+                  ]
+                },
+                "description": "Removes the specified configuration from the list of known configurations."
+              },
+              "response": [
+                {
+                  "id": "ab31e03b-e531-4fc9-bc95-a5712cde6de2",
+                  "name": "Configuration deleted successfully.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/config/:configId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "config",
+                        ":configId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "configId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:01:44.000Z",
+                  "updatedAt": "2026-07-28T01:01:44.000Z",
+                  "uid": "35240-ab31e03b-e531-4fc9-bc95-a5712cde6de2"
+                },
+                {
+                  "id": "87af5cf0-8b99-4cbe-ad61-de7a7885c9a0",
+                  "name": "Unauthorized. Basic authentication credentials are missing or invalid.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/config/:configId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "config",
+                        ":configId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "configId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:01:44.000Z",
+                  "updatedAt": "2026-07-28T01:01:44.000Z",
+                  "uid": "35240-87af5cf0-8b99-4cbe-ad61-de7a7885c9a0"
+                },
+                {
+                  "id": "9e5f102e-71fb-4652-bcae-87a1d1e9705e",
+                  "name": "The requested resource was not found.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/config/:configId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "config",
+                        ":configId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "configId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:01:44.000Z",
+                  "updatedAt": "2026-07-28T01:01:44.000Z",
+                  "uid": "35240-9e5f102e-71fb-4652-bcae-87a1d1e9705e"
+                },
+                {
+                  "id": "117ef658-203e-44ec-aa1a-8f1ff01a6afa",
+                  "name": "An unexpected server error occurred.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/config/:configId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "config",
+                        ":configId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "configId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<string>",
+                  "createdAt": "2026-07-28T01:01:44.000Z",
+                  "updatedAt": "2026-07-28T01:01:44.000Z",
+                  "uid": "35240-117ef658-203e-44ec-aa1a-8f1ff01a6afa"
+                }
+              ],
+              "createdAt": "2026-07-28T01:01:44.000Z",
+              "updatedAt": "2026-07-28T01:01:44.000Z",
+              "uid": "35240-d4df136e-66dd-47df-8b53-9648221f518c"
+            }
+          ],
+          "id": "fceb508d-39c0-464a-952e-41fe001b5929",
+          "createdAt": "2026-07-28T01:01:44.000Z",
+          "updatedAt": "2026-07-28T01:01:44.000Z",
+          "uid": "35240-fceb508d-39c0-464a-952e-41fe001b5929"
+        },
+        {
+          "name": "create",
+          "item": [
+            {
+              "name": "Apache Nutch Create a New Configuration",
+              "id": "62bc8ad4-90d9-4394-9112-ccb1454ded8d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"configId\": \"<string>\",\n  \"force\": false,\n  \"params\": {\n    \"proident_a_\": \"<string>\",\n    \"ute84\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/config/create",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "config",
+                    "create"
+                  ]
+                },
+                "description": "Creates a new Nutch configuration with the specified parameters. Returns the configuration ID on success."
+              },
+              "response": [
+                {
+                  "id": "eb9704be-3893-451c-acc2-dd338c2ca63a",
+                  "name": "Configuration created. Returns the configuration ID.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"configId\": \"<string>\",\n  \"force\": false,\n  \"params\": {\n    \"proident_a_\": \"<string>\",\n    \"ute84\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/config/create",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "config",
+                        "create"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<string>",
+                  "createdAt": "2026-07-28T01:01:44.000Z",
+                  "updatedAt": "2026-07-28T01:01:44.000Z",
+                  "uid": "35240-eb9704be-3893-451c-acc2-dd338c2ca63a"
+                },
+                {
+                  "id": "e835fe3c-9b26-4ed6-8391-880ccd55a4fc",
+                  "name": "Bad request. The request body is missing, malformed, or contains invalid parameters.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"configId\": \"<string>\",\n  \"force\": false,\n  \"params\": {\n    \"proident_a_\": \"<string>\",\n    \"ute84\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/config/create",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "config",
+                        "create"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<string>",
+                  "createdAt": "2026-07-28T01:01:44.000Z",
+                  "updatedAt": "2026-07-28T01:01:44.000Z",
+                  "uid": "35240-e835fe3c-9b26-4ed6-8391-880ccd55a4fc"
+                },
+                {
+                  "id": "b5014b50-5141-4d5e-ad8c-207f04875c06",
+                  "name": "Unauthorized. Basic authentication credentials are missing or invalid.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"configId\": \"<string>\",\n  \"force\": false,\n  \"params\": {\n    \"proident_a_\": \"<string>\",\n    \"ute84\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/config/create",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "config",
+                        "create"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:01:44.000Z",
+                  "updatedAt": "2026-07-28T01:01:44.000Z",
+                  "uid": "35240-b5014b50-5141-4d5e-ad8c-207f04875c06"
+                },
+                {
+                  "id": "1330ee17-8070-4895-a34b-fdf78664dd4c",
+                  "name": "An unexpected server error occurred.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"configId\": \"<string>\",\n  \"force\": false,\n  \"params\": {\n    \"proident_a_\": \"<string>\",\n    \"ute84\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/config/create",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "config",
+                        "create"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<string>",
+                  "createdAt": "2026-07-28T01:01:44.000Z",
+                  "updatedAt": "2026-07-28T01:01:44.000Z",
+                  "uid": "35240-1330ee17-8070-4895-a34b-fdf78664dd4c"
+                }
+              ],
+              "createdAt": "2026-07-28T01:01:44.000Z",
+              "updatedAt": "2026-07-28T01:01:44.000Z",
+              "uid": "35240-62bc8ad4-90d9-4394-9112-ccb1454ded8d"
+            }
+          ],
+          "id": "4f385834-ab3b-457e-874b-6dd9e87f16e0",
+          "createdAt": "2026-07-28T01:01:44.000Z",
+          "updatedAt": "2026-07-28T01:01:44.000Z",
+          "uid": "35240-4f385834-ab3b-457e-874b-6dd9e87f16e0"
+        },
+        {
+          "name": "Apache Nutch List All Configuration IDs",
+          "id": "baacdd32-382f-4e5e-a25f-d7d42fd16172",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/config/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "config",
+                ""
+              ]
+            },
+            "description": "Returns the set of all known configuration identifiers."
+          },
+          "response": [
+            {
+              "id": "69044593-41bc-4efc-8917-0c7d402931d7",
+              "name": "A JSON array of configuration ID strings.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/config/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "config",
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  \"<string>\",\n  \"<string>\"\n]",
+              "createdAt": "2026-07-28T01:01:44.000Z",
+              "updatedAt": "2026-07-28T01:01:44.000Z",
+              "uid": "35240-69044593-41bc-4efc-8917-0c7d402931d7"
+            },
+            {
+              "id": "39faa399-ba4d-4c5f-8c97-49f8aae13831",
+              "name": "Unauthorized. Basic authentication credentials are missing or invalid.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/config/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "config",
+                    ""
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:01:44.000Z",
+              "updatedAt": "2026-07-28T01:01:44.000Z",
+              "uid": "35240-39faa399-ba4d-4c5f-8c97-49f8aae13831"
+            },
+            {
+              "id": "d21618df-a5cc-43e5-9725-4698040d039e",
+              "name": "An unexpected server error occurred.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/config/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "config",
+                    ""
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<string>",
+              "createdAt": "2026-07-28T01:01:44.000Z",
+              "updatedAt": "2026-07-28T01:01:44.000Z",
+              "uid": "35240-d21618df-a5cc-43e5-9725-4698040d039e"
+            }
+          ],
+          "createdAt": "2026-07-28T01:01:44.000Z",
+          "updatedAt": "2026-07-28T01:01:44.000Z",
+          "uid": "35240-baacdd32-382f-4e5e-a25f-d7d42fd16172"
+        }
+      ],
+      "id": "d3713eea-9c52-46ef-bcc4-2eec4fc62204",
+      "createdAt": "2026-07-28T01:01:44.000Z",
+      "updatedAt": "2026-07-28T01:01:44.000Z",
+      "uid": "35240-d3713eea-9c52-46ef-bcc4-2eec4fc62204"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "protocol",
+      "value": "http"
+    },
+    {
+      "key": "port",
+      "value": "8081"
+    },
+    {
+      "key": "baseUrl",
+      "value": "{{protocol}}://localhost:{{port}}"
+    }
+  ]
+}

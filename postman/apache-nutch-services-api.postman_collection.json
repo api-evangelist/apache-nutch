@@ -1,0 +1,475 @@
+{
+  "info": {
+    "_postman_id": "0a5d5a6b-21a1-40e1-99f4-8cb25e1d34df",
+    "name": "Apache Nutch REST Admin Services API",
+    "description": "REST API for managing Apache Nutch crawl jobs, configurations, seed lists, database queries, and data readers.\n\nContact Support:\n Name: Apache Nutch",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:01:48.000Z",
+    "updatedAt": "2026-07-28T01:01:49.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0a5d5a6b-21a1-40e1-99f4-8cb25e1d34df"
+  },
+  "item": [
+    {
+      "name": "services",
+      "item": [
+        {
+          "name": "commoncrawldump",
+          "item": [
+            {
+              "name": "{crawlId}",
+              "item": [
+                {
+                  "name": "Apache Nutch List CommonCrawl Dump Paths",
+                  "id": "a7b7efa0-5970-4f0b-9b35-cfe4e7957992",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/services/commoncrawldump/:crawlId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "services",
+                        "commoncrawldump",
+                        ":crawlId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "82f7bad9-3146-4457-a052-f4a40a0fde84",
+                          "key": "crawlId",
+                          "value": "<string>",
+                          "description": "(Required) The crawl ID whose dump paths to list."
+                        }
+                      ]
+                    },
+                    "description": "Lists the dump file paths for a given crawl ID."
+                  },
+                  "response": [
+                    {
+                      "id": "5c927e19-d1bb-4d93-8d55-37e0d2b89daa",
+                      "name": "Service information containing the list of dump paths.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/services/commoncrawldump/:crawlId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "services",
+                            "commoncrawldump",
+                            ":crawlId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "crawlId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"dumpPaths\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "createdAt": "2026-07-28T01:01:49.000Z",
+                      "updatedAt": "2026-07-28T01:01:49.000Z",
+                      "uid": "35240-5c927e19-d1bb-4d93-8d55-37e0d2b89daa"
+                    },
+                    {
+                      "id": "00c24158-7a25-4a53-8a9b-66bd2546fc57",
+                      "name": "Unauthorized. Basic authentication credentials are missing or invalid.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/services/commoncrawldump/:crawlId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "services",
+                            "commoncrawldump",
+                            ":crawlId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "crawlId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:01:49.000Z",
+                      "updatedAt": "2026-07-28T01:01:49.000Z",
+                      "uid": "35240-00c24158-7a25-4a53-8a9b-66bd2546fc57"
+                    },
+                    {
+                      "id": "74c99370-74b8-4b4d-8309-5fdf054ffa10",
+                      "name": "An unexpected server error occurred.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "text/plain"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/services/commoncrawldump/:crawlId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "services",
+                            "commoncrawldump",
+                            ":crawlId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "crawlId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "text/plain"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<string>",
+                      "createdAt": "2026-07-28T01:01:49.000Z",
+                      "updatedAt": "2026-07-28T01:01:49.000Z",
+                      "uid": "35240-74c99370-74b8-4b4d-8309-5fdf054ffa10"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:01:49.000Z",
+                  "updatedAt": "2026-07-28T01:01:49.000Z",
+                  "uid": "35240-a7b7efa0-5970-4f0b-9b35-cfe4e7957992"
+                }
+              ],
+              "id": "cb3871b6-e5b6-4f02-8b9b-8b7cdb31cde6",
+              "createdAt": "2026-07-28T01:01:49.000Z",
+              "updatedAt": "2026-07-28T01:01:49.000Z",
+              "uid": "35240-cb3871b6-e5b6-4f02-8b9b-8b7cdb31cde6"
+            },
+            {
+              "name": "Apache Nutch Create a CommonCrawl Data Dump",
+              "id": "77199538-3431-40a5-b205-544a0f6378a0",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"crawlId\": \"<string>\",\n  \"confId\": \"<string>\",\n  \"args\": {\n    \"non_93e\": false\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/services/commoncrawldump",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "services",
+                    "commoncrawldump"
+                  ]
+                },
+                "description": "Executes a CommonCrawl data dump job for the specified crawl and returns the output directory path."
+              },
+              "response": [
+                {
+                  "id": "0aa857b2-e1a9-4b6d-9c6e-007c904ba0d6",
+                  "name": "The output directory path for the dump.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"crawlId\": \"<string>\",\n  \"confId\": \"<string>\",\n  \"args\": {\n    \"non_93e\": false\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/services/commoncrawldump",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "services",
+                        "commoncrawldump"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<string>",
+                  "createdAt": "2026-07-28T01:01:49.000Z",
+                  "updatedAt": "2026-07-28T01:01:49.000Z",
+                  "uid": "35240-0aa857b2-e1a9-4b6d-9c6e-007c904ba0d6"
+                },
+                {
+                  "id": "563d1e24-0aa7-43d9-b04e-d1c3faf6852c",
+                  "name": "Unauthorized. Basic authentication credentials are missing or invalid.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"crawlId\": \"<string>\",\n  \"confId\": \"<string>\",\n  \"args\": {\n    \"non_93e\": false\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/services/commoncrawldump",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "services",
+                        "commoncrawldump"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:01:49.000Z",
+                  "updatedAt": "2026-07-28T01:01:49.000Z",
+                  "uid": "35240-563d1e24-0aa7-43d9-b04e-d1c3faf6852c"
+                },
+                {
+                  "id": "465af516-c468-425f-ac01-a582d481a165",
+                  "name": "An unexpected server error occurred.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"crawlId\": \"<string>\",\n  \"confId\": \"<string>\",\n  \"args\": {\n    \"non_93e\": false\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/services/commoncrawldump",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "services",
+                        "commoncrawldump"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<string>",
+                  "createdAt": "2026-07-28T01:01:49.000Z",
+                  "updatedAt": "2026-07-28T01:01:49.000Z",
+                  "uid": "35240-465af516-c468-425f-ac01-a582d481a165"
+                }
+              ],
+              "createdAt": "2026-07-28T01:01:49.000Z",
+              "updatedAt": "2026-07-28T01:01:49.000Z",
+              "uid": "35240-77199538-3431-40a5-b205-544a0f6378a0"
+            }
+          ],
+          "id": "81475b5d-0075-4150-b474-9ff5da802492",
+          "createdAt": "2026-07-28T01:01:49.000Z",
+          "updatedAt": "2026-07-28T01:01:49.000Z",
+          "uid": "35240-81475b5d-0075-4150-b474-9ff5da802492"
+        }
+      ],
+      "id": "6398f097-e093-4326-9c1f-246d845bb052",
+      "createdAt": "2026-07-28T01:01:49.000Z",
+      "updatedAt": "2026-07-28T01:01:49.000Z",
+      "uid": "35240-6398f097-e093-4326-9c1f-246d845bb052"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "protocol",
+      "value": "http"
+    },
+    {
+      "key": "port",
+      "value": "8081"
+    },
+    {
+      "key": "baseUrl",
+      "value": "{{protocol}}://localhost:{{port}}"
+    }
+  ]
+}
