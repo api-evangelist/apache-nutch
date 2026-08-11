@@ -65,20 +65,6 @@ apis:
   - type: JSONSchema
     url: >-
       https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-db-query-schema.json
-  - type: X-NaftikoCapability
-    url: capabilities/apache-nutch-admin.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/apache-nutch-configuration.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/apache-nutch-database.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/apache-nutch-job.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/apache-nutch-reader.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/apache-nutch-seed.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/apache-nutch-services.yaml
 - aid: apache-nutch:apache-nutch-configuration-api
   name: Apache Nutch Configuration API
   description: Manage Nutch configurations
@@ -109,20 +95,6 @@ apis:
   - type: JSONSchema
     url: >-
       https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-db-query-schema.json
-  - type: X-NaftikoCapability
-    url: capabilities/apache-nutch-admin.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/apache-nutch-configuration.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/apache-nutch-database.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/apache-nutch-job.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/apache-nutch-reader.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/apache-nutch-seed.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/apache-nutch-services.yaml
 - aid: apache-nutch:apache-nutch-database-api
   name: Apache Nutch Database API
   description: Query the CrawlDB and FetchDB
@@ -153,20 +125,6 @@ apis:
   - type: JSONSchema
     url: >-
       https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-db-query-schema.json
-  - type: X-NaftikoCapability
-    url: capabilities/apache-nutch-admin.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/apache-nutch-configuration.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/apache-nutch-database.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/apache-nutch-job.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/apache-nutch-reader.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/apache-nutch-seed.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/apache-nutch-services.yaml
 - aid: apache-nutch:apache-nutch-job-api
   name: Apache Nutch Job API
   description: Manage crawl jobs
@@ -197,20 +155,6 @@ apis:
   - type: JSONSchema
     url: >-
       https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-db-query-schema.json
-  - type: X-NaftikoCapability
-    url: capabilities/apache-nutch-admin.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/apache-nutch-configuration.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/apache-nutch-database.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/apache-nutch-job.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/apache-nutch-reader.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/apache-nutch-seed.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/apache-nutch-services.yaml
 - aid: apache-nutch:apache-nutch-reader-api
   name: Apache Nutch Reader API
   description: Read sequence files and webgraph data
@@ -241,20 +185,6 @@ apis:
   - type: JSONSchema
     url: >-
       https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-db-query-schema.json
-  - type: X-NaftikoCapability
-    url: capabilities/apache-nutch-admin.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/apache-nutch-configuration.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/apache-nutch-database.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/apache-nutch-job.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/apache-nutch-reader.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/apache-nutch-seed.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/apache-nutch-services.yaml
 - aid: apache-nutch:apache-nutch-seed-api
   name: Apache Nutch Seed API
   description: Manage seed URL lists
@@ -285,20 +215,6 @@ apis:
   - type: JSONSchema
     url: >-
       https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-db-query-schema.json
-  - type: X-NaftikoCapability
-    url: capabilities/apache-nutch-admin.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/apache-nutch-configuration.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/apache-nutch-database.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/apache-nutch-job.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/apache-nutch-reader.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/apache-nutch-seed.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/apache-nutch-services.yaml
 - aid: apache-nutch:apache-nutch-services-api
   name: Apache Nutch Services API
   description: Auxiliary service operations such as CommonCrawl data dumps
@@ -329,21 +245,14 @@ apis:
   - type: JSONSchema
     url: >-
       https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-db-query-schema.json
-  - type: X-NaftikoCapability
-    url: capabilities/apache-nutch-admin.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/apache-nutch-configuration.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/apache-nutch-database.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/apache-nutch-job.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/apache-nutch-reader.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/apache-nutch-seed.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/apache-nutch-services.yaml
 common:
+- type: SecurityPolicy
+  url: https://github.com/apache/nutch/blob/master/SECURITY.md
+- type: CodeOfConduct
+  url: https://github.com/apache/.github/blob/main/.github/CODE_OF_CONDUCT.md
+- type: License
+  name: Apache-2.0
+  url: https://github.com/apache/nutch/blob/master/LICENSE
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/apache-nutch/overview
 - type: AgenticAccess
