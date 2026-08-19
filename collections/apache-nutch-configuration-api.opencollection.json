@@ -1,0 +1,139 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apache Nutch REST Admin Configuration API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Configuration",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Apache Nutch List All Configuration IDs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{protocol}://localhost:{port}/config/"
+          },
+          "docs": "Returns the set of all known configuration identifiers."
+        },
+        {
+          "info": {
+            "name": "Apache Nutch Get Configuration Properties",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{protocol}://localhost:{port}/config/:configId",
+            "params": [
+              {
+                "name": "configId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the configuration."
+              }
+            ]
+          },
+          "docs": "Returns all key-value properties for the specified configuration."
+        },
+        {
+          "info": {
+            "name": "Apache Nutch Delete a Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{protocol}://localhost:{port}/config/:configId",
+            "params": [
+              {
+                "name": "configId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the configuration."
+              }
+            ]
+          },
+          "docs": "Removes the specified configuration from the list of known configurations."
+        },
+        {
+          "info": {
+            "name": "Apache Nutch Get a Single Configuration Property",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{protocol}://localhost:{port}/config/:configId/:propertyId",
+            "params": [
+              {
+                "name": "configId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the configuration."
+              },
+              {
+                "name": "propertyId",
+                "value": "",
+                "type": "path",
+                "description": "The name (key) of the configuration property."
+              }
+            ]
+          },
+          "docs": "Returns the value of a specific property within the given configuration."
+        },
+        {
+          "info": {
+            "name": "Apache Nutch Update a Configuration Property",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{protocol}://localhost:{port}/config/:configId/:propertyId",
+            "params": [
+              {
+                "name": "configId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the configuration."
+              },
+              {
+                "name": "propertyId",
+                "value": "",
+                "type": "path",
+                "description": "The name (key) of the configuration property."
+              }
+            ]
+          },
+          "docs": "Adds or updates the value of a property in the specified configuration."
+        },
+        {
+          "info": {
+            "name": "Apache Nutch Create a New Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{protocol}://localhost:{port}/config/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new Nutch configuration with the specified parameters. Returns the configuration ID on success."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

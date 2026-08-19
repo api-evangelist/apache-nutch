@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apache Nutch REST Admin Seed API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Seed",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Apache Nutch List All Seed Lists",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{protocol}://localhost:{port}/seed/"
+          },
+          "docs": "Returns a map of all created seed files keyed by name."
+        },
+        {
+          "info": {
+            "name": "Apache Nutch Create a Seed List File",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{protocol}://localhost:{port}/seed/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a seed list file from the provided URLs and writes it to HDFS. Returns the path to the created seed file directory."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apache Nutch REST Admin API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Admin",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Apache Nutch Get Server Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{protocol}://localhost:{port}/admin/"
+          },
+          "docs": "Returns the current status of the Nutch server including start date, known configurations, all jobs, and currently running jobs."
+        },
+        {
+          "info": {
+            "name": "Apache Nutch Stop the Nutch Server",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{protocol}://localhost:{port}/admin/stop",
+            "params": [
+              {
+                "name": "force",
+                "value": "",
+                "type": "query",
+                "description": "If true, kills any running jobs before stopping the server."
+              }
+            ]
+          },
+          "docs": "Initiates a graceful shutdown of the Nutch server. If jobs are still running and force is not set, the server will refuse to stop."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

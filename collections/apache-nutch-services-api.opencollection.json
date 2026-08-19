@@ -1,0 +1,59 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apache Nutch REST Admin Services API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Services",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Apache Nutch List CommonCrawl Dump Paths",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{protocol}://localhost:{port}/services/commoncrawldump/:crawlId",
+            "params": [
+              {
+                "name": "crawlId",
+                "value": "",
+                "type": "path",
+                "description": "The crawl ID whose dump paths to list."
+              }
+            ]
+          },
+          "docs": "Lists the dump file paths for a given crawl ID."
+        },
+        {
+          "info": {
+            "name": "Apache Nutch Create a CommonCrawl Data Dump",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{protocol}://localhost:{port}/services/commoncrawldump",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Executes a CommonCrawl data dump job for the specified crawl and returns the output directory path."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

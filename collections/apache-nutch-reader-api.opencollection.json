@@ -1,0 +1,170 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apache Nutch REST Admin Reader API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reader",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Apache Nutch Read a Sequence File",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{protocol}://localhost:{port}/reader/sequence/read",
+            "params": [
+              {
+                "name": "nrows",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to read. If not specified (or -1), all rows are returned."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Starting line number for a range read."
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query",
+                "description": "Ending line number for a range read."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "If true, returns the number of lines instead of the data itself. When set, the response content type is text/plain."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Reads key-value pairs from a Hadoop sequence file. Supports reading all rows, a limited number of rows, a row range, or counting the total number of rows."
+        },
+        {
+          "info": {
+            "name": "Apache Nutch Get Link Reader Schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{protocol}://localhost:{port}/reader/link"
+          },
+          "docs": "Returns the schema describing the fields in link reader responses."
+        },
+        {
+          "info": {
+            "name": "Apache Nutch Read Link Objects",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{protocol}://localhost:{port}/reader/link/read",
+            "params": [
+              {
+                "name": "nrows",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to read. If not specified (or -1), all rows are returned."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Starting line number for a range read."
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query",
+                "description": "Ending line number for a range read."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "If true, returns the number of lines instead of the data itself. When set, the response content type is text/plain."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Reads link data (LinkDatum) from the Nutch webgraph. Supports reading all rows, a limited number of rows, a row range, or counting the total number of rows."
+        },
+        {
+          "info": {
+            "name": "Apache Nutch Get Node Reader Schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{protocol}://localhost:{port}/reader/node"
+          },
+          "docs": "Returns the schema describing the fields in node reader responses."
+        },
+        {
+          "info": {
+            "name": "Apache Nutch Read Node Objects",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{protocol}://localhost:{port}/reader/node/read",
+            "params": [
+              {
+                "name": "nrows",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to read. If not specified (or -1), all rows are returned."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Starting line number for a range read."
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query",
+                "description": "Ending line number for a range read."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "If true, returns the number of lines instead of the data itself. When set, the response content type is text/plain."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Reads Node objects from the Nutch webgraph. Supports reading all rows, a limited number of rows, a row range, or counting the total number of rows."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,134 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apache Nutch REST Admin Job API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Job",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Apache Nutch List All Jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{protocol}://localhost:{port}/job/",
+            "params": [
+              {
+                "name": "crawlId",
+                "value": "",
+                "type": "query",
+                "description": "Optional crawl ID to filter jobs by."
+              }
+            ]
+          },
+          "docs": "Returns job history for all jobs or filtered by crawl ID, regardless of job state."
+        },
+        {
+          "info": {
+            "name": "Apache Nutch Get Job Info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{protocol}://localhost:{port}/job/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the job."
+              },
+              {
+                "name": "crawlId",
+                "value": "",
+                "type": "query",
+                "description": "The crawl ID associated with the job."
+              }
+            ]
+          },
+          "docs": "Returns detailed information for a specific job."
+        },
+        {
+          "info": {
+            "name": "Apache Nutch Stop a Running Job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{protocol}://localhost:{port}/job/:id/stop",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the job."
+              },
+              {
+                "name": "crawlId",
+                "value": "",
+                "type": "query",
+                "description": "The crawl ID associated with the job."
+              }
+            ]
+          },
+          "docs": "Attempts to gracefully stop a running job."
+        },
+        {
+          "info": {
+            "name": "Apache Nutch Abort a Job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{protocol}://localhost:{port}/job/:id/abort",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the job."
+              },
+              {
+                "name": "crawlId",
+                "value": "",
+                "type": "query",
+                "description": "The crawl ID associated with the job."
+              }
+            ]
+          },
+          "docs": "Forcefully aborts a job. Unlike stop, this kills the job immediately."
+        },
+        {
+          "info": {
+            "name": "Apache Nutch Create a New Job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{protocol}://localhost:{port}/job/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates and enqueues a new Nutch job (e.g., inject, generate, fetch, parse, updatedb, index)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,65 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apache Nutch REST Admin Database API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Database",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Apache Nutch Query the CrawlDB",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{protocol}://localhost:{port}/db/crawldb",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Executes a query against the Nutch CrawlDB. The type field in the request body determines the operation: stats, dump, topN, or url. The stats and url types return JSON; dump and topN return binary octet-stream data."
+        },
+        {
+          "info": {
+            "name": "Apache Nutch Get FetchDB Node Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{protocol}://localhost:{port}/db/fetchdb",
+            "params": [
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Starting index (inclusive). Defaults to 0."
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "Ending index (inclusive). Defaults to 0 (returns all)."
+              }
+            ]
+          },
+          "docs": "Returns fetch node database entries for the specified index range. Both from and to default to 0; if to is 0 or exceeds the total number of entries, all entries from the starting index are returned."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
