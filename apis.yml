@@ -1,10 +1,11 @@
 aid: apache-nutch
 name: Apache Nutch
-description: Apache Nutch is a highly extensible and scalable open-source web crawler software project built on Apache Hadoop
-  data structures for batch processing. It provides a pluggable architecture supporting custom parse filters, scoring filters,
-  index writers, and protocol implementations. Nutch integrates with Apache Solr and Elasticsearch for full-text search and
-  exposes a REST API for managing crawl jobs, configurations, seed lists, and database queries. Governed by the Apache Software
-  Foundation under the Apache License 2.0.
+description: Apache Nutch is a highly extensible and scalable open-source web crawler software project
+  built on Apache Hadoop data structures for batch processing. It provides a pluggable architecture supporting
+  custom parse filters, scoring filters, index writers, and protocol implementations. Nutch integrates
+  with Apache Solr and Elasticsearch for full-text search and exposes a REST API for managing crawl jobs,
+  configurations, seed lists, and database queries. Governed by the Apache Software Foundation under the
+  Apache License 2.0.
 type: Index
 deliveryModel:
   model: open-core
@@ -55,7 +56,7 @@ tags_raw:
 - Hadoop
 - Open Source
 created: '2026-03-16'
-modified: '2026-05-19'
+modified: '2026-09-16'
 url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/apis.yml
 specificationVersion: '0.23'
 apis:
@@ -72,23 +73,17 @@ apis:
   - type: Documentation
     url: https://cwiki.apache.org/confluence/display/NUTCH/Nutch+1.X+REST+API
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-nutch-config-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-nutch-config-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-job-config-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-job-config-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-job-info-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-job-info-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-nutch-server-info-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-nutch-server-info-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-seed-list-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-seed-list-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-db-query-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-db-query-schema.json
 - aid: apache-nutch:apache-nutch-configuration-api
   name: Apache Nutch Configuration API
   description: Manage Nutch configurations
@@ -102,23 +97,17 @@ apis:
   - type: Documentation
     url: https://cwiki.apache.org/confluence/display/NUTCH/Nutch+1.X+REST+API
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-nutch-config-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-nutch-config-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-job-config-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-job-config-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-job-info-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-job-info-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-nutch-server-info-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-nutch-server-info-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-seed-list-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-seed-list-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-db-query-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-db-query-schema.json
 - aid: apache-nutch:apache-nutch-database-api
   name: Apache Nutch Database API
   description: Query the CrawlDB and FetchDB
@@ -132,23 +121,17 @@ apis:
   - type: Documentation
     url: https://cwiki.apache.org/confluence/display/NUTCH/Nutch+1.X+REST+API
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-nutch-config-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-nutch-config-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-job-config-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-job-config-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-job-info-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-job-info-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-nutch-server-info-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-nutch-server-info-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-seed-list-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-seed-list-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-db-query-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-db-query-schema.json
 - aid: apache-nutch:apache-nutch-job-api
   name: Apache Nutch Job API
   description: Manage crawl jobs
@@ -162,23 +145,17 @@ apis:
   - type: Documentation
     url: https://cwiki.apache.org/confluence/display/NUTCH/Nutch+1.X+REST+API
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-nutch-config-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-nutch-config-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-job-config-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-job-config-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-job-info-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-job-info-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-nutch-server-info-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-nutch-server-info-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-seed-list-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-seed-list-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-db-query-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-db-query-schema.json
 - aid: apache-nutch:apache-nutch-reader-api
   name: Apache Nutch Reader API
   description: Read sequence files and webgraph data
@@ -192,23 +169,17 @@ apis:
   - type: Documentation
     url: https://cwiki.apache.org/confluence/display/NUTCH/Nutch+1.X+REST+API
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-nutch-config-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-nutch-config-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-job-config-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-job-config-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-job-info-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-job-info-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-nutch-server-info-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-nutch-server-info-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-seed-list-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-seed-list-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-db-query-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-db-query-schema.json
 - aid: apache-nutch:apache-nutch-seed-api
   name: Apache Nutch Seed API
   description: Manage seed URL lists
@@ -222,23 +193,17 @@ apis:
   - type: Documentation
     url: https://cwiki.apache.org/confluence/display/NUTCH/Nutch+1.X+REST+API
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-nutch-config-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-nutch-config-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-job-config-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-job-config-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-job-info-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-job-info-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-nutch-server-info-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-nutch-server-info-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-seed-list-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-seed-list-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-db-query-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-db-query-schema.json
 - aid: apache-nutch:apache-nutch-services-api
   name: Apache Nutch Services API
   description: Auxiliary service operations such as CommonCrawl data dumps
@@ -252,24 +217,20 @@ apis:
   - type: Documentation
     url: https://cwiki.apache.org/confluence/display/NUTCH/Nutch+1.X+REST+API
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-nutch-config-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-nutch-config-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-job-config-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-job-config-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-job-info-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-job-info-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-nutch-server-info-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-nutch-server-info-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-seed-list-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-seed-list-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-db-query-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/json-schema/apache-nutch-db-query-schema.json
 common:
+- type: Website
+  url: https://apache.org
 - type: SecurityPolicy
   url: https://github.com/apache/nutch/blob/master/SECURITY.md
 - type: CodeOfConduct
@@ -329,20 +290,22 @@ common:
 - type: Features
   data:
   - name: Scalable Batch Crawling
-    description: Leverages Apache Hadoop data structures for distributed, large-scale web crawling batch processing.
+    description: Leverages Apache Hadoop data structures for distributed, large-scale web crawling batch
+      processing.
   - name: Pluggable Architecture
-    description: Extensible plugin system supporting custom parse filters, scoring filters, index writers, protocol plugins,
-      and URL filters.
+    description: Extensible plugin system supporting custom parse filters, scoring filters, index writers,
+      protocol plugins, and URL filters.
   - name: REST API for Crawl Management
-    description: Full REST API for managing crawl jobs, configurations, seed lists, CrawlDB/FetchDB queries, and sequence
-      file readers.
+    description: Full REST API for managing crawl jobs, configurations, seed lists, CrawlDB/FetchDB queries,
+      and sequence file readers.
   - name: Full-Text Search Integration
-    description: Built-in index writers for Apache Solr and Elasticsearch to enable full-text search over crawled content.
+    description: Built-in index writers for Apache Solr and Elasticsearch to enable full-text search over
+      crawled content.
   - name: Apache Tika Parsing
     description: Uses Apache Tika for parsing a wide variety of document formats during the crawl pipeline.
   - name: Duplicate Detection
-    description: Built-in deduplication support to identify and remove duplicate content from the crawl database and search
-      index.
+    description: Built-in deduplication support to identify and remove duplicate content from the crawl
+      database and search index.
   - name: Configurable URL Filtering
     description: Regex-based and custom URL filter plugins to control crawl scope and exclusions.
   - name: Incremental Crawling
@@ -354,28 +317,34 @@ common:
 - type: UseCases
   data:
   - name: Enterprise Search
-    description: Build enterprise search engines over internal or external web content using Nutch as the crawler and Solr/Elasticsearch
-      as the search backend.
+    description: Build enterprise search engines over internal or external web content using Nutch as
+      the crawler and Solr/Elasticsearch as the search backend.
   - name: Research Data Collection
-    description: Academic and research teams use Nutch for large-scale systematic web data collection and indexing.
+    description: Academic and research teams use Nutch for large-scale systematic web data collection
+      and indexing.
   - name: Intranet Document Search
-    description: Crawl and index intranet sites, wikis, and document repositories for internal enterprise search.
+    description: Crawl and index intranet sites, wikis, and document repositories for internal enterprise
+      search.
   - name: Web Archive Creation
-    description: Create structured web archives compatible with CommonCrawl format for long-term data preservation.
+    description: Create structured web archives compatible with CommonCrawl format for long-term data
+      preservation.
   - name: SEO and Content Monitoring
     description: Monitor web content changes, track competitor sites, and analyze web structure at scale.
   - name: Custom Data Extraction Pipelines
-    description: Build custom extraction pipelines using Nutch plugin architecture for targeted data acquisition tasks.
+    description: Build custom extraction pipelines using Nutch plugin architecture for targeted data acquisition
+      tasks.
 - type: Integrations
   data:
   - name: Apache Solr
-    description: Native index writer plugin for indexing crawled content into Apache Solr for full-text search.
+    description: Native index writer plugin for indexing crawled content into Apache Solr for full-text
+      search.
   - name: Elasticsearch
     description: Index writer plugin for sending crawled content to Elasticsearch clusters.
   - name: Apache Hadoop
     description: Core dependency providing distributed storage and processing via HDFS and MapReduce.
   - name: Apache Tika
-    description: Used for content detection and extraction from a wide range of document formats during parsing.
+    description: Used for content detection and extraction from a wide range of document formats during
+      parsing.
   - name: SolrCloud
     description: Support for SolrCloud distributed search clusters for scalable indexing.
 - url: https://nutch.apache.org/index.xml
