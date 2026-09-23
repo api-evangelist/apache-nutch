@@ -1,6 +1,6 @@
-openapi: 3.1.2
+openapi: 3.2.0
 info:
-  title: Apache Nutch REST Admin Reader API
+  title: Apache Nutch REST Reader API
   description: REST API for managing Apache Nutch crawl jobs, configurations, seed lists, database queries, and data readers.
   version: 1.0.0
   license:
@@ -203,6 +203,47 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    start:
+      name: start
+      in: query
+      required: false
+      description: Starting line number for a range read.
+      schema:
+        type: integer
+        format: int32
+        minimum: -1
+        maximum: 2147483647
+        default: -1
+    end:
+      name: end
+      in: query
+      required: false
+      description: Ending line number for a range read.
+      schema:
+        type: integer
+        format: int32
+        minimum: 0
+        maximum: 2147483647
+    count:
+      name: count
+      in: query
+      required: false
+      description: If true, returns the number of lines instead of the data itself. When set, the response content type is text/plain.
+      schema:
+        type: boolean
+        default: false
+    nrows:
+      name: nrows
+      in: query
+      required: false
+      description: Number of rows to read. If not specified (or -1), all rows are returned.
+      schema:
+        type: integer
+        format: int32
+        minimum: -1
+        maximum: 2147483647
+        default: -1
   responses:
     Unauthorized:
       description: Unauthorized. Basic authentication credentials are missing or invalid.
@@ -229,70 +270,18 @@ components:
           schema:
             type: string
           example: Internal server error.
-  parameters:
-    start:
-      name: start
-      in: query
-      required: false
-      description: Starting line number for a range read.
-      schema:
-        type: integer
-        format: int32
-        minimum: -1
-        maximum: 2147483647
-        default: -1
-    nrows:
-      name: nrows
-      in: query
-      required: false
-      description: Number of rows to read. If not specified (or -1), all rows are returned.
-      schema:
-        type: integer
-        format: int32
-        minimum: -1
-        maximum: 2147483647
-        default: -1
-    count:
-      name: count
-      in: query
-      required: false
-      description: If true, returns the number of lines instead of the data itself. When set, the response content type is text/plain.
-      schema:
-        type: boolean
-        default: false
-    end:
-      name: end
-      in: query
-      required: false
-      description: Ending line number for a range read.
-      schema:
-        type: integer
-        format: int32
-        minimum: 0
-        maximum: 2147483647
   schemas:
-    LinkSchema:
+    ReaderConfig:
       type: object
-      description: Schema describing the fields in a link reader response.
+      description: Configuration specifying a file path for reader operations.
+      required:
+      - path
       properties:
-        key_url:
+        path:
           type: string
-          example: string
-        timestamp:
-          type: string
-          example: int
-        score:
-          type: string
-          example: float
-        anchor:
-          type: string
-          example: string
-        linktype:
-          type: string
-          example: string
-        url:
-          type: string
-          example: string
+          description: The path to the sequence file, link data, or node data to read.
+      example:
+        path: crawl-01/crawldb/current/part-00000/data
     NodeSchema:
       type: object
       description: Schema describing the fields in a node reader response.
@@ -315,17 +304,28 @@ components:
         metadata:
           type: string
           example: string
-    ReaderConfig:
+    LinkSchema:
       type: object
-      description: Configuration specifying a file path for reader operations.
-      required:
-      - path
+      description: Schema describing the fields in a link reader response.
       properties:
-        path:
+        key_url:
           type: string
-          description: The path to the sequence file, link data, or node data to read.
-      example:
-        path: crawl-01/crawldb/current/part-00000/data
+          example: string
+        timestamp:
+          type: string
+          example: int
+        score:
+          type: string
+          example: float
+        anchor:
+          type: string
+          example: string
+        linktype:
+          type: string
+          example: string
+        url:
+          type: string
+          example: string
   securitySchemes:
     basicAuth:
       type: http

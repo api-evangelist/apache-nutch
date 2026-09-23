@@ -1,6 +1,6 @@
-openapi: 3.1.2
+openapi: 3.2.0
 info:
-  title: Apache Nutch REST Admin Job API
+  title: Apache Nutch REST Job API
   description: REST API for managing Apache Nutch crawl jobs, configurations, seed lists, database queries, and data readers.
   version: 1.0.0
   license:
@@ -184,19 +184,42 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    jobId:
+      name: id
+      in: path
+      required: true
+      description: The unique identifier for the job.
+      schema:
+        type: string
   schemas:
-    State:
-      type: string
-      description: The current state of a job.
-      enum:
-      - IDLE
-      - RUNNING
-      - FINISHED
-      - FAILED
-      - KILLED
-      - STOPPING
-      - KILLING
-      - ANY
+    JobConfig:
+      type: object
+      description: Configuration for creating a new crawl job.
+      required:
+      - type
+      properties:
+        crawlId:
+          type: string
+          description: The crawl identifier.
+        type:
+          $ref: '#/components/schemas/JobType'
+        confId:
+          type: string
+          description: The configuration ID to use for this job. Defaults to "default" if not specified.
+        jobClassName:
+          type: string
+          description: Fully qualified class name when type is CLASS.
+        args:
+          type: object
+          additionalProperties: true
+          description: Additional arguments for the job.
+      example:
+        crawlId: crawl-01
+        type: INJECT
+        confId: default
+        args:
+          seedDir: seedFiles/seed-1700000000000
     JobInfo:
       type: object
       description: Information about a crawl job.
@@ -228,6 +251,18 @@ components:
         crawlId:
           type: string
           description: The crawl identifier associated with this job.
+    State:
+      type: string
+      description: The current state of a job.
+      enum:
+      - IDLE
+      - RUNNING
+      - FINISHED
+      - FAILED
+      - KILLED
+      - STOPPING
+      - KILLING
+      - ANY
     JobType:
       type: string
       description: The type of Nutch crawl job.
@@ -242,33 +277,6 @@ components:
       - CLASS
       - INVERTLINKS
       - DEDUP
-    JobConfig:
-      type: object
-      description: Configuration for creating a new crawl job.
-      required:
-      - type
-      properties:
-        crawlId:
-          type: string
-          description: The crawl identifier.
-        type:
-          $ref: '#/components/schemas/JobType'
-        confId:
-          type: string
-          description: The configuration ID to use for this job. Defaults to "default" if not specified.
-        jobClassName:
-          type: string
-          description: Fully qualified class name when type is CLASS.
-        args:
-          type: object
-          additionalProperties: true
-          description: Additional arguments for the job.
-      example:
-        crawlId: crawl-01
-        type: INJECT
-        confId: default
-        args:
-          seedDir: seedFiles/seed-1700000000000
   responses:
     Unauthorized:
       description: Unauthorized. Basic authentication credentials are missing or invalid.
@@ -288,6 +296,13 @@ components:
           schema:
             type: string
           example: Nutch configuration cannot be empty!
+    InternalServerError:
+      description: An unexpected server error occurred.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: Internal server error.
     NotFound:
       description: The requested resource was not found.
       content:
@@ -299,21 +314,6 @@ components:
                 type: string
             example:
               message: Resource not found.
-    InternalServerError:
-      description: An unexpected server error occurred.
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: Internal server error.
-  parameters:
-    jobId:
-      name: id
-      in: path
-      required: true
-      description: The unique identifier for the job.
-      schema:
-        type: string
   securitySchemes:
     basicAuth:
       type: http

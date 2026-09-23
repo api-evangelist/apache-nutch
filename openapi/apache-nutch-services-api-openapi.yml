@@ -1,6 +1,6 @@
-openapi: 3.1.2
+openapi: 3.2.0
 info:
-  title: Apache Nutch REST Admin Services API
+  title: Apache Nutch REST Services API
   description: REST API for managing Apache Nutch crawl jobs, configurations, seed lists, database queries, and data readers.
   version: 1.0.0
   license:
@@ -86,37 +86,7 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  responses:
-    InternalServerError:
-      description: An unexpected server error occurred.
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: Internal server error.
-    Unauthorized:
-      description: Unauthorized. Basic authentication credentials are missing or invalid.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              message:
-                type: string
-            example:
-              message: Authentication required.
   schemas:
-    ServiceInfo:
-      type: object
-      description: Information returned by service operations.
-      required:
-      - dumpPaths
-      properties:
-        dumpPaths:
-          type: array
-          items:
-            type: string
-          description: List of file paths for the dump output.
     ServiceConfig:
       type: object
       description: Configuration for service operations such as CommonCrawl data dumps.
@@ -137,6 +107,36 @@ components:
         crawlId: crawl-01
         confId: default
         args: {}
+    ServiceInfo:
+      type: object
+      description: Information returned by service operations.
+      required:
+      - dumpPaths
+      properties:
+        dumpPaths:
+          type: array
+          items:
+            type: string
+          description: List of file paths for the dump output.
+  responses:
+    InternalServerError:
+      description: An unexpected server error occurred.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: Internal server error.
+    Unauthorized:
+      description: Unauthorized. Basic authentication credentials are missing or invalid.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+            example:
+              message: Authentication required.
   securitySchemes:
     basicAuth:
       type: http

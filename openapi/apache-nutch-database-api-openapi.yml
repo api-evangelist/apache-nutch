@@ -1,6 +1,6 @@
-openapi: 3.1.2
+openapi: 3.2.0
 info:
-  title: Apache Nutch REST Admin Database API
+  title: Apache Nutch REST Database API
   description: REST API for managing Apache Nutch crawl jobs, configurations, seed lists, database queries, and data readers.
   version: 1.0.0
   license:
@@ -109,17 +109,33 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  responses:
+    Unauthorized:
+      description: Unauthorized. Basic authentication credentials are missing or invalid.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+            example:
+              message: Authentication required.
+    BadRequest:
+      description: Bad request. The request body is missing, malformed, or contains invalid parameters.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: Nutch configuration cannot be empty!
+    InternalServerError:
+      description: An unexpected server error occurred.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: Internal server error.
   schemas:
-    ChildNode:
-      type: object
-      description: A child (outlink) of a fetched node.
-      properties:
-        childUrl:
-          type: string
-          description: The URL of the child node.
-        anchorText:
-          type: string
-          description: The anchor text of the link.
     FetchNodeDbInfo:
       type: object
       description: Information about a fetched node in the FetchDB.
@@ -177,32 +193,16 @@ components:
         type: stats
         crawlId: crawl-01
         args: {}
-  responses:
-    Unauthorized:
-      description: Unauthorized. Basic authentication credentials are missing or invalid.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              message:
-                type: string
-            example:
-              message: Authentication required.
-    BadRequest:
-      description: Bad request. The request body is missing, malformed, or contains invalid parameters.
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: Nutch configuration cannot be empty!
-    InternalServerError:
-      description: An unexpected server error occurred.
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: Internal server error.
+    ChildNode:
+      type: object
+      description: A child (outlink) of a fetched node.
+      properties:
+        childUrl:
+          type: string
+          description: The URL of the child node.
+        anchorText:
+          type: string
+          description: The anchor text of the link.
   securitySchemes:
     basicAuth:
       type: http

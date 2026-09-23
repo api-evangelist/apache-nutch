@@ -1,4 +1,4 @@
-openapi: 3.1.2
+openapi: 3.2.0
 info:
   title: Apache Nutch REST Admin API
   description: REST API for managing Apache Nutch crawl jobs, configurations, seed lists, database queries, and data readers.
@@ -84,7 +84,57 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  responses:
+    Unauthorized:
+      description: Unauthorized. Basic authentication credentials are missing or invalid.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+            example:
+              message: Authentication required.
+    InternalServerError:
+      description: An unexpected server error occurred.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: Internal server error.
   schemas:
+    JobInfo:
+      type: object
+      description: Information about a crawl job.
+      required:
+      - type
+      - state
+      properties:
+        id:
+          type: string
+          description: The unique job identifier.
+        type:
+          $ref: '#/components/schemas/JobType'
+        confId:
+          type: string
+          description: The configuration ID used for this job.
+        args:
+          type: object
+          additionalProperties: true
+          description: Arguments passed to the job.
+        result:
+          type: object
+          additionalProperties: true
+          description: Result data returned after job completion.
+        state:
+          $ref: '#/components/schemas/State'
+        msg:
+          type: string
+          description: A human-readable status or error message.
+        crawlId:
+          type: string
+          description: The crawl identifier associated with this job.
     State:
       type: string
       description: The current state of a job.
@@ -125,37 +175,6 @@ components:
           items:
             $ref: '#/components/schemas/JobInfo'
           description: Currently running jobs.
-    JobInfo:
-      type: object
-      description: Information about a crawl job.
-      required:
-      - type
-      - state
-      properties:
-        id:
-          type: string
-          description: The unique job identifier.
-        type:
-          $ref: '#/components/schemas/JobType'
-        confId:
-          type: string
-          description: The configuration ID used for this job.
-        args:
-          type: object
-          additionalProperties: true
-          description: Arguments passed to the job.
-        result:
-          type: object
-          additionalProperties: true
-          description: Result data returned after job completion.
-        state:
-          $ref: '#/components/schemas/State'
-        msg:
-          type: string
-          description: A human-readable status or error message.
-        crawlId:
-          type: string
-          description: The crawl identifier associated with this job.
     JobType:
       type: string
       description: The type of Nutch crawl job.
@@ -170,25 +189,6 @@ components:
       - CLASS
       - INVERTLINKS
       - DEDUP
-  responses:
-    Unauthorized:
-      description: Unauthorized. Basic authentication credentials are missing or invalid.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              message:
-                type: string
-            example:
-              message: Authentication required.
-    InternalServerError:
-      description: An unexpected server error occurred.
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: Internal server error.
   securitySchemes:
     basicAuth:
       type: http
