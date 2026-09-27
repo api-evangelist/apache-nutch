@@ -86,6 +86,25 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  responses:
+    InternalServerError:
+      description: An unexpected server error occurred.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: Internal server error.
+    Unauthorized:
+      description: Unauthorized. Basic authentication credentials are missing or invalid.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+            example:
+              message: Authentication required.
   schemas:
     ServiceConfig:
       type: object
@@ -118,25 +137,6 @@ components:
           items:
             type: string
           description: List of file paths for the dump output.
-  responses:
-    InternalServerError:
-      description: An unexpected server error occurred.
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: Internal server error.
-    Unauthorized:
-      description: Unauthorized. Basic authentication credentials are missing or invalid.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              message:
-                type: string
-            example:
-              message: Authentication required.
   securitySchemes:
     basicAuth:
       type: http

@@ -135,18 +135,20 @@ components:
         crawlId:
           type: string
           description: The crawl identifier associated with this job.
-    State:
+    JobType:
       type: string
-      description: The current state of a job.
+      description: The type of Nutch crawl job.
       enum:
-      - IDLE
-      - RUNNING
-      - FINISHED
-      - FAILED
-      - KILLED
-      - STOPPING
-      - KILLING
-      - ANY
+      - INJECT
+      - GENERATE
+      - FETCH
+      - PARSE
+      - UPDATEDB
+      - INDEX
+      - READDB
+      - CLASS
+      - INVERTLINKS
+      - DEDUP
     NutchServerInfo:
       type: object
       description: Status information about the running Nutch server.
@@ -175,20 +177,18 @@ components:
           items:
             $ref: '#/components/schemas/JobInfo'
           description: Currently running jobs.
-    JobType:
+    State:
       type: string
-      description: The type of Nutch crawl job.
+      description: The current state of a job.
       enum:
-      - INJECT
-      - GENERATE
-      - FETCH
-      - PARSE
-      - UPDATEDB
-      - INDEX
-      - READDB
-      - CLASS
-      - INVERTLINKS
-      - DEDUP
+      - IDLE
+      - RUNNING
+      - FINISHED
+      - FAILED
+      - KILLED
+      - STOPPING
+      - KILLING
+      - ANY
   securitySchemes:
     basicAuth:
       type: http

@@ -121,13 +121,6 @@ components:
                 type: string
             example:
               message: Authentication required.
-    BadRequest:
-      description: Bad request. The request body is missing, malformed, or contains invalid parameters.
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: Nutch configuration cannot be empty!
     InternalServerError:
       description: An unexpected server error occurred.
       content:
@@ -135,33 +128,14 @@ components:
           schema:
             type: string
           example: Internal server error.
+    BadRequest:
+      description: Bad request. The request body is missing, malformed, or contains invalid parameters.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: Nutch configuration cannot be empty!
   schemas:
-    FetchNodeDbInfo:
-      type: object
-      description: Information about a fetched node in the FetchDB.
-      required:
-      - children
-      properties:
-        url:
-          type: string
-          description: The URL of the fetched node.
-        status:
-          type: integer
-          format: int32
-          minimum: 0
-          maximum: 2147483647
-          description: The HTTP status code of the fetch.
-        numOfOutlinks:
-          type: integer
-          format: int32
-          minimum: 0
-          maximum: 2147483647
-          description: The number of outgoing links discovered.
-        children:
-          type: array
-          items:
-            $ref: '#/components/schemas/ChildNode'
-          description: The outgoing links from this node.
     DbQuery:
       type: object
       description: Parameters for a CrawlDB query.
@@ -203,6 +177,32 @@ components:
         anchorText:
           type: string
           description: The anchor text of the link.
+    FetchNodeDbInfo:
+      type: object
+      description: Information about a fetched node in the FetchDB.
+      required:
+      - children
+      properties:
+        url:
+          type: string
+          description: The URL of the fetched node.
+        status:
+          type: integer
+          format: int32
+          minimum: 0
+          maximum: 2147483647
+          description: The HTTP status code of the fetch.
+        numOfOutlinks:
+          type: integer
+          format: int32
+          minimum: 0
+          maximum: 2147483647
+          description: The number of outgoing links discovered.
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChildNode'
+          description: The outgoing links from this node.
   securitySchemes:
     basicAuth:
       type: http

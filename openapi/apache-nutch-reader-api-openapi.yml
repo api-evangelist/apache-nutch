@@ -215,6 +215,14 @@ components:
         minimum: -1
         maximum: 2147483647
         default: -1
+    count:
+      name: count
+      in: query
+      required: false
+      description: If true, returns the number of lines instead of the data itself. When set, the response content type is text/plain.
+      schema:
+        type: boolean
+        default: false
     end:
       name: end
       in: query
@@ -225,14 +233,6 @@ components:
         format: int32
         minimum: 0
         maximum: 2147483647
-    count:
-      name: count
-      in: query
-      required: false
-      description: If true, returns the number of lines instead of the data itself. When set, the response content type is text/plain.
-      schema:
-        type: boolean
-        default: false
     nrows:
       name: nrows
       in: query
@@ -256,13 +256,6 @@ components:
                 type: string
             example:
               message: Authentication required.
-    BadRequest:
-      description: Bad request. The request body is missing, malformed, or contains invalid parameters.
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: Nutch configuration cannot be empty!
     InternalServerError:
       description: An unexpected server error occurred.
       content:
@@ -270,6 +263,13 @@ components:
           schema:
             type: string
           example: Internal server error.
+    BadRequest:
+      description: Bad request. The request body is missing, malformed, or contains invalid parameters.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: Nutch configuration cannot be empty!
   schemas:
     ReaderConfig:
       type: object

@@ -184,14 +184,43 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  parameters:
-    jobId:
-      name: id
-      in: path
-      required: true
-      description: The unique identifier for the job.
-      schema:
-        type: string
+  responses:
+    Unauthorized:
+      description: Unauthorized. Basic authentication credentials are missing or invalid.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+            example:
+              message: Authentication required.
+    InternalServerError:
+      description: An unexpected server error occurred.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: Internal server error.
+    BadRequest:
+      description: Bad request. The request body is missing, malformed, or contains invalid parameters.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: Nutch configuration cannot be empty!
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+            example:
+              message: Resource not found.
   schemas:
     JobConfig:
       type: object
@@ -251,18 +280,6 @@ components:
         crawlId:
           type: string
           description: The crawl identifier associated with this job.
-    State:
-      type: string
-      description: The current state of a job.
-      enum:
-      - IDLE
-      - RUNNING
-      - FINISHED
-      - FAILED
-      - KILLED
-      - STOPPING
-      - KILLING
-      - ANY
     JobType:
       type: string
       description: The type of Nutch crawl job.
@@ -277,43 +294,26 @@ components:
       - CLASS
       - INVERTLINKS
       - DEDUP
-  responses:
-    Unauthorized:
-      description: Unauthorized. Basic authentication credentials are missing or invalid.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              message:
-                type: string
-            example:
-              message: Authentication required.
-    BadRequest:
-      description: Bad request. The request body is missing, malformed, or contains invalid parameters.
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: Nutch configuration cannot be empty!
-    InternalServerError:
-      description: An unexpected server error occurred.
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: Internal server error.
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              message:
-                type: string
-            example:
-              message: Resource not found.
+    State:
+      type: string
+      description: The current state of a job.
+      enum:
+      - IDLE
+      - RUNNING
+      - FINISHED
+      - FAILED
+      - KILLED
+      - STOPPING
+      - KILLING
+      - ANY
+  parameters:
+    jobId:
+      name: id
+      in: path
+      required: true
+      description: The unique identifier for the job.
+      schema:
+        type: string
   securitySchemes:
     basicAuth:
       type: http
