@@ -184,71 +184,21 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  responses:
-    Unauthorized:
-      description: Unauthorized. Basic authentication credentials are missing or invalid.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              message:
-                type: string
-            example:
-              message: Authentication required.
-    InternalServerError:
-      description: An unexpected server error occurred.
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: Internal server error.
-    BadRequest:
-      description: Bad request. The request body is missing, malformed, or contains invalid parameters.
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: Nutch configuration cannot be empty!
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              message:
-                type: string
-            example:
-              message: Resource not found.
   schemas:
-    JobConfig:
-      type: object
-      description: Configuration for creating a new crawl job.
-      required:
-      - type
-      properties:
-        crawlId:
-          type: string
-          description: The crawl identifier.
-        type:
-          $ref: '#/components/schemas/JobType'
-        confId:
-          type: string
-          description: The configuration ID to use for this job. Defaults to "default" if not specified.
-        jobClassName:
-          type: string
-          description: Fully qualified class name when type is CLASS.
-        args:
-          type: object
-          additionalProperties: true
-          description: Additional arguments for the job.
-      example:
-        crawlId: crawl-01
-        type: INJECT
-        confId: default
-        args:
-          seedDir: seedFiles/seed-1700000000000
+    JobType:
+      type: string
+      description: The type of Nutch crawl job.
+      enum:
+      - INJECT
+      - GENERATE
+      - FETCH
+      - PARSE
+      - UPDATEDB
+      - INDEX
+      - READDB
+      - CLASS
+      - INVERTLINKS
+      - DEDUP
     JobInfo:
       type: object
       description: Information about a crawl job.
@@ -280,20 +230,33 @@ components:
         crawlId:
           type: string
           description: The crawl identifier associated with this job.
-    JobType:
-      type: string
-      description: The type of Nutch crawl job.
-      enum:
-      - INJECT
-      - GENERATE
-      - FETCH
-      - PARSE
-      - UPDATEDB
-      - INDEX
-      - READDB
-      - CLASS
-      - INVERTLINKS
-      - DEDUP
+    JobConfig:
+      type: object
+      description: Configuration for creating a new crawl job.
+      required:
+      - type
+      properties:
+        crawlId:
+          type: string
+          description: The crawl identifier.
+        type:
+          $ref: '#/components/schemas/JobType'
+        confId:
+          type: string
+          description: The configuration ID to use for this job. Defaults to "default" if not specified.
+        jobClassName:
+          type: string
+          description: Fully qualified class name when type is CLASS.
+        args:
+          type: object
+          additionalProperties: true
+          description: Additional arguments for the job.
+      example:
+        crawlId: crawl-01
+        type: INJECT
+        confId: default
+        args:
+          seedDir: seedFiles/seed-1700000000000
     State:
       type: string
       description: The current state of a job.
@@ -314,6 +277,43 @@ components:
       description: The unique identifier for the job.
       schema:
         type: string
+  responses:
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+            example:
+              message: Resource not found.
+    InternalServerError:
+      description: An unexpected server error occurred.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: Internal server error.
+    Unauthorized:
+      description: Unauthorized. Basic authentication credentials are missing or invalid.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+            example:
+              message: Authentication required.
+    BadRequest:
+      description: Bad request. The request body is missing, malformed, or contains invalid parameters.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: Nutch configuration cannot be empty!
   securitySchemes:
     basicAuth:
       type: http

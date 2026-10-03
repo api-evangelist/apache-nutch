@@ -193,30 +193,18 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  schemas:
-    NutchConfig:
-      type: object
-      description: Configuration for creating a new Nutch configuration.
-      properties:
-        configId:
-          type: string
-          description: The identifier for this configuration.
-        force:
-          type: boolean
-          description: If true, overwrites an existing configuration with the same ID.
-          default: false
-        params:
-          type: object
-          additionalProperties:
-            type: string
-          description: Key-value pairs of Nutch configuration properties.
-      example:
-        configId: my-config
-        force: false
-        params:
-          http.agent.name: MyBot
-          http.robots.agents: MyBot,*
   responses:
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+            example:
+              message: Resource not found.
     Unauthorized:
       description: Unauthorized. Basic authentication credentials are missing or invalid.
       content:
@@ -242,17 +230,6 @@ components:
           schema:
             type: string
           example: Nutch configuration cannot be empty!
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              message:
-                type: string
-            example:
-              message: Resource not found.
   parameters:
     configId:
       name: configId
@@ -268,6 +245,29 @@ components:
       description: The name (key) of the configuration property.
       schema:
         type: string
+  schemas:
+    NutchConfig:
+      type: object
+      description: Configuration for creating a new Nutch configuration.
+      properties:
+        configId:
+          type: string
+          description: The identifier for this configuration.
+        force:
+          type: boolean
+          description: If true, overwrites an existing configuration with the same ID.
+          default: false
+        params:
+          type: object
+          additionalProperties:
+            type: string
+          description: Key-value pairs of Nutch configuration properties.
+      example:
+        configId: my-config
+        force: false
+        params:
+          http.agent.name: MyBot
+          http.robots.agents: MyBot,*
   securitySchemes:
     basicAuth:
       type: http

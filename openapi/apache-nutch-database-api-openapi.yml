@@ -109,64 +109,7 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  responses:
-    Unauthorized:
-      description: Unauthorized. Basic authentication credentials are missing or invalid.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              message:
-                type: string
-            example:
-              message: Authentication required.
-    InternalServerError:
-      description: An unexpected server error occurred.
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: Internal server error.
-    BadRequest:
-      description: Bad request. The request body is missing, malformed, or contains invalid parameters.
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: Nutch configuration cannot be empty!
   schemas:
-    DbQuery:
-      type: object
-      description: Parameters for a CrawlDB query.
-      required:
-      - crawlId
-      - type
-      properties:
-        confId:
-          type: string
-          description: Configuration ID. Falls back to "default" if not provided.
-        type:
-          type: string
-          description: The type of CrawlDB query to execute.
-          enum:
-          - stats
-          - dump
-          - topN
-          - url
-        args:
-          type: object
-          additionalProperties:
-            type: string
-          description: Additional arguments for the query.
-        crawlId:
-          type: string
-          description: The crawl identifier.
-      example:
-        confId: default
-        type: stats
-        crawlId: crawl-01
-        args: {}
     ChildNode:
       type: object
       description: A child (outlink) of a fetched node.
@@ -203,6 +146,63 @@ components:
           items:
             $ref: '#/components/schemas/ChildNode'
           description: The outgoing links from this node.
+    DbQuery:
+      type: object
+      description: Parameters for a CrawlDB query.
+      required:
+      - crawlId
+      - type
+      properties:
+        confId:
+          type: string
+          description: Configuration ID. Falls back to "default" if not provided.
+        type:
+          type: string
+          description: The type of CrawlDB query to execute.
+          enum:
+          - stats
+          - dump
+          - topN
+          - url
+        args:
+          type: object
+          additionalProperties:
+            type: string
+          description: Additional arguments for the query.
+        crawlId:
+          type: string
+          description: The crawl identifier.
+      example:
+        confId: default
+        type: stats
+        crawlId: crawl-01
+        args: {}
+  responses:
+    InternalServerError:
+      description: An unexpected server error occurred.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: Internal server error.
+    Unauthorized:
+      description: Unauthorized. Basic authentication credentials are missing or invalid.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+            example:
+              message: Authentication required.
+    BadRequest:
+      description: Bad request. The request body is missing, malformed, or contains invalid parameters.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: Nutch configuration cannot be empty!
   securitySchemes:
     basicAuth:
       type: http

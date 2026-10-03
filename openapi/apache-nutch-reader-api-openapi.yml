@@ -204,35 +204,6 @@ paths:
         dispatcher: FALLBACK
 components:
   parameters:
-    start:
-      name: start
-      in: query
-      required: false
-      description: Starting line number for a range read.
-      schema:
-        type: integer
-        format: int32
-        minimum: -1
-        maximum: 2147483647
-        default: -1
-    count:
-      name: count
-      in: query
-      required: false
-      description: If true, returns the number of lines instead of the data itself. When set, the response content type is text/plain.
-      schema:
-        type: boolean
-        default: false
-    end:
-      name: end
-      in: query
-      required: false
-      description: Ending line number for a range read.
-      schema:
-        type: integer
-        format: int32
-        minimum: 0
-        maximum: 2147483647
     nrows:
       name: nrows
       in: query
@@ -244,7 +215,50 @@ components:
         minimum: -1
         maximum: 2147483647
         default: -1
+    end:
+      name: end
+      in: query
+      required: false
+      description: Ending line number for a range read.
+      schema:
+        type: integer
+        format: int32
+        minimum: 0
+        maximum: 2147483647
+    count:
+      name: count
+      in: query
+      required: false
+      description: If true, returns the number of lines instead of the data itself. When set, the response content type is text/plain.
+      schema:
+        type: boolean
+        default: false
+    start:
+      name: start
+      in: query
+      required: false
+      description: Starting line number for a range read.
+      schema:
+        type: integer
+        format: int32
+        minimum: -1
+        maximum: 2147483647
+        default: -1
   responses:
+    BadRequest:
+      description: Bad request. The request body is missing, malformed, or contains invalid parameters.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: Nutch configuration cannot be empty!
+    InternalServerError:
+      description: An unexpected server error occurred.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: Internal server error.
     Unauthorized:
       description: Unauthorized. Basic authentication credentials are missing or invalid.
       content:
@@ -256,20 +270,6 @@ components:
                 type: string
             example:
               message: Authentication required.
-    InternalServerError:
-      description: An unexpected server error occurred.
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: Internal server error.
-    BadRequest:
-      description: Bad request. The request body is missing, malformed, or contains invalid parameters.
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: Nutch configuration cannot be empty!
   schemas:
     ReaderConfig:
       type: object
@@ -282,28 +282,6 @@ components:
           description: The path to the sequence file, link data, or node data to read.
       example:
         path: crawl-01/crawldb/current/part-00000/data
-    NodeSchema:
-      type: object
-      description: Schema describing the fields in a node reader response.
-      properties:
-        key_url:
-          type: string
-          example: string
-        num_inlinks:
-          type: string
-          example: int
-        num_outlinks:
-          type: string
-          example: int
-        inlink_score:
-          type: string
-          example: float
-        outlink_score:
-          type: string
-          example: float
-        metadata:
-          type: string
-          example: string
     LinkSchema:
       type: object
       description: Schema describing the fields in a link reader response.
@@ -324,6 +302,28 @@ components:
           type: string
           example: string
         url:
+          type: string
+          example: string
+    NodeSchema:
+      type: object
+      description: Schema describing the fields in a node reader response.
+      properties:
+        key_url:
+          type: string
+          example: string
+        num_inlinks:
+          type: string
+          example: int
+        num_outlinks:
+          type: string
+          example: int
+        inlink_score:
+          type: string
+          example: float
+        outlink_score:
+          type: string
+          example: float
+        metadata:
           type: string
           example: string
   securitySchemes:
