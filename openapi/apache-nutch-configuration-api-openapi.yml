@@ -193,18 +193,22 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    propertyId:
+      name: propertyId
+      in: path
+      required: true
+      description: The name (key) of the configuration property.
+      schema:
+        type: string
+    configId:
+      name: configId
+      in: path
+      required: true
+      description: The unique identifier for the configuration.
+      schema:
+        type: string
   responses:
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              message:
-                type: string
-            example:
-              message: Resource not found.
     Unauthorized:
       description: Unauthorized. Basic authentication credentials are missing or invalid.
       content:
@@ -223,6 +227,17 @@ components:
           schema:
             type: string
           example: Internal server error.
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+            example:
+              message: Resource not found.
     BadRequest:
       description: Bad request. The request body is missing, malformed, or contains invalid parameters.
       content:
@@ -230,21 +245,6 @@ components:
           schema:
             type: string
           example: Nutch configuration cannot be empty!
-  parameters:
-    configId:
-      name: configId
-      in: path
-      required: true
-      description: The unique identifier for the configuration.
-      schema:
-        type: string
-    propertyId:
-      name: propertyId
-      in: path
-      required: true
-      description: The name (key) of the configuration property.
-      schema:
-        type: string
   schemas:
     NutchConfig:
       type: object
