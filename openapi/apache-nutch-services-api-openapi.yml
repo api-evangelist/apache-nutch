@@ -106,6 +106,17 @@ components:
             type: string
           example: Internal server error.
   schemas:
+    ServiceInfo:
+      type: object
+      description: Information returned by service operations.
+      required:
+      - dumpPaths
+      properties:
+        dumpPaths:
+          type: array
+          items:
+            type: string
+          description: List of file paths for the dump output.
     ServiceConfig:
       type: object
       description: Configuration for service operations such as CommonCrawl data dumps.
@@ -126,17 +137,6 @@ components:
         crawlId: crawl-01
         confId: default
         args: {}
-    ServiceInfo:
-      type: object
-      description: Information returned by service operations.
-      required:
-      - dumpPaths
-      properties:
-        dumpPaths:
-          type: array
-          items:
-            type: string
-          description: List of file paths for the dump output.
   securitySchemes:
     basicAuth:
       type: http

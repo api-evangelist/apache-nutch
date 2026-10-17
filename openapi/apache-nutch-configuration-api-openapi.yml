@@ -193,6 +193,43 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  responses:
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+            example:
+              message: Resource not found.
+    InternalServerError:
+      description: An unexpected server error occurred.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: Internal server error.
+    Unauthorized:
+      description: Unauthorized. Basic authentication credentials are missing or invalid.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+            example:
+              message: Authentication required.
+    BadRequest:
+      description: Bad request. The request body is missing, malformed, or contains invalid parameters.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: Nutch configuration cannot be empty!
   parameters:
     propertyId:
       name: propertyId
@@ -208,43 +245,6 @@ components:
       description: The unique identifier for the configuration.
       schema:
         type: string
-  responses:
-    Unauthorized:
-      description: Unauthorized. Basic authentication credentials are missing or invalid.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              message:
-                type: string
-            example:
-              message: Authentication required.
-    InternalServerError:
-      description: An unexpected server error occurred.
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: Internal server error.
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              message:
-                type: string
-            example:
-              message: Resource not found.
-    BadRequest:
-      description: Bad request. The request body is missing, malformed, or contains invalid parameters.
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: Nutch configuration cannot be empty!
   schemas:
     NutchConfig:
       type: object

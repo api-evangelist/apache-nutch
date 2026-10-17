@@ -203,14 +203,70 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  schemas:
+    NodeSchema:
+      type: object
+      description: Schema describing the fields in a node reader response.
+      properties:
+        key_url:
+          type: string
+          example: string
+        num_inlinks:
+          type: string
+          example: int
+        num_outlinks:
+          type: string
+          example: int
+        inlink_score:
+          type: string
+          example: float
+        outlink_score:
+          type: string
+          example: float
+        metadata:
+          type: string
+          example: string
+    ReaderConfig:
+      type: object
+      description: Configuration specifying a file path for reader operations.
+      required:
+      - path
+      properties:
+        path:
+          type: string
+          description: The path to the sequence file, link data, or node data to read.
+      example:
+        path: crawl-01/crawldb/current/part-00000/data
+    LinkSchema:
+      type: object
+      description: Schema describing the fields in a link reader response.
+      properties:
+        key_url:
+          type: string
+          example: string
+        timestamp:
+          type: string
+          example: int
+        score:
+          type: string
+          example: float
+        anchor:
+          type: string
+          example: string
+        linktype:
+          type: string
+          example: string
+        url:
+          type: string
+          example: string
   responses:
-    BadRequest:
-      description: Bad request. The request body is missing, malformed, or contains invalid parameters.
+    InternalServerError:
+      description: An unexpected server error occurred.
       content:
         text/plain:
           schema:
             type: string
-          example: Nutch configuration cannot be empty!
+          example: Internal server error.
     Unauthorized:
       description: Unauthorized. Basic authentication credentials are missing or invalid.
       content:
@@ -222,24 +278,14 @@ components:
                 type: string
             example:
               message: Authentication required.
-    InternalServerError:
-      description: An unexpected server error occurred.
+    BadRequest:
+      description: Bad request. The request body is missing, malformed, or contains invalid parameters.
       content:
         text/plain:
           schema:
             type: string
-          example: Internal server error.
+          example: Nutch configuration cannot be empty!
   parameters:
-    end:
-      name: end
-      in: query
-      required: false
-      description: Ending line number for a range read.
-      schema:
-        type: integer
-        format: int32
-        minimum: 0
-        maximum: 2147483647
     nrows:
       name: nrows
       in: query
@@ -270,62 +316,16 @@ components:
         minimum: -1
         maximum: 2147483647
         default: -1
-  schemas:
-    NodeSchema:
-      type: object
-      description: Schema describing the fields in a node reader response.
-      properties:
-        key_url:
-          type: string
-          example: string
-        num_inlinks:
-          type: string
-          example: int
-        num_outlinks:
-          type: string
-          example: int
-        inlink_score:
-          type: string
-          example: float
-        outlink_score:
-          type: string
-          example: float
-        metadata:
-          type: string
-          example: string
-    LinkSchema:
-      type: object
-      description: Schema describing the fields in a link reader response.
-      properties:
-        key_url:
-          type: string
-          example: string
-        timestamp:
-          type: string
-          example: int
-        score:
-          type: string
-          example: float
-        anchor:
-          type: string
-          example: string
-        linktype:
-          type: string
-          example: string
-        url:
-          type: string
-          example: string
-    ReaderConfig:
-      type: object
-      description: Configuration specifying a file path for reader operations.
-      required:
-      - path
-      properties:
-        path:
-          type: string
-          description: The path to the sequence file, link data, or node data to read.
-      example:
-        path: crawl-01/crawldb/current/part-00000/data
+    end:
+      name: end
+      in: query
+      required: false
+      description: Ending line number for a range read.
+      schema:
+        type: integer
+        format: int32
+        minimum: 0
+        maximum: 2147483647
   securitySchemes:
     basicAuth:
       type: http
