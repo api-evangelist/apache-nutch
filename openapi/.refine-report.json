@@ -1,32 +1,19 @@
 {
   "provider": "apache-nutch",
   "sources": [
-    "_original/apache-nutch-openapi.yaml"
+    "_original/apache-nutch-openapi.json"
   ],
   "outputs": [
-    "apache-nutch-admin-api-openapi.yml",
-    "apache-nutch-configuration-api-openapi.yml",
-    "apache-nutch-database-api-openapi.yml",
-    "apache-nutch-job-api-openapi.yml",
-    "apache-nutch-reader-api-openapi.yml",
-    "apache-nutch-seed-api-openapi.yml",
-    "apache-nutch-services-api-openapi.yml"
+    "apache-nutch-queues-api-openapi.yml",
+    "apache-nutch-status-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
   "notes": [
     "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
-    "apache-nutch-openapi.yaml: upgraded openapi 3.1.2 -> OpenAPI 3.2.0",
-    "apis.yml register: already-registered"
+    "apache-nutch-openapi.json: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "apis.yml register: written (+2 apis, 2 total)"
   ],
-  "skipped": [
-    "apache-nutch-admin-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "apache-nutch-configuration-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "apache-nutch-database-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "apache-nutch-job-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "apache-nutch-reader-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "apache-nutch-seed-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "apache-nutch-services-api-openapi.yml: previously refined output, superseded by openapi/_original/"
-  ]
+  "skipped": []
 }
