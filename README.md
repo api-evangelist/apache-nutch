@@ -1,4 +1,4 @@
-# Apache Nutch (apache-nutch)
+# Apache Nutch
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,176 +66,222 @@
 
 Apache Nutch is a highly extensible and scalable open-source web crawler software project built on Apache Hadoop data structures for batch processing. It provides a pluggable architecture supporting custom parse filters, scoring filters, index writers, and protocol implementations. Nutch integrates with Apache Solr and Elasticsearch for full-text search and exposes a REST API for managing crawl jobs, configurations, seed lists, and database queries. Governed by the Apache Software Foundation under the Apache License 2.0.
 
-**URL:** [https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/apache-nutch/refs/heads/main/apis.yml)
+**Areas:** Web Crawler · Indexing · Search · Apache · Java · Hadoop · Open Source
 
-**Run:** [Capabilities Using Naftiko](https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=company-api-evangelist&utm_content=repo)
+## Apache Nutch on APIs.io
 
-## Tags:
+Everything profiled for Apache Nutch is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/apache-nutch/](https://apis.io/providers/apache-nutch/)** — or go straight to one of the APIs or properties below.
 
- - Web Crawler, Indexing, Search, Apache, Java, Hadoop, Open Source
+### APIs (7)
 
-## Timestamps
+- [Apache Nutch Admin API](https://apis.io/apis/apache-nutch/apache-nutch-admin-api/) — Server administration operations
+- [Apache Nutch Configuration API](https://apis.io/apis/apache-nutch/apache-nutch-configuration-api/) — Manage Nutch configurations
+- [Apache Nutch Database API](https://apis.io/apis/apache-nutch/apache-nutch-database-api/) — Query the CrawlDB and FetchDB
+- [Apache Nutch Job API](https://apis.io/apis/apache-nutch/apache-nutch-job-api/) — Manage crawl jobs
+- [Apache Nutch Reader API](https://apis.io/apis/apache-nutch/apache-nutch-reader-api/) — Read sequence files and webgraph data
+- [Apache Nutch Seed API](https://apis.io/apis/apache-nutch/apache-nutch-seed-api/) — Manage seed URL lists
+- [Apache Nutch Services API](https://apis.io/apis/apache-nutch/apache-nutch-services-api/) — Auxiliary service operations such as CommonCrawl data dumps
 
-- **Created:** 2026-03-16
-- **Modified:** 2026-04-19
+### Published properties
 
-## APIs
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-### Apache Nutch REST API
-REST API for managing Apache Nutch crawl jobs, configurations, seed URL lists, database queries (CrawlDB and FetchDB), and data readers. Supports full crawl lifecycle management including inject, generate, fetch, parse, updatedb, and index operations. Secured via HTTP Basic Authentication.
+#### Agentic access (1)
 
-**Human URL:** [https://cwiki.apache.org/confluence/display/NUTCH/Nutch+1.X+REST+API](https://cwiki.apache.org/confluence/display/NUTCH/Nutch+1.X+REST+API)
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags:
+- [Apache Nutch Agentic Access](https://apis.io/agentic-access/apache-nutch/apache-nutch-agentic-access/)
 
- - REST, Crawl Management, Job Management, Configuration
+#### JSON Schema (16)
 
-#### Properties
+The data models the API reads and writes.
 
-- [Documentation](https://cwiki.apache.org/confluence/display/NUTCH/Nutch+1.X+REST+API)
-- [OpenAPI](openapi/apache-nutch-openapi.yaml)
-- [JSONSchema - Nutch Config Schema](json-schema/apache-nutch-nutch-config-schema.json)
-- [JSONSchema - Job Config Schema](json-schema/apache-nutch-job-config-schema.json)
-- [JSONSchema - Job Info Schema](json-schema/apache-nutch-job-info-schema.json)
-- [JSONSchema - Server Info Schema](json-schema/apache-nutch-nutch-server-info-schema.json)
-- [JSONSchema - Seed List Schema](json-schema/apache-nutch-seed-list-schema.json)
-- [JSONSchema - DB Query Schema](json-schema/apache-nutch-db-query-schema.json)
+- [ChildNode](https://apis.io/schemas/apache-nutch/apache-nutch-child-node/)
+- [DbQuery](https://apis.io/schemas/apache-nutch/apache-nutch-db-query/)
+- [FetchNodeDbInfo](https://apis.io/schemas/apache-nutch/apache-nutch-fetch-node-db-info/)
+- [JobConfig](https://apis.io/schemas/apache-nutch/apache-nutch-job-config/)
+- [JobInfo](https://apis.io/schemas/apache-nutch/apache-nutch-job-info/)
+- [JobType](https://apis.io/schemas/apache-nutch/apache-nutch-job-type/)
+- [LinkSchema](https://apis.io/schemas/apache-nutch/apache-nutch-link-schema/)
+- [NodeSchema](https://apis.io/schemas/apache-nutch/apache-nutch-node-schema/)
+- [NutchConfig](https://apis.io/schemas/apache-nutch/apache-nutch-nutch-config/)
+- [NutchServerInfo](https://apis.io/schemas/apache-nutch/apache-nutch-nutch-server-info/)
+- [ReaderConfig](https://apis.io/schemas/apache-nutch/apache-nutch-reader-config/)
+- [SeedList](https://apis.io/schemas/apache-nutch/apache-nutch-seed-list/)
+- [SeedUrl](https://apis.io/schemas/apache-nutch/apache-nutch-seed-url/)
+- [ServiceConfig](https://apis.io/schemas/apache-nutch/apache-nutch-service-config/)
+- [ServiceInfo](https://apis.io/schemas/apache-nutch/apache-nutch-service-info/)
+- [State](https://apis.io/schemas/apache-nutch/apache-nutch-state/)
 
-## Common Properties
+#### JSON Structure (16)
 
-- [GitHub Repository](https://github.com/apache/nutch)
-- [GitHub Organization](https://github.com/apache)
+Data models expressed in JSON Structure.
+
+- [Apache Nutch Child Node Structure](https://apis.io/json-structure/apache-nutch/apache-nutch-child-node-structure/)
+- [Apache Nutch Db Query Structure](https://apis.io/json-structure/apache-nutch/apache-nutch-db-query-structure/)
+- [Apache Nutch Fetch Node Db Info Structure](https://apis.io/json-structure/apache-nutch/apache-nutch-fetch-node-db-info-structure/)
+- [Apache Nutch Job Config Structure](https://apis.io/json-structure/apache-nutch/apache-nutch-job-config-structure/)
+- [Apache Nutch Job Info Structure](https://apis.io/json-structure/apache-nutch/apache-nutch-job-info-structure/)
+- [Apache Nutch Job Type Structure](https://apis.io/json-structure/apache-nutch/apache-nutch-job-type-structure/)
+- [Apache Nutch Link Schema Structure](https://apis.io/json-structure/apache-nutch/apache-nutch-link-schema-structure/)
+- [Apache Nutch Node Schema Structure](https://apis.io/json-structure/apache-nutch/apache-nutch-node-schema-structure/)
+- [Apache Nutch Nutch Config Structure](https://apis.io/json-structure/apache-nutch/apache-nutch-nutch-config-structure/)
+- [Apache Nutch Nutch Server Info Structure](https://apis.io/json-structure/apache-nutch/apache-nutch-nutch-server-info-structure/)
+- [Apache Nutch Reader Config Structure](https://apis.io/json-structure/apache-nutch/apache-nutch-reader-config-structure/)
+- [Apache Nutch Seed List Structure](https://apis.io/json-structure/apache-nutch/apache-nutch-seed-list-structure/)
+- [Apache Nutch Seed Url Structure](https://apis.io/json-structure/apache-nutch/apache-nutch-seed-url-structure/)
+- [Apache Nutch Service Config Structure](https://apis.io/json-structure/apache-nutch/apache-nutch-service-config-structure/)
+- [Apache Nutch Service Info Structure](https://apis.io/json-structure/apache-nutch/apache-nutch-service-info-structure/)
+- [Apache Nutch State Structure](https://apis.io/json-structure/apache-nutch/apache-nutch-state-structure/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Apache Nutch Context](https://apis.io/jsonld/apache-nutch/apache-nutch-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Apache Nutch Vocabulary](https://apis.io/vocabularies/apache-nutch/apache-nutch-vocabulary/)
+
+#### Examples (16)
+
+Example requests and responses.
+
+- [Apache Nutch Child Node Example](https://apis.io/examples/apache-nutch/apache-nutch-child-node-example/)
+- [Apache Nutch Db Query Example](https://apis.io/examples/apache-nutch/apache-nutch-db-query-example/)
+- [Apache Nutch Fetch Node Db Info Example](https://apis.io/examples/apache-nutch/apache-nutch-fetch-node-db-info-example/)
+- [Apache Nutch Job Config Example](https://apis.io/examples/apache-nutch/apache-nutch-job-config-example/)
+- [Apache Nutch Job Info Example](https://apis.io/examples/apache-nutch/apache-nutch-job-info-example/)
+- [Apache Nutch Job Type Example](https://apis.io/examples/apache-nutch/apache-nutch-job-type-example/)
+- [Apache Nutch Link Schema Example](https://apis.io/examples/apache-nutch/apache-nutch-link-schema-example/)
+- [Apache Nutch Node Schema Example](https://apis.io/examples/apache-nutch/apache-nutch-node-schema-example/)
+- [Apache Nutch Nutch Config Example](https://apis.io/examples/apache-nutch/apache-nutch-nutch-config-example/)
+- [Apache Nutch Nutch Server Info Example](https://apis.io/examples/apache-nutch/apache-nutch-nutch-server-info-example/)
+- [Apache Nutch Reader Config Example](https://apis.io/examples/apache-nutch/apache-nutch-reader-config-example/)
+- [Apache Nutch Seed List Example](https://apis.io/examples/apache-nutch/apache-nutch-seed-list-example/)
+- [Apache Nutch Seed Url Example](https://apis.io/examples/apache-nutch/apache-nutch-seed-url-example/)
+- [Apache Nutch Service Config Example](https://apis.io/examples/apache-nutch/apache-nutch-service-config-example/)
+- [Apache Nutch Service Info Example](https://apis.io/examples/apache-nutch/apache-nutch-service-info-example/)
+- [Apache Nutch State Example](https://apis.io/examples/apache-nutch/apache-nutch-state-example/)
+
+#### Collections (14)
+
+Postman and Open Collection request collections.
+
+- [Apache Nutch REST Admin API](https://apis.io/collections/apache-nutch/open-apache-nutch-admin-api/)
+- [Apache Nutch REST Admin Configuration API](https://apis.io/collections/apache-nutch/open-apache-nutch-configuration-api/)
+- [Apache Nutch REST Admin Database API](https://apis.io/collections/apache-nutch/open-apache-nutch-database-api/)
+- [Apache Nutch REST Admin Job API](https://apis.io/collections/apache-nutch/open-apache-nutch-job-api/)
+- [Apache Nutch REST Admin Reader API](https://apis.io/collections/apache-nutch/open-apache-nutch-reader-api/)
+- [Apache Nutch REST Admin Seed API](https://apis.io/collections/apache-nutch/open-apache-nutch-seed-api/)
+- [Apache Nutch REST Admin Services API](https://apis.io/collections/apache-nutch/open-apache-nutch-services-api/)
+- [Apache Nutch REST Admin API](https://apis.io/collections/apache-nutch/postman-apache-nutch-admin-api/)
+- [Apache Nutch REST Admin Configuration API](https://apis.io/collections/apache-nutch/postman-apache-nutch-configuration-api/)
+- [Apache Nutch REST Admin Database API](https://apis.io/collections/apache-nutch/postman-apache-nutch-database-api/)
+- [Apache Nutch REST Admin Job API](https://apis.io/collections/apache-nutch/postman-apache-nutch-job-api/)
+- [Apache Nutch REST Admin Reader API](https://apis.io/collections/apache-nutch/postman-apache-nutch-reader-api/)
+- [Apache Nutch REST Admin Seed API](https://apis.io/collections/apache-nutch/postman-apache-nutch-seed-api/)
+- [Apache Nutch REST Admin Services API](https://apis.io/collections/apache-nutch/postman-apache-nutch-services-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Apache Nutch — jsonschema rules](https://apis.io/rules/apache-nutch/apache-nutch-jsonschema-spectral-rules/)
+- [Apache Nutch API Rules](https://apis.io/rules/apache-nutch/apache-nutch-spectral-rules/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Apache Nutch Authentication](https://apis.io/security/apache-nutch/apache-nutch-authentication/)
+- [Apache Nutch Domain Security](https://apis.io/security/apache-nutch/apache-nutch-domain-security/)
+- [Apache Nutch Vulnerability Disclosure](https://apis.io/security/apache-nutch/apache-nutch-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Apache Nutch Plans Pricing](https://apis.io/plans/apache-nutch/apache-nutch-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Apache Nutch Rate Limits](https://apis.io/rate-limits/apache-nutch/apache-nutch-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Apache Nutch Finops](https://apis.io/finops/apache-nutch/apache-nutch-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://apache.org)
 - [Documentation](https://nutch.apache.org/documentation/)
-- [Getting Started](https://cwiki.apache.org/confluence/display/NUTCH/NutchTutorial)
-- [Tutorials](https://nutch.apache.org/documentation/tutorials/)
-- [FAQ](https://nutch.apache.org/documentation/faqs/)
-- [Release Notes](https://github.com/apache/nutch/blob/master/CHANGES.md)
-- [Terms of Service](https://www.apache.org/licenses/LICENSE-2.0)
+- [Getting started](https://cwiki.apache.org/confluence/display/NUTCH/NutchTutorial)
 - [Support](https://nutch.apache.org/community/mailing-lists/)
-- [Stack Overflow](https://stackoverflow.com/questions/tagged/nutch)
-- [Spectral Rules](rules/apache-nutch-spectral-rules.yml)
-- [Naftiko Capability](capabilities/apache-nutch-crawl-management.yaml)
-- [Vocabulary](vocabulary/apache-nutch-vocabulary.yaml)
-- [JSON-LD Context](json-ld/apache-nutch-context.jsonld)
+- [Blog](https://nutch.apache.org/index.xml)
+- [Terms of service](https://www.apache.org/licenses/LICENSE-2.0)
+- [GitHub](https://github.com/apache)
 
-## Features
+## API Evangelist rating
 
-| Name | Description |
-|------|-------------|
-| Scalable Batch Crawling | Leverages Apache Hadoop data structures for distributed, large-scale web crawling batch processing. |
-| Pluggable Architecture | Extensible plugin system supporting custom parse filters, scoring filters, index writers, protocol plugins, and URL filters. |
-| REST API for Crawl Management | Full REST API for managing crawl jobs, configurations, seed lists, CrawlDB/FetchDB queries, and sequence file readers. |
-| Full-Text Search Integration | Built-in index writers for Apache Solr and Elasticsearch to enable full-text search over crawled content. |
-| Apache Tika Parsing | Uses Apache Tika for parsing a wide variety of document formats during the crawl pipeline. |
-| Duplicate Detection | Built-in deduplication support to identify and remove duplicate content from the crawl database and search index. |
-| Configurable URL Filtering | Regex-based and custom URL filter plugins to control crawl scope and exclusions. |
-| Incremental Crawling | Supports multi-round incremental crawling workflows to keep the crawl database fresh. |
-| CommonCrawl Export | Service operations for exporting crawl data in CommonCrawl-compatible formats. |
-| HTTP Authentication Support | Configurable HTTP authentication schemes for crawling password-protected sites. |
+**Kin Score 40.2** — developing · rubric 0.25.0 · scored 2026-10-23
 
-## Use Cases
+| Facet | Score |
+|---|---|
+| Discoverability | 62.5 |
+| Contract quality | 50.7 |
+| Contract governance | 13.6 |
+| Operational transparency | 36.8 |
+| Developer ergonomics | 44.8 |
+| Access clarity | 18.4 |
 
-| Name | Description |
-|------|-------------|
-| Enterprise Search | Build enterprise search engines over internal or external web content using Nutch as the crawler and Solr/Elasticsearch as the search backend. |
-| Research Data Collection | Academic and research teams use Nutch for large-scale systematic web data collection and indexing. |
-| Intranet Document Search | Crawl and index intranet sites, wikis, and document repositories for internal enterprise search. |
-| Web Archive Creation | Create structured web archives compatible with CommonCrawl format for long-term data preservation. |
-| SEO and Content Monitoring | Monitor web content changes, track competitor sites, and analyze web structure at scale. |
-| Custom Data Extraction Pipelines | Build custom extraction pipelines using Nutch plugin architecture for targeted data acquisition tasks. |
+**Agent readiness 17.9** — agent-aware
 
-## Integrations
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | na |
 
-| Name | Description |
-|------|-------------|
-| Apache Solr | Native index writer plugin for indexing crawled content into Apache Solr for full-text search. |
-| Elasticsearch | Index writer plugin for sending crawled content to Elasticsearch clusters. |
-| Apache Hadoop | Core dependency providing distributed storage and processing via HDFS and MapReduce. |
-| Apache Tika | Used for content detection and extraction from a wide range of document formats during parsing. |
-| SolrCloud | Support for SolrCloud distributed search clusters for scalable indexing. |
+**Regulatory alignment 26.5** — Horizontal (data, software, accessibility, platform)
 
-## Artifacts
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/apache-nutch/](https://apis.io/providers/apache-nutch/).
 
-Machine-readable API specifications organized by format.
+## How this profile is made
 
-### OpenAPI
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
 
-- [Apache Nutch REST API](openapi/apache-nutch-openapi.yaml)
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Apache Nutch: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
 
-### JSON Schema
+## Open an issue
 
-- [Nutch Config](json-schema/apache-nutch-nutch-config-schema.json)
-- [Job Config](json-schema/apache-nutch-job-config-schema.json)
-- [Job Info](json-schema/apache-nutch-job-info-schema.json)
-- [DB Query](json-schema/apache-nutch-db-query-schema.json)
-- [Nutch Server Info](json-schema/apache-nutch-nutch-server-info-schema.json)
-- [Fetch Node DB Info](json-schema/apache-nutch-fetch-node-db-info-schema.json)
-- [Child Node](json-schema/apache-nutch-child-node-schema.json)
-- [Seed List](json-schema/apache-nutch-seed-list-schema.json)
-- [Seed URL](json-schema/apache-nutch-seed-url-schema.json)
-- [Reader Config](json-schema/apache-nutch-reader-config-schema.json)
-- [Service Config](json-schema/apache-nutch-service-config-schema.json)
-- [Service Info](json-schema/apache-nutch-service-info-schema.json)
-- [Link Schema](json-schema/apache-nutch-link-schema-schema.json)
-- [Node Schema](json-schema/apache-nutch-node-schema-schema.json)
-- [Job Type](json-schema/apache-nutch-job-type-schema.json)
-- [State](json-schema/apache-nutch-state-schema.json)
-
-### JSON Structure
-
-- [Nutch Config](json-structure/apache-nutch-nutch-config-structure.json)
-- [Job Config](json-structure/apache-nutch-job-config-structure.json)
-- [Job Info](json-structure/apache-nutch-job-info-structure.json)
-- [DB Query](json-structure/apache-nutch-db-query-structure.json)
-- [Nutch Server Info](json-structure/apache-nutch-nutch-server-info-structure.json)
-- [Fetch Node DB Info](json-structure/apache-nutch-fetch-node-db-info-structure.json)
-- [Child Node](json-structure/apache-nutch-child-node-structure.json)
-- [Seed List](json-structure/apache-nutch-seed-list-structure.json)
-- [Seed URL](json-structure/apache-nutch-seed-url-structure.json)
-- [Reader Config](json-structure/apache-nutch-reader-config-structure.json)
-- [Service Config](json-structure/apache-nutch-service-config-structure.json)
-- [Service Info](json-structure/apache-nutch-service-info-structure.json)
-- [Link Schema](json-structure/apache-nutch-link-schema-structure.json)
-- [Node Schema](json-structure/apache-nutch-node-schema-structure.json)
-- [Job Type](json-structure/apache-nutch-job-type-structure.json)
-- [State](json-structure/apache-nutch-state-structure.json)
-
-### JSON-LD
-
-- [Apache Nutch Context](json-ld/apache-nutch-context.jsonld)
-
-### Examples
-
-- [Nutch Config](examples/apache-nutch-nutch-config-example.json)
-- [Job Config](examples/apache-nutch-job-config-example.json)
-- [Job Info](examples/apache-nutch-job-info-example.json)
-- [DB Query](examples/apache-nutch-db-query-example.json)
-- [Seed List](examples/apache-nutch-seed-list-example.json)
-
-## Capabilities
-
-Naftiko capabilities organized as shared per-API definitions composed into customer-facing workflows.
-
-### Shared Per-API Definitions
-
-- [Apache Nutch REST API](capabilities/shared/apache-nutch.yaml) — 14 operations for crawl management, configuration, seeds, and database access
-
-### Workflow Capabilities
-
-| Workflow | APIs Combined | Tools | Persona |
-|----------|--------------|-------|---------|
-| [Apache Nutch Crawl Management](capabilities/apache-nutch-crawl-management.yaml) | Apache Nutch REST API | 14 | Crawl Engineer, Data Engineer |
-
-## Vocabulary
-
-- [Apache Nutch Vocabulary](vocabulary/apache-nutch-vocabulary.yaml) — Unified taxonomy mapping 7 resources, 9 actions, 1 workflow, and 2 personas across operational (OpenAPI) and capability (Naftiko) dimensions
-
-## Rules
-
-- [Apache Nutch Spectral Rules](rules/apache-nutch-spectral-rules.yml) — 30 rules across 9 categories enforcing Apache Nutch API conventions
-
-## Maintainers
-
-**FN:** Kin Lane
-
-**Email:** info@apievangelist.com
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/apache-nutch/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
